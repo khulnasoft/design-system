@@ -1,0 +1,14 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Text::Body
+  class="kds-dropdown-list-item kds-dropdown-list-item--variant-title"
+  @tag="li"
+  @size="100"
+  @weight="semibold"
+  @color="strong"
+  ...attributes
+>
+  {{this.text}}
+</Kds::Text::Body>

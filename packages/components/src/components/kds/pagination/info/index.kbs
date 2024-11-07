@@ -1,0 +1,11 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Text::Body class="kds-pagination-info" @tag="div" @size="100" @weight="medium" ...attributes>
+  {{@itemsRangeStart}}–{{@itemsRangeEnd}}
+  {{#if this.showTotalItems}}
+    of
+    {{@totalItems}}
+  {{/if}}
+</Kds::Text::Body>

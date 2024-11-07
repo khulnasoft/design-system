@@ -1,0 +1,13 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::Copy::Button
+  class="kds-code-block__copy-button"
+  @text="Copy"
+  @isIconOnly={{true}}
+  @size="small"
+  @targetToCopy={{@targetToCopy}}
+  ...attributes
+/>

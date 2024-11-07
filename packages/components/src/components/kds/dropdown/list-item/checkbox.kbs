@@ -1,0 +1,18 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<li class="kds-dropdown-list-item kds-dropdown-list-item--variant-checkbox">
+  <label class="kds-dropdown-list-item__label kds-typography-body-200" for={{this.id}}>
+    <Kds::Form::Checkbox::Base class="kds-dropdown-list-item__control" id={{this.id}} @value={{@value}} ...attributes />
+    {{#if @icon}}
+      <span class="kds-dropdown-list-item__icon">
+        <Kds::Icon @name={{@icon}} />
+      </span>
+    {{/if}}
+    <span class="kds-dropdown-list-item__text-content">{{yield}}</span>
+    {{#if @count}}
+      <span class="kds-dropdown-list-item__count kds-typography-body-100 kds-font-weight-medium">{{@count}}</span>
+    {{/if}}
+  </label>
+</li>

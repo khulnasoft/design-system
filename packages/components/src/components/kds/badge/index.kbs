@@ -1,0 +1,18 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class={{this.classNames}} ...attributes>
+  {{#if @icon}}
+    <div class="kds-badge__icon">
+      <Kds::Icon @name={{@icon}} @size="16" @stretched={{true}} />
+    </div>
+  {{/if}}
+  {{#if this.isIconOnly}}
+    <span class="sr-only">{{this.text}}</span>
+  {{else}}
+    <div class="kds-badge__text">
+      {{this.text}}
+    </div>
+  {{/if}}
+</div>

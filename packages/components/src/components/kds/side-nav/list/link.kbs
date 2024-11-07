@@ -1,0 +1,50 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::SideNav::List::Item>
+  <Kds::Interactive
+    class="kds-side-nav__list-item-link {{if @isActive 'active'}}"
+    @current-when={{@current-when}}
+    @models={{kds-link-to-models @model @models}}
+    @query={{kds-link-to-query @query}}
+    @replace={{@replace}}
+    @route={{@route}}
+    @isRouteExternal={{@isRouteExternal}}
+    @href={{@href}}
+    @isHrefExternal={{@isHrefExternal}}
+    ...attributes
+  >
+    {{#if @icon}}
+      <Kds::Icon class="kds-side-nav__list-item-icon-leading" @name={{@icon}} />
+    {{/if}}
+
+    {{#if @text}}
+      <span class="kds-side-nav__list-item-text kds-typography-body-200 kds-font-weight-medium">
+        {{@text}}
+      </span>
+    {{/if}}
+
+    {{#if @count}}
+      <Kds::BadgeCount @text={{@count}} @type="inverted" @size="small" />
+    {{/if}}
+
+    {{#if @badge}}
+      <Kds::Badge @text={{@badge}} @type="inverted" @size="small" />
+    {{/if}}
+
+    {{yield}}
+
+    {{#if @hasSubItems}}
+      <span class="kds-side-nav__list-item-icon-trailing">
+        <Kds::Icon @name="chevron-right" />
+      </span>
+    {{/if}}
+    {{#if @isHrefExternal}}
+      <span class="kds-side-nav__list-item-icon-trailing">
+        <Kds::Icon @name="external-link" />
+      </span>
+    {{/if}}
+  </Kds::Interactive>
+</Kds::SideNav::List::Item>

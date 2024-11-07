@@ -1,0 +1,388 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "Tooltip Component"}}
+
+<Shw::Text::H1>Tooltip</Shw::Text::H1>
+
+<section data-test-percy>
+  <Shw::Text::H2>TooltipButton</Shw::Text::H2>
+
+  <Shw::Text::H3>Content</Shw::Text::H3>
+
+  <Shw::Text::H4>On its own</Shw::Text::H4>
+  <Shw::Flex as |SF|>
+    <SF.Item @label="With Icon as content">
+      <Kds::TooltipButton @text="Here is more information" aria-label="Information">
+        <Kds::Icon @name="info" />
+      </Kds::TooltipButton>
+    </SF.Item>
+
+    <SF.Item @label="With an HTML time element as content">
+      <Kds::TooltipButton @text="2023-03-30T19:18:01.684Z">
+        <time datetime="2023-03-30T19:18:01.684Z">Apr 5, 2023</time>
+      </Kds::TooltipButton>
+    </SF.Item>
+
+    <SF.Item @label="With really long content in tooltip">
+      <Kds::TooltipButton
+        aria-label="Information"
+        @text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      >
+        <Kds::Badge @icon="activity" @text="Lorem ipsum" />
+      </Kds::TooltipButton>
+    </SF.Item>
+
+    <SF.Item @label="With a really long string">
+      <Kds::TooltipButton
+        aria-label="Information"
+        @text="Loremipsumdolorsitametconsecteturadipiscingelitseddoeiusmodtempor!"
+      >
+        <Kds::Badge @icon="activity" @text="Lorem ipsum" />
+      </Kds::TooltipButton>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::H4>Used next to text</Shw::Text::H4>
+  <p>
+    <span class="kds-typography-display-300">Lorem ipsum dolor sit amet consectetur</span>
+    <Kds::TooltipButton @text="Here is more info" aria-label="Information">
+      <Kds::Icon @name="info" />
+    </Kds::TooltipButton>
+  </p>
+
+  <p class="kds-typography-body-300">
+    Lorem ipsum dolor sit amet consectetur
+    <Kds::TooltipButton aria-label="more information" @text="Here is more info">
+      <Kds::Icon @name="info" />
+    </Kds::TooltipButton>
+    adipisicing elit. Doloremque blanditiis sapiente iste beatae voluptates voluptatum.
+  </p>
+
+  <Shw::Text::H4>Used within various non-interactive components</Shw::Text::H4>
+
+  <Shw::Flex @direction="column" as |SF|>
+    <SF.Item @label="Used within a tab panel">
+      {{! Using within a `T.Tab` would result with a button nested inside a button and won't function. }}
+      <Kds::Tabs as |T|>
+        <T.Tab>One</T.Tab>
+        <T.Tab>Two</T.Tab>
+        <T.Tab>Three</T.Tab>
+        <T.Panel>
+          <p class="kds-typography-body-300">
+            Content 1
+            <Kds::TooltipButton @text="Here is more info" aria-label="Information">
+              <Kds::Icon @name="info" />
+            </Kds::TooltipButton>
+          </p>
+        </T.Panel>
+        <T.Panel><p class="kds-typography-body-300">
+            Content 2
+            <Kds::TooltipButton @text="Here is more info" aria-label="Information">
+              <Kds::Icon @name="info" />
+            </Kds::TooltipButton>
+          </p></T.Panel>
+        <T.Panel><p class="kds-typography-body-300">
+            Content 3
+            <Kds::TooltipButton @text="Here is more info" aria-label="Information">
+              <Kds::Icon @name="info" />
+            </Kds::TooltipButton>
+          </p>
+        </T.Panel>
+      </Kds::Tabs>
+    </SF.Item>
+    <SF.Item @label="Used within an alert">
+      <Kds::Alert @type="inline" @color="warning" @onDismiss={{this.noop}} as |A|>
+        <A.Title>Warning</A.Title>
+        <A.Description>
+          Caution is advised.
+          <Kds::TooltipButton @text="Be careful with this" aria-label="Information">
+            <Kds::Icon @name="info" />
+          </Kds::TooltipButton>
+        </A.Description>
+      </Kds::Alert>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Divider @level={{2}} />
+
+  <Shw::Text::H3>Display</Shw::Text::H3>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="With isInline=false">
+      <p class="kds-typography-body-300">
+        Lorem ipsum dolor sit amet consectetur
+        <Kds::TooltipButton @text="Here is more info" @isInline={{false}} aria-label="Information">
+          <Kds::Icon @name="info" />
+        </Kds::TooltipButton>
+        adipisicing elit. Doloremque blanditiis sapiente iste beatae voluptates voluptatum.
+      </p>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Divider @level={{2}} />
+
+  <Shw::Text::H3>Inheritance</Shw::Text::H3>
+
+  <Shw::Text::Body>KDS classes</Shw::Text::Body>
+
+  <Shw::Flex @gap="2rem" as |SF|>
+    <SF.Item @label="Applied to parent">
+      <div class="kds-typography-display-400 kds-foreground-warning-on-surface kds-surface-warning">
+        <Kds::TooltipButton @text="Here is more info" @isInline={{false}} aria-label="Information">
+          Lorem ipsum dolor
+        </Kds::TooltipButton>
+      </div>
+    </SF.Item>
+    <SF.Item @label="Applied to the button">
+      <Kds::TooltipButton
+        class="kds-typography-display-400 kds-foreground-warning-on-surface kds-surface-warning"
+        @text="Here is more info"
+      >
+        Lorem ipsum dolor
+      </Kds::TooltipButton>
+    </SF.Item>
+    <SF.Item @label="Applied to children">
+      <Kds::TooltipButton @text="Here is more info" @isInline={{false}} aria-label="Information">
+        <div class="kds-typography-display-400 kds-foreground-warning-on-surface kds-surface-warning">
+          Lorem ipsum dolor
+        </div>
+      </Kds::TooltipButton>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::Body>Using a custom class</Shw::Text::Body>
+
+  <Shw::Flex @gap="2rem" as |SF|>
+    <SF.Item @label="Applied to parent">
+      <div class="shw-component-tooltip-font-style">
+        <Kds::TooltipButton @text="Here is more info" @isInline={{false}} aria-label="Information">
+          Lorem ipsum dolor
+        </Kds::TooltipButton>
+      </div>
+    </SF.Item>
+    <SF.Item @label="Applied to the button">
+      <Kds::TooltipButton class="shw-component-tooltip-font-style" @text="Here is more info">
+        Lorem ipsum dolor
+      </Kds::TooltipButton>
+    </SF.Item>
+    <SF.Item @label="Applied to children">
+      <Kds::TooltipButton @text="Here is more info" @isInline={{false}} aria-label="Information">
+        <div class="shw-component-tooltip-font-style">
+          Lorem ipsum dolor
+        </div>
+      </Kds::TooltipButton>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::Body>Style interference</Shw::Text::Body>
+
+  <Shw::Flex @gap="2rem" as |SF|>
+    <SF.Item @label="Parent has `white-space: nowrap`">
+      <div {{style whiteSpace="nowrap"}}>
+        <Kds::TooltipButton
+          aria-label="tooltip button example"
+          @text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        >
+          <Kds::Icon @name="info" />
+        </Kds::TooltipButton>
+      </div>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::Body>Used within a parent with explicit text alignment</Shw::Text::Body>
+
+  <Shw::Grid class="shw-component-tooltip-text-alignment" @columns={{3}} as |SG|>
+    <SG.Item @label="text-align = left" {{style text-align="left"}}>
+      <Shw::Outliner>
+        <Kds::TooltipButton
+          @text="Lorem ipsum dolor sit amet consectetur adipiscing elit"
+          @placement="bottom"
+          @extraTippyOptions={{hash showOnCreate=true}}
+          aria-label="Information"
+        >
+          <p class="kds-typography-body-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor</p>
+        </Kds::TooltipButton>
+      </Shw::Outliner>
+    </SG.Item>
+    <SG.Item @label="text-align = center" {{style text-align="center"}}>
+      <Shw::Outliner>
+        <Kds::TooltipButton
+          @text="Lorem ipsum dolor sit amet consectetur adipiscing elit"
+          @placement="bottom"
+          @extraTippyOptions={{hash showOnCreate=true}}
+          aria-label="Information"
+        >
+          <p class="kds-typography-body-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor</p>
+        </Kds::TooltipButton>
+      </Shw::Outliner>
+    </SG.Item>
+    <SG.Item @label="text-align = right" {{style text-align="right"}}>
+      <Shw::Outliner>
+        <Kds::TooltipButton
+          @text="Lorem ipsum dolor sit amet consectetur adipiscing elit"
+          @placement="bottom"
+          @extraTippyOptions={{hash showOnCreate=true}}
+          aria-label="Information"
+        >
+          <p class="kds-typography-body-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor</p>
+        </Kds::TooltipButton>
+      </Shw::Outliner>
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider @level={{2}} />
+
+  <Shw::Text::H3>States</Shw::Text::H3>
+
+  <Shw::Text::Body>
+    The button which serves as the opener for the tooltip has no special styles of its own other than for the focus
+    state.
+  </Shw::Text::Body>
+
+  <Shw::Text::Body>
+    <strong>Note:</strong>
+    There is a bug with the position of the tooltips below which are set to show on page load for example purposes. If
+    you scroll the page a bit they will snap back to showing as centered. (Tooltips displayed on hover or focus do not
+    have this bug.)
+  </Shw::Text::Body>
+
+  <Shw::Text::H4>With icon as opener content</Shw::Text::H4>
+
+  <Shw::Flex @gap="5rem" as |SF|>
+    {{#each @model.STATES as |state|}}
+      <SF.Item @label={{state}}>
+        {{#if (or (eq state "hover") (eq state "focus"))}}
+          <Kds::TooltipButton
+            @text="More info"
+            mock-state-value={{state}}
+            @extraTippyOptions={{hash showOnCreate=true}}
+            aria-label="Information"
+          ><Kds::Icon @name="info" /></Kds::TooltipButton>
+        {{else}}
+          <Kds::TooltipButton @text="More info" aria-label="Information" mock-state-value={{state}}>
+            <Kds::Icon @name="info" />
+          </Kds::TooltipButton>
+        {{/if}}
+      </SF.Item>
+    {{/each}}
+  </Shw::Flex>
+
+  <Shw::Text::H4>With text as opener content</Shw::Text::H4>
+
+  <Shw::Flex @gap="5rem" as |SF|>
+    {{#each @model.STATES as |state|}}
+      <SF.Item @label={{state}}>
+        {{#if (or (eq state "hover") (eq state "focus"))}}
+          <Kds::TooltipButton
+            @text="More info"
+            mock-state-value={{state}}
+            @extraTippyOptions={{hash showOnCreate=true}}
+          >Text</Kds::TooltipButton>
+        {{else}}
+          <Kds::TooltipButton @text="More info" mock-state-value={{state}}>Text</Kds::TooltipButton>
+        {{/if}}
+      </SF.Item>
+    {{/each}}
+  </Shw::Flex>
+
+  <Shw::Divider @level={{2}} />
+
+  <Shw::Text::H3>Options</Shw::Text::H3>
+
+  <Shw::Text::H4>Placement</Shw::Text::H4>
+  <Shw::Grid class="shw-component-tooltip-placement-grid" @columns={{5}} as |SG|>
+    {{#each @model.PLACEMENTS as |place|}}
+      <SG.Item class="shw-component-tooltip-placement-grid__item--{{place}}">
+        <Kds::TooltipButton @text="More info" @placement={{place}} @extraTippyOptions={{hash showOnCreate=true}}>
+          <div class="shw-component-tooltip-placement-grid__target">{{place}}</div>
+        </Kds::TooltipButton>
+      </SG.Item>
+    {{/each}}
+  </Shw::Grid>
+
+  <Shw::Text::H4>Offset</Shw::Text::H4>
+
+  <Shw::Flex @gap="5rem" {{style margin-top="4rem"}} as |SF|>
+    <SF.Item>
+      <Kds::TooltipButton
+        @text="More info"
+        @extraTippyOptions={{hash showOnCreate=true}}
+        class="shw-component-tooltip-outline"
+      >Default offset</Kds::TooltipButton>
+    </SF.Item>
+
+    <SF.Item>
+      <Kds::TooltipButton
+        @text="More info"
+        @offset={{array 0 40}}
+        @extraTippyOptions={{hash showOnCreate=true}}
+        class="shw-component-tooltip-outline"
+      >Offset: 0 40</Kds::TooltipButton>
+    </SF.Item>
+
+    <SF.Item>
+      <Kds::TooltipButton
+        @text="More info"
+        @offset={{array 20 0}}
+        @extraTippyOptions={{hash showOnCreate=true}}
+        class="shw-component-tooltip-outline"
+      >Offset: 20 0</Kds::TooltipButton>
+    </SF.Item>
+  </Shw::Flex>
+</section>
+
+<Shw::Text::H4>With allowHTML=true</Shw::Text::H4>
+<Kds::TooltipButton
+  @extraTippyOptions={{hash allowHTML=true showOnCreate=true}}
+  @placement="right"
+  @text="<b>Hello</b> <em>there</em>!"
+  aria-label="Information"
+>
+  <Kds::Icon @name="info" />
+</Kds::TooltipButton>
+
+<Shw::Divider />
+
+<section data-test-percy>
+  <Shw::Text::H2><code>kds-tooltip</code> modifier</Shw::Text::H2>
+
+  <Shw::Text::H3>Content</Shw::Text::H3>
+
+  <Shw::Text::H4>On its own</Shw::Text::H4>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="On a button">
+      <Kds::Button @text="Submit" {{kds-tooltip "Submit all your data"}} />
+    </SF.Item>
+
+    <SF.Item @label="On a link">
+      <Kds::Link::Standalone
+        @icon="external-link"
+        @iconPosition="trailing"
+        @text="Acme Corp"
+        @href="#"
+        {{kds-tooltip "This link takes you to a 3rd party site"}}
+      />
+    </SF.Item>
+
+    <SF.Item @label="On an input">
+      <Kds::Form::Field @layout="vertical" as |F|>
+        <F.Label @controlId="tooltip-example-control-id">First Name</F.Label>
+        <F.Control>
+          <input
+            type="text"
+            value="Jane"
+            id="tooltip-example-control-id"
+            {{kds-tooltip "Enter only your first name"}}
+          />
+        </F.Control>
+      </Kds::Form::Field>
+    </SF.Item>
+  </Shw::Flex>
+</section>

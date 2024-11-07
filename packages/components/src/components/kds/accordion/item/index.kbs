@@ -1,0 +1,49 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::DisclosurePrimitive
+  class={{this.classNames}}
+  @isOpen={{(or @isOpen (eq @forceState "open"))}}
+  @onClickToggle={{@onClickToggle}}
+  ...attributes
+>
+  <:toggle as |t|>
+    <div class="kds-accordion-item__toggle">
+      <Kds::Accordion::Item::Button
+        @isOpen={{t.isOpen}}
+        @onClickToggle={{t.onClickToggle}}
+        @contentId={{this.contentId}}
+        @ariaLabel={{@ariaLabel}}
+        @ariaLabelledBy={{this.ariaLabelledBy}}
+        @size={{this.size}}
+        @parentContainsInteractive={{this.containsInteractive}}
+      />
+
+      <Kds::Text::Body
+        @tag={{this.titleTag}}
+        @size={{this.toggleTextSize}}
+        @weight="semibold"
+        @color="strong"
+        id={{this.titleId}}
+        class="kds-accordion-item__toggle-content"
+      >
+        {{yield to="toggle"}}
+      </Kds::Text::Body>
+    </div>
+  </:toggle>
+
+  <:content as |c|>
+    <Kds::Text::Body
+      class="kds-accordion-item__content"
+      @tag="div"
+      @size="200"
+      @weight="regular"
+      @color="primary"
+      id={{this.contentId}}
+    >
+      {{yield (hash close=c.close) to="content"}}
+    </Kds::Text::Body>
+  </:content>
+</Kds::DisclosurePrimitive>

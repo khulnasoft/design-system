@@ -1,0 +1,50 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<li class={{this.classNames}}>
+  {{#if @isLoading}}
+    <div class="kds-dropdown-list-item__interactive-loading-wrapper" ...attributes>
+      <div class="kds-dropdown-list-item__interactive-icon kds-dropdown-list-item__interactive-icon--leading">
+        <Kds::Icon @name="loading" />
+      </div>
+      <Kds::Text::Body @tag="div" @size="100" @weight="regular" class="kds-dropdown-list-item__interactive-text">
+        {{#if (has-block)}}
+          {{yield (hash Badge=(component "kds/badge" size="small"))}}
+        {{else}}
+          {{this.text}}
+        {{/if}}
+      </Kds::Text::Body>
+    </div>
+  {{else}}
+    <Kds::Interactive
+      @current-when={{@current-when}}
+      @models={{kds-link-to-models @model @models}}
+      @query={{kds-link-to-query @query}}
+      @replace={{@replace}}
+      @route={{@route}}
+      @isRouteExternal={{@isRouteExternal}}
+      @href={{@href}}
+      @isHrefExternal={{@isHrefExternal}}
+      ...attributes
+    >
+      {{#if @icon}}
+        <span class="kds-dropdown-list-item__interactive-icon kds-dropdown-list-item__interactive-icon--leading">
+          <Kds::Icon @name={{@icon}} />
+        </span>
+      {{/if}}
+      <Kds::Text::Body class="kds-dropdown-list-item__interactive-text" @tag="span" @size="200" @weight="medium">
+        {{#if (has-block)}}
+          {{yield (hash Badge=(component "kds/badge" size="small"))}}
+        {{else}}
+          {{this.text}}
+        {{/if}}
+      </Kds::Text::Body>
+      {{#if @trailingIcon}}
+        <span class="kds-dropdown-list-item__interactive-icon kds-dropdown-list-item__interactive-icon--trailing">
+          <Kds::Icon @name={{@trailingIcon}} />
+        </span>
+      {{/if}}
+    </Kds::Interactive>
+  {{/if}}
+</li>

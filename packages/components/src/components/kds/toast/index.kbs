@@ -1,0 +1,19 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Alert
+  class="kds-toast"
+  @type="inline"
+  @color={{@color}}
+  @icon={{@icon}}
+  @onDismiss={{@onDismiss}}
+  role="alert"
+  aria-live="polite"
+  ...attributes
+  as |A|
+>
+  {{yield
+    (hash Title=A.Title Description=A.Description Button=A.Button LinkStandalone=A.LinkStandalone Generic=A.Generic)
+  }}
+</Kds::Alert>

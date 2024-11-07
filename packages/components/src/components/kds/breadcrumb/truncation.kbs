@@ -1,0 +1,27 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<li class="kds-breadcrumb__item kds-breadcrumb__item--is-truncation" ...attributes>
+  <Kds::PopoverPrimitive @enableClickEvents={{true}} as |PP|>
+    <div {{PP.setupPrimitiveContainer}}>
+      <button
+        type="button"
+        class="kds-breadcrumb__truncation-toggle"
+        aria-label={{this.ariaLabel}}
+        aria-expanded={{if PP.isOpen "true" "false"}}
+        {{PP.setupPrimitiveToggle}}
+      >
+        <Kds::Icon @name="more-horizontal" @size="16" />
+      </button>
+      <div
+        class="kds-breadcrumb__truncation-content"
+        {{PP.setupPrimitivePopover anchoredPositionOptions=(hash placement="bottom-start" offsetOptions=4)}}
+      >
+        <ol class="kds-breadcrumb__sublist">
+          {{yield}}
+        </ol>
+      </div>
+    </div>
+  </Kds::PopoverPrimitive>
+</li>

@@ -1,0 +1,17 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{yield
+  (hash
+    setupPrimitiveContainer=this.setupPrimitiveContainer
+    setupPrimitiveToggle=this.setupPrimitiveToggle
+    setupPrimitivePopover=this.setupPrimitivePopover
+    toggleElement=this.toggleElement
+    popoverElement=this.popoverElement
+    isOpen=this.isOpen
+    showPopover=this.showPopover
+    hidePopover=this.hidePopover
+    togglePopover=this.togglePopover
+  )
+}}

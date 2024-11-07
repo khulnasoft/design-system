@@ -1,0 +1,17 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "<%= columnizedModuleName %> Component"}}
+
+<Shw::Text::H1><%= columnizedModuleName %></Shw::Text::H1>
+
+<section data-test-percy>
+
+  {{! ADD YOUR CONTENT HERE }}
+
+  {{! This below is just an example of invocation, to get started }}
+  <Kds::<%= columnizedModuleName %>>This is the Kds::<%= columnizedModuleName %> component </Kds::<%= columnizedModuleName %>>
+
+</section>

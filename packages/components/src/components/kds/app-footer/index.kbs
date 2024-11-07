@@ -1,0 +1,20 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<div class={{this.classNames}} ...attributes>
+  {{yield (hash ExtraBefore=(component "kds/yield"))}}
+  <ul class="kds-app-footer__list" aria-label={{this.ariaLabel}}>
+    {{yield (hash StatusLink=(component "kds/app-footer/status-link"))}}
+    {{yield
+      (hash
+        Link=(component "kds/app-footer/link")
+        LegalLinks=(component "kds/app-footer/legal-links")
+        Item=(component "kds/app-footer/item")
+      )
+    }}
+  </ul>
+  {{yield (hash ExtraAfter=(component "kds/yield"))}}
+  <Kds::AppFooter::Copyright @year={{@copyrightYear}} />
+</div>

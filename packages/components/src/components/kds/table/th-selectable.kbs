@@ -1,0 +1,31 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::Table::Th
+  class="kds-table__th--is-selectable"
+  aria-sort={{if this.isSortable this.ariaSort}}
+  @scope={{@selectionScope}}
+  ...attributes
+>
+  <div class="kds-table__th-content">
+    <Kds::Form::Checkbox::Base
+      id={{this.checkboxId}}
+      class="kds-table__checkbox"
+      checked={{@isSelected}}
+      aria-label={{this.ariaLabel}}
+      {{did-insert this.didInsert}}
+      {{will-destroy this.willDestroyNode}}
+      {{on "change" this.onSelectionChange}}
+    />
+    {{#if this.isSortable}}
+      <span id={{this.labelId}} class="sr-only">selection state</span>
+      <Kds::Table::ThButtonSort
+        @sortOrder={{@sortBySelectedOrder}}
+        @onClick={{@onClickSortBySelected}}
+        @labelId={{this.labelId}}
+      />
+    {{/if}}
+  </div>
+</Kds::Table::Th>

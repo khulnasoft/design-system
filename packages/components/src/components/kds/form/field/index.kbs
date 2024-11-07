@@ -1,0 +1,52 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class={{this.classNames}} ...attributes>
+  {{yield
+    (hash
+      Label=(component
+        "kds/form/label"
+        controlId=this.id
+        isRequired=this.isRequired
+        isOptional=this.isOptional
+        contextualClass="kds-form-field__label"
+      )
+    )
+  }}
+  {{yield
+    (hash
+      HelperText=(component
+        "kds/form/helper-text"
+        controlId=this.id
+        onInsert=this.appendDescriptor
+        contextualClass="kds-form-field__helper-text"
+      )
+    )
+  }}
+  <div class="kds-form-field__control">
+    {{! @glint-expect-error }}
+    {{yield (hash Control=(component "kds/yield") id=this.id ariaDescribedBy=this.ariaDescribedBy)}}
+  </div>
+  {{yield
+    (hash
+      CharacterCount=(component
+        "kds/form/character-count"
+        controlId=this.id
+        onInsert=this.appendDescriptor
+        contextualClass="kds-form-field__character-count"
+      )
+    )
+  }}
+  {{yield
+    (hash
+      Error=(component
+        "kds/form/error"
+        controlId=this.id
+        onInsert=this.appendDescriptor
+        onRemove=this.removeDescriptor
+        contextualClass="kds-form-field__error"
+      )
+    )
+  }}
+</div>

@@ -1,0 +1,180 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// APP-HEADER
+//
+
+@use "../mixins/interactive-dark-theme" as *;
+
+// ----------------
+
+.kds-app-header {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--token-app-header-height);
+  padding: 12px 16px 11px 16px; // bottom padding of 11px is to account for the bottom border
+  color: var(--token-color-foreground-high-contrast);
+  background: var(--token-color-palette-neutral-700);
+  border-bottom: 1px solid var(--token-color-palette-neutral-500);
+
+  // A11Y-REFOCUS "SKIP LINK"
+
+  .ember-a11y-refocus-skip-link {
+    top: 10px;
+    left: 10px;
+    z-index: 20;
+    width: max-content;
+    padding: 2px 10px 4px;
+    color: var(--token-color-foreground-action);
+    font-size: var(--token-typography-display-200-font-size);
+    font-family: var(--token-typography-display-200-font-family);
+    line-height: var(--token-typography-display-200-line-height);
+    background-color: var(--token-color-surface-faint);
+    border-radius: 3px;
+    transform: translateY(-200%);
+    transition: 0.6s ease-in-out;
+
+    &:focus {
+      transform: translateY(0);
+    }
+  }
+
+  // RESPONSIVE VIEWS
+
+  // Desktop (large) view:
+  &.kds-app-header--is-desktop {
+    // Global actions are aligned next to the logo in desktop view
+    .kds-app-header__global-actions {
+      margin-right: auto;
+    }
+  }
+
+  // Mobile/tablet (small/medium) view:
+  &.kds-app-header--is-mobile {
+    // Actions content appears as a dropdown menu in mobile/tablet view
+    .kds-app-header__actions {
+      position: absolute;
+      top: calc(100% + 1px); // We add 1px to account for the AppHeader bottom border
+      right: 0;
+      left: 0;
+    }
+
+    // Display as dropdown menu in mobile/tablet view
+    .kds-app-header__actions {
+      flex-wrap: wrap;
+      align-content: flex-start;
+      padding: 16px;
+      overflow: auto; // allow users to scroll if the content is too long
+      background: var(--token-color-palette-neutral-700);
+    }
+
+    &.kds-app-header--menu-is-closed {
+      .kds-app-header__actions {
+        display: none;
+      }
+    }
+
+    &.kds-app-header--menu-is-open {
+      .kds-app-header__actions {
+        height: calc(100vh - var(--token-app-header-height));
+      }
+    }
+
+
+    // Force the width of global actions to 100% in mobile/tablet view
+    .kds-app-header__global-actions {
+      &,
+      .kds-dropdown,
+      .kds-dropdown-toggle-button {
+        width: 100%;
+      }
+    }
+  }
+
+  // CONTENT
+
+  .kds-app-header__global-actions, 
+  .kds-app-header__utility-actions {
+    display: flex;
+    gap: inherit;
+  }
+
+  // Dropdown & Button color theming overrides
+  .kds-button,
+  .kds-dropdown-toggle-button,
+  .kds-dropdown-toggle-icon {
+    // Apply dark theme to child interactive components not within a nested dropdown
+    &:not(.kds-dropdown * *, .ember-basic-dropdown-trigger * *, .ember-basic-dropdown-content * *) {
+      @include kds-interactive-dark-theme();
+
+      // disabled state:
+      &:disabled,
+      &[disabled],
+      &.mock-disabled,
+      &:disabled:focus,
+      &[disabled]:focus,
+      &.mock-disabled:focus,
+      &:disabled:hover,
+      &[disabled]:hover,
+      &.mock-disabled:hover {
+        @include kds-interactive-dark-theme-state-disabled();
+      }
+    }
+  }
+}
+
+// prevent interaction with AppHeader when SideNav is open/expanded
+.kds-app-frame:has(.kds-side-nav--is-not-minimized) .kds-app-header--is-mobile {
+  .kds-button,
+  .kds-dropdown-toggle-button,
+  .kds-dropdown-toggle-icon,
+  .kds-app-header__home-link {
+    @include kds-interactive-dark-theme-state-disabled(); // emulate disabled state
+    pointer-events: none;
+  }
+}
+
+// Logo
+
+.kds-app-header__home-link {
+  @include kds-interactive-dark-theme($add-visible-border: false);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Set home link container size:
+  width: var(--token-app-header-home-link-size);
+  height: var(--token-app-header-home-link-size);
+
+  // disabled state:
+  &:disabled,
+  &[disabled],
+  &.mock-disabled,
+  &:disabled:focus,
+  &[disabled]:focus,
+  &.mock-disabled:focus,
+  &:disabled:hover,
+  &[disabled]:hover,
+  &.mock-disabled:hover {
+    @include kds-interactive-dark-theme-state-disabled();
+  }
+  
+  // Set SVG logo size:
+  svg {
+    width: var(--token-app-header-logo-size);
+    height: var(--token-app-header-logo-size);
+  }
+}
+
+.kds-app-header__actions-content,
+.kds-app-header__actions {
+  display: flex;
+  flex: 1;
+  gap: inherit;
+}

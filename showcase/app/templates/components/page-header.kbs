@@ -1,0 +1,333 @@
+{{!
+Copyright (c) KhulnaSoft, Ltd.
+SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "PageHeader Component"}}
+
+<Shw::Text::H1>PageHeader</Shw::Text::H1>
+
+<section data-test-percy>
+
+  <Shw::Text::H2>Basic examples</Shw::Text::H2>
+
+  <Shw::Flex @direction="column" as |SF|>
+    <SF.Item @label="Only title">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Page title</PH.Title>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Badge">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Page title</PH.Title>
+        <PH.Badges>
+          <Kds::Badge @text="Badge" @icon="beaker" @color="highlight" />
+        </PH.Badges>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="IconTile">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Page title</PH.Title>
+        <PH.IconTile @icon="server-cluster" />
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Breadcrumb">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Page title</PH.Title>
+        <PH.Breadcrumb>
+          <Kds::Breadcrumb aria-label="breadcrumbs with page title example">
+            <Kds::Breadcrumb::Item @text="Organization" @icon="org" />
+            <Kds::Breadcrumb::Item @text="Project" @icon="folder" />
+            <Kds::Breadcrumb::Item @text="User" @icon="user" />
+          </Kds::Breadcrumb>
+        </PH.Breadcrumb>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Subtitle + description">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Page title</PH.Title>
+        <PH.Subtitle>Subtitle lorem ipsum</PH.Subtitle>
+        <PH.Description>Description lorem ipsum dolor sit amet.</PH.Description>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Single action">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Page title</PH.Title>
+        <PH.Actions>
+          <Kds::Button @text="Create registry" @icon="plus" @iconPosition="leading" @color="primary" />
+        </PH.Actions>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Two actions">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Page title</PH.Title>
+        <PH.Actions>
+          <Kds::Dropdown as |D|>
+            <D.ToggleButton @text="Manage" @color="secondary" />
+            <D.Interactive>Manage cluster externally</D.Interactive>
+            <D.Interactive>Launch desktop</D.Interactive>
+            <D.Interactive @color="critical" @icon="trash">Delete</D.Interactive>
+          </Kds::Dropdown>
+          <Kds::Button @text="Create" @icon="plus" @iconPosition="leading" @color="primary" />
+        </PH.Actions>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Three actions">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Page title</PH.Title>
+        <PH.Actions>
+          <Kds::Button @color="tertiary" @text="Migrate instructions" @icon="migrate" @iconPosition="leading" />
+          <Kds::Button @color="secondary" @text="Edit cluster" />
+          <Kds::Button @color="primary" @text="Create cluster" @icon="plus" @iconPosition="leading" />
+        </PH.Actions>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Custom metadata">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Page title</PH.Title>
+        <PH.Generic>
+          <Shw::Placeholder @text="generic content" @width="500" @height="36" @background="#e1f5fe" />
+        </PH.Generic>
+      </Kds::PageHeader>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Divider @level={{3}} />
+
+  <Shw::Text::H2>Complex examples</Shw::Text::H2>
+
+  <Shw::Flex @direction="column" as |SF|>
+    <SF.Item @label="Product landing page">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>HCP Packer</PH.Title>
+        <PH.Breadcrumb>
+          <Kds::Breadcrumb aria-label="breadcrumbs with complex examples">
+            <Kds::Breadcrumb::Item @text="Sandbox" @icon="org" />
+            <Kds::Breadcrumb::Item @text="HCP Packer" @icon="packer" />
+            <Kds::Breadcrumb::Item @text="jane-doe" @icon="file-text" />
+          </Kds::Breadcrumb>
+        </PH.Breadcrumb>
+        <PH.IconTile @icon="packer-color" @color="packer" />
+        <PH.Description>Create and view Packer registries in HCP.
+        </PH.Description>
+        <PH.Actions>
+          <Kds::Button @text="Create Packer registery" @icon="plus" @iconPosition="leading" />
+        </PH.Actions>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Item page">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Boundary clusters</PH.Title>
+        <PH.IconTile @icon="boundary-color" @color="boundary" />
+        <PH.Breadcrumb>
+          <Kds::Breadcrumb aria-label="breadcrumb example with item page">
+            <Kds::Breadcrumb::Item @text="Cloud sandbox" @icon="org" />
+            <Kds::Breadcrumb::Item @text="Boundary clusters" @icon="boundary" />
+          </Kds::Breadcrumb>
+        </PH.Breadcrumb>
+        <PH.Badges>
+          <Kds::Badge @text="Active" @icon="check" @color="success" />
+        </PH.Badges>
+        <PH.Subtitle>boundary-cluster-name</PH.Subtitle>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Multiple badges">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Consul cluster</PH.Title>
+        <PH.Badges>
+          <Kds::Badge @text="Active" @icon="check" @color="success" />
+          <Kds::Badge @text="Deployed to AWS west-2" @color="highlight" @icon="rocket" />
+          <Kds::BadgeCount @text="v1.5" @color="neutral" />
+          <Kds::Badge @text="Locked by jane-doe" @color="warning" @icon="lock" />
+        </PH.Badges>
+        <PH.Description>
+          While this is supported by the contextual component, this many badges being used to represent metadata can be
+          problematic.
+        </PH.Description>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Kitchen sink example">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Users</PH.Title>
+        <PH.Subtitle>Access control (IAM)</PH.Subtitle>
+        <PH.Description>Manage organization users, roles, and access control.
+        </PH.Description>
+        <PH.Description>This is a second description, in case multiple paragraphs are needed.</PH.Description>
+        <PH.Breadcrumb>
+          <Kds::Breadcrumb>
+            <Kds::Breadcrumb::Item @text="Cloud sandbox" @icon="org" />
+            <Kds::Breadcrumb::Item @text="jane-doe" @icon="file-text" />
+            <Kds::Breadcrumb::Item @text="Access control (IAM)" @icon="users" />
+          </Kds::Breadcrumb>
+        </PH.Breadcrumb>
+        <PH.IconTile @icon="users" @color="terraform" />
+        <PH.Actions>
+          <Kds::Dropdown as |D|>
+            <D.ToggleButton @text="Manage users" @color="secondary" />
+            <D.Interactive @icon="user">Assign roles</D.Interactive>
+            <D.Interactive @icon="edit">Batch edit</D.Interactive>
+            <D.Interactive @icon="trash">Delete user</D.Interactive>
+          </Kds::Dropdown>
+          <Kds::Button @text="Add user" @icon="plus" @iconPosition="leading" />
+        </PH.Actions>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="With custom metadata">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Custom metadata</PH.Title>
+        <PH.Subtitle>beta-feature-cluster</PH.Subtitle>
+        <PH.Generic>
+          <Kds::Alert @type="compact" @color="warning" as |A|>
+            <A.Title>Beta feature</A.Title>
+            <A.Description>
+              This feature is in beta and is subject to change. Refer to the
+              <Kds::Link::Inline @href="#" @icon="external-link">HCP documentation</Kds::Link::Inline>
+              for more information and roadmap.
+            </A.Description>
+          </Kds::Alert>
+        </PH.Generic>
+        <PH.Actions>
+          <Kds::Button @text="Get started" @icon="beaker" @iconPosition="leading" />
+        </PH.Actions>
+        <PH.Badges>
+          <Kds::Badge @text="Beta feature" @icon="wand" @color="highlight" />
+        </PH.Badges>
+      </Kds::PageHeader>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Divider @level={{3}} />
+
+  <Shw::Text::H2>Overflow examples and edge cases</Shw::Text::H2>
+
+  <Shw::Text::Body @tag="p">
+    These examples are meant to showcase the flexiblity, responsiveness, and potential gotchas related to the layout and
+    fluidity of the component.
+  </Shw::Text::Body>
+
+  <Shw::Flex @direction="column" as |SF|>
+    <SF.Item @label="Long title">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>Boundary cluster access control and clusters</PH.Title>
+        <PH.IconTile @icon="boundary-color" @color="boundary" />
+        <PH.Actions>
+          <Kds::Dropdown as |D|>
+            <D.ToggleButton @text="Manage users" @color="secondary" />
+            <D.Interactive @icon="user">Assign roles</D.Interactive>
+            <D.Interactive @icon="edit">Batch edit</D.Interactive>
+            <D.Interactive @icon="trash">Delete user</D.Interactive>
+          </Kds::Dropdown>
+          <Kds::Button @text="Add user" @icon="plus" @iconPosition="leading" />
+        </PH.Actions>
+      </Kds::PageHeader>
+      <Shw::Divider @level={{2}} />
+    </SF.Item>
+
+    <SF.Item @label="Long title + badge">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>
+          Page title with a very very very very long string that can span multiple lines
+        </PH.Title>
+        <PH.IconTile @logo="vagrant" />
+        <PH.Badges>
+          <Kds::Badge @text="Wrapping badge" @icon="mic" @color="critical" />
+        </PH.Badges>
+        <PH.Actions>
+          <Kds::Button @text="Get started" @icon="terminal-screen" @iconPosition="trailing" />
+        </PH.Actions>
+      </Kds::PageHeader>
+
+      <Shw::Text::Body @tag="p">
+        In the case of a badge, the title and badge will wrap if the available space is exceeded.
+      </Shw::Text::Body>
+    </SF.Item>
+    <SF.Item @label="Non-breaking Title/Subtitle/Description + badge">
+      <Kds::PageHeader as |PH|>
+        <PH.Title>
+          Pagetitlewithaveryveryveryverylongnonbreakingstringthatcanspanmultiplelines
+        </PH.Title>
+        <PH.Subtitle
+        >Subtitlewithaveryveryveryveryveryveryveryveryveryveryveryveryveryveveryveryveryveryveryveryveryveryveryveryveryveryryveryverylongnonbreakingstringthatcanspanmultiplelines</PH.Subtitle>
+        <PH.Description
+        >Descriptionwithaveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryverylongnonbreakingstringthatcanspanmultiplelines.</PH.Description>
+        <PH.IconTile @logo="vagrant" />
+        <PH.Badges>
+          <Kds::Badge @text="Wrapping badge" @icon="mic" @color="critical" />
+        </PH.Badges>
+        <PH.Actions>
+          <Kds::Button @text="Get started" @icon="terminal-screen" @iconPosition="trailing" />
+        </PH.Actions>
+      </Kds::PageHeader>
+
+      <Shw::Text::Body @tag="p">
+        In the case of non-breaking text the long string will be forced to wrap using the
+        <code>break-word</code>
+        option.
+      </Shw::Text::Body>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Divider @level={{3}} />
+
+  <Shw::Text::H2>Component wrapping</Shw::Text::H2>
+
+  <Shw::Text::Body @tag="p">The component uses container queries to determine two breakpoints at
+    <code>768px</code>
+    and
+    <code>400px</code>
+    which stack the content in a single column.
+  </Shw::Text::Body>
+
+  <Shw::Flex @direction="column" @gap="2.5rem" as |SF|>
+    {{#let (array "399px" "767px" "100%") as |widths|}}
+      {{#each widths as |width|}}
+        <SF.Item @label="Container width = {{width}}">
+          <Shw::Outliner {{style width=width}}>
+            <Kds::PageHeader as |PH|>
+              <PH.Title>Title of the page</PH.Title>
+              <PH.IconTile @icon="smartphone" />
+              <PH.Breadcrumb>
+                <Kds::Breadcrumb aria-label="example for {{width}}">
+                  <Kds::Breadcrumb::Item @text="Organization" />
+                  <Kds::Breadcrumb::Item @text="User" />
+                </Kds::Breadcrumb>
+              </PH.Breadcrumb>
+              <PH.Badges>
+                <Kds::Badge @text="Small viewport" @icon="tablet" />
+              </PH.Badges>
+              <PH.Subtitle>Forced small viewport</PH.Subtitle>
+              <PH.Actions>
+                <Kds::Button @text="Edit" @color="secondary" />
+                <Kds::Button @text="Create" @color="primary" />
+              </PH.Actions>
+            </Kds::PageHeader>
+          </Shw::Outliner>
+        </SF.Item>
+      {{/each}}
+    {{/let}}
+  </Shw::Flex>
+</section>

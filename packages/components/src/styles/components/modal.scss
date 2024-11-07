@@ -1,0 +1,72 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// MODAL
+//
+
+.kds-modal {
+  position: fixed;
+  z-index: 50;
+  height: fit-content;
+  max-height: 95vh;
+  inset: 0;
+  margin: auto; // needed to center the modal dialog on the viewport
+  border-radius: 8px;
+  box-shadow: var(--token-surface-overlay-box-shadow);
+
+  // the `<dialog>` element uses a special "open" attribute to determine its visibility status
+  &:not([open]) {
+    display: none;
+  }
+
+  // we hide the native `::backdrop` pseudo-element in favor of using
+  // a custom `overlay` element to detect click events with more ease
+  &::backdrop {
+    display: none;
+  }
+}
+
+// sizes
+
+.kds-modal--size-small {
+  width: min(400px, 95vw);
+}
+
+.kds-modal--size-medium {
+  width: min(600px, 95vw);
+}
+
+.kds-modal--size-large {
+  width: min(800px, 95vw);
+}
+
+// color variants
+
+// Note ".kds-modal--color-neutral" uses default color and background-color styles from the dialog-primitive
+
+.kds-modal--color-warning {
+  .kds-dialog-primitive__wrapper-header {
+    background: var(--token-color-surface-warning);
+    border-bottom: 1px solid var(--token-color-border-warning);
+  }
+
+  .kds-dialog-primitive__header,
+  .kds-dialog-primitive__tagline {
+    color: var(--token-color-foreground-warning-on-surface);
+  }
+}
+
+.kds-modal--color-critical {
+  .kds-dialog-primitive__wrapper-header {
+    background: var(--token-color-surface-critical);
+    border-bottom: 1px solid var(--token-color-border-critical);
+  }
+
+  .kds-dialog-primitive__header,
+  .kds-dialog-primitive__tagline {
+    color: var(--token-color-foreground-critical-on-surface);
+  }
+}

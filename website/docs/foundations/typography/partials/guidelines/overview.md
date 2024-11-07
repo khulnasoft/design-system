@@ -1,0 +1,1 @@
+When selecting typography, a solid understanding of the fundamentals of various types and styles is crucial for making informed decisions.

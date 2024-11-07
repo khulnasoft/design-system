@@ -1,0 +1,21 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{!
+  THIS SUBCOMPONENT IS NOW DEPRECATED
+}}
+<div class="kds-modal__header" ...attributes>
+  {{#if @icon}}
+    <Kds::Icon class="kds-modal__icon" @name={{@icon}} @size="24" />
+  {{/if}}
+  <Kds::Text::Display class="kds-modal__title" @tag="div" @size="300" @weight="semibold" id={{@id}}>
+    {{#if @tagline}}
+      <Kds::Text::Body class="kds-modal__tagline" @tag="div" @size="100" @weight="regular">
+        {{@tagline}}
+      </Kds::Text::Body>
+    {{/if}}
+    {{yield}}
+  </Kds::Text::Display>
+  <Kds::DismissButton class="kds-modal__dismiss" {{on "click" @onDismiss}} />
+</div>

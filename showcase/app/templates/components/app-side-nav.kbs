@@ -1,0 +1,525 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "AppSideNav Component"}}
+
+<Shw::Text::H1>
+  AppSideNav: removed from rollup, examples have been commented out
+</Shw::Text::H1>
+
+<section data-test-percy>
+  <Shw::Text::H2>Content</Shw::Text::H2>
+
+  {{!-- <Shw::Text::H3>With generic content</Shw::Text::H3>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="Body base invocation">
+      <div class="shw-component-sim-app-side-nav-root-container">
+        <Kds::AppSideNav @isResponsive={{false}}>
+          <Shw::Placeholder @text="body" />
+        </Kds::AppSideNav>
+      </div>
+    </SF.Item>
+
+    <SF.Item @label="Body (scrollable)">
+      <div class="shw-component-sim-app-side-nav-root-container">
+        <Kds::AppSideNav @isResponsive={{false}}>
+          <Shw::Placeholder @height="800px" @text="body" @background="#d2f4ff" tabindex="0" />
+        </Kds::AppSideNav>
+      </div>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::H3>With content injected via "portal"</Shw::Text::H3>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="Body with PortalTarget/Portal">
+      <div class="shw-component-sim-app-side-nav-root-container">
+        <Kds::AppSideNav @isResponsive={{false}}>
+          <Kds::AppSideNav::Portal::Target @targetName="sidenav-portal-demo-1" />
+        </Kds::AppSideNav>
+      </div>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Kds::AppSideNav::Portal @targetName="sidenav-portal-demo-1" @ariaLabel="Primary on portal demo 1" as |Nav|>
+    <Nav.extraBefore><Shw::Placeholder @height="72px" @text="extraBefore" @background="#f3d9c5" /></Nav.extraBefore>
+    <Nav.Item><Shw::Placeholder @height="200px" @text="portaled content" /></Nav.Item>
+    <Nav.extraAfter><Shw::Placeholder @height="72px" @text="extraAfter" @background="#f3d9c5" /></Nav.extraAfter>
+  </Kds::AppSideNav::Portal>
+</section>
+
+<Shw::Divider @level={{2}} />
+
+<section data-test-percy>
+  <Shw::Text::H2>Examples of sidebar navigation</Shw::Text::H2>
+
+  <Shw::Grid @columns={{3}} as |SG|>
+    <SG.Item>
+      <Shw::Text::H3>Content injected via portal</Shw::Text::H3>
+      <Shw::Flex as |SF|>
+        <SF.Item @label="With PortalTarget + Portal with “nav” items">
+          <div class="shw-component-sim-app-side-nav-root-container" {{style height="auto"}}>
+            <Kds::AppSideNav @isResponsive={{false}}>
+              <Kds::AppSideNav::Portal::Target @targetName="sidenav-portal-demo-2" />
+            </Kds::AppSideNav>
+          </div>
+        </SF.Item>
+      </Shw::Flex>
+      <Kds::AppSideNav::Portal @targetName="sidenav-portal-demo-2" @ariaLabel="Primary on portal demo 2" as |Nav|>
+        <Nav.Link @icon="dashboard" @text="Dashboard" @isActive={{true}} />
+        <Nav.Title>Services</Nav.Title>
+        <Nav.Link @text="Boundary" @icon="boundary" @href="#" />
+        <Nav.Link @text="Consul" @icon="consul" @href="#" />
+        <Nav.Link @text="Packer" @icon="packer" @href="#" />
+        <Nav.Link @text="Vault" @icon="vault" @href="#" />
+        <Nav.Link @text="Vault Secrets" @icon="vault-secrets-square" @href="#" />
+        <Nav.Link @text="Terraform" @icon="terraform" @href="#" />
+        <Nav.Link @text="Vagrant" @icon="vagrant" @badge="Alpha" @href="#" />
+        <Nav.Link @text="Waypoint" @icon="waypoint" @badge="Alpha" @hasSubItems={{true}} />
+        <Nav.Title>Default Org</Nav.Title>
+        <Nav.Link @text="KhulnaSoft Virtual Networks" @icon="network" @href="#" />
+        <Nav.Link @text="Access control (IAM)" @icon="users" @href="#" @hasSubItems={{true}} />
+        <Nav.Link @text="Billing" @icon="credit-card" @href="#" @hasSubItems={{true}} />
+        <Nav.Link @text="Settings" @icon="settings" @href="#" @hasSubItems={{true}} />
+        <Nav.Link @href="#" @isHrefExternal="true" @icon="guide" @text="Documentation" />
+      </Kds::AppSideNav::Portal>
+    </SG.Item>
+
+    <SG.Item>
+      <Shw::Text::H3>Yielded content</Shw::Text::H3>
+
+      <Shw::Flex as |SF|>
+        <SF.Item @label="With product icons using text color">
+          <div class="shw-component-sim-app-side-nav-root-container" {{style height="auto"}}>
+            <Kds::AppSideNav @isResponsive={{false}}>
+              <Kds::AppSideNav::List aria-label="Dashboard" as |SNL|>
+                <SNL.Link @icon="dashboard" @text="Dashboard" @isActive={{true}} />
+              </Kds::AppSideNav::List>
+
+              <Kds::AppSideNav::List aria-label="Services" as |SNL|>
+                <SNL.Title>Services</SNL.Title>
+                <SNL.Link @text="Boundary" @icon="boundary" @href="#" />
+                <SNL.Link @text="Consul" @icon="consul" @href="#" />
+                <SNL.Link @text="Packer" @icon="packer" @href="#" />
+                <SNL.Link @text="Vault" @icon="vault" @href="#" />
+                <SNL.Link @text="Vault Secrets" @icon="vault-secrets-square" @href="#" />
+                <SNL.Link @text="Terraform" @icon="terraform" @href="#" />
+                <SNL.Link @text="Vagrant" @icon="vagrant" @badge="Alpha" @href="#" />
+                <SNL.Link @text="Waypoint" @icon="waypoint" @badge="Alpha" @hasSubItems={{true}} />
+              </Kds::AppSideNav::List>
+
+              <Kds::AppSideNav::List aria-label="Organization" as |SNL|>
+                <SNL.Title>Default Org</SNL.Title>
+                <SNL.Link @text="KhulnaSoft Virtual Networks" @icon="network" @href="#" />
+                <SNL.Link @text="Access control (IAM)" @icon="users" @href="#" @hasSubItems={{true}} />
+                <SNL.Link @text="Billing" @icon="credit-card" @href="#" @hasSubItems={{true}} />
+                <SNL.Link @text="Settings" @icon="settings" @href="#" @hasSubItems={{true}} />
+                <SNL.Link @href="#" @isHrefExternal="true" @icon="guide" @text="Documentation" />
+              </Kds::AppSideNav::List>
+            </Kds::AppSideNav>
+          </div>
+        </SF.Item>
+      </Shw::Flex>
+    </SG.Item>
+
+    <SG.Item>
+      <Shw::Text::H3>Yielded content</Shw::Text::H3>
+
+      <Shw::Flex as |SF|>
+        <SF.Item @label="With back link">
+          <div class="shw-component-sim-app-side-nav-root-container">
+            <Kds::AppSideNav @isResponsive={{false}}>
+              <Kds::AppSideNav::List as |SNL|>
+                <SNL.BackLink @text="A “back” link" @href="#" />
+                <SNL.Title>A section title</SNL.Title>
+                <SNL.Link @text="A link with just text" @href="#" />
+                <SNL.Link @text="A link with an icon" @icon="network" @href="#" />
+                <SNL.Link @text="With a “count”" @icon="users" @count="12" @href="#" />
+                <SNL.Link @text="With a “badge” " @icon="credit-card" @badge="Beta" @href="#" />
+                <SNL.Link @text="With “sub items” indicator" @icon="settings" @hasSubItems={{true}} />
+                <SNL.Link @href="#" @isHrefExternal="true" @icon="guide" @text="As an “external” link" />
+              </Kds::AppSideNav::List>
+            </Kds::AppSideNav>
+          </div>
+        </SF.Item>
+      </Shw::Flex>
+    </SG.Item>
+  </Shw::Grid>
+</section>
+
+<Shw::Divider />
+
+<section data-test-percy>
+  <Shw::Text::H2>Kds::AppSideNav::List</Shw::Text::H2>
+
+  <Shw::Text::H3>Content</Shw::Text::H3>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="Title with multiple items">
+      <div class="shw-component-sim-app-side-nav-body">
+        <Kds::AppSideNav::List aria-label="Multiple items" as |SNL|>
+          <SNL.Title>Services</SNL.Title>
+
+          <SNL.Link @text="Boundary" @icon="boundary" @href="#" />
+          <SNL.Link @text="Consul" @icon="consul" @href="#" />
+          <SNL.Link @text="Packer" @icon="packer" @href="#" />
+          <SNL.Link @text="Vault" @icon="vault" @href="#" />
+          <SNL.Link @text="Vault Secrets" @icon="vault-secrets-square" @badge="Alpha" @href="#" />
+          <SNL.Link @text="Terraform" @icon="terraform" @href="#" />
+          <SNL.Link @text="Vagrant" @icon="vagrant" @badge="Alpha" @href="#" />
+          <SNL.Link @text="Waypoint" @icon="waypoint" @badge="Alpha" @hasSubItems={{true}} @href="#" />
+
+          <SNL.Title>Default Org</SNL.Title>
+
+          <SNL.Link @text="KhulnaSoft Virtual Networks" @icon="network" @href="#" />
+          <SNL.Link @text="Access control (IAM)" @icon="users" @href="#" />
+          <SNL.Link @text="Billing" @icon="credit-card" @href="#" />
+          <SNL.Link @text="Settings" @icon="settings" @href="#" />
+        </Kds::AppSideNav::List>
+      </div>
+    </SF.Item>
+
+    <SF.Item @label="Multiple groups">
+      <div class="shw-component-sim-app-side-nav-body">
+        <Kds::AppSideNav::List aria-label="Dashboard (multiple groups)" as |SNL|>
+          <SNL.Link @text="Dashboard" @icon="dashboard" @href="#" />
+        </Kds::AppSideNav::List>
+        <Kds::AppSideNav::List aria-label="Services (multiple groups)" as |SNL|>
+          <SNL.Title>Services</SNL.Title>
+
+          <SNL.Link @text="Boundary" @icon="boundary" @href="#" />
+          <SNL.Link @text="Consul" @icon="consul" @href="#" />
+          <SNL.Link @text="Packer" @icon="packer" @href="#" />
+          <SNL.Link @text="Vault" @icon="vault" @href="#" />
+          <SNL.Link @text="Vault Secrets" @icon="vault-secrets-square" @badge="Alpha" @href="#" />
+          <SNL.Link @text="Terraform" @icon="terraform" @href="#" />
+          <SNL.Link @text="Vagrant" @icon="vagrant" @badge="Alpha" @href="#" />
+          <SNL.Link @text="Waypoint" @icon="waypoint" @badge="Alpha" @hasSubItems={{true}} @href="#" />
+        </Kds::AppSideNav::List>
+        <Kds::AppSideNav::List aria-label="Organization (multiple groups)" as |SNL|>
+          <SNL.Title>Default Org</SNL.Title>
+
+          <SNL.Link @text="KhulnaSoft Virtual Networks" @icon="network" @href="#" />
+          <SNL.Link @text="Access control (IAM)" @icon="users" @href="#" />
+          <SNL.Link @text="Billing" @icon="credit-card" @href="#" />
+          <SNL.Link @text="Settings" @icon="settings" @href="#" />
+        </Kds::AppSideNav::List>
+      </div>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Divider @level={{2}} />
+
+  <Shw::Text::H3>AppSideNav::List::Title</Shw::Text::H3>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="Base">
+      <ul class="shw-component-sim-app-side-nav-body">
+        <Kds::AppSideNav::List::Title>Group title</Kds::AppSideNav::List::Title>
+        <Kds::AppSideNav::List::Item>
+          <Shw::Placeholder @height="108px" @text="following content" />
+        </Kds::AppSideNav::List::Item>
+      </ul>
+    </SF.Item>
+    <SF.Item @label="With very long text">
+      <ul class="shw-component-sim-app-side-nav-body">
+        <Kds::AppSideNav::List::Title>This is a long text that should go on two lines</Kds::AppSideNav::List::Title>
+        <Kds::AppSideNav::List::Item>
+          <Shw::Placeholder @height="108px" @text="following content" />
+        </Kds::AppSideNav::List::Item>
+      </ul>
+    </SF.Item>
+    <SF.Item @label="With very long text and no spaces">
+      <ul class="shw-component-sim-app-side-nav-body">
+        <Kds::AppSideNav::List::Title
+        >ThisIsLongTextThatShouldWrapToTwoLinesAndNotOverflow</Kds::AppSideNav::List::Title>
+        <Kds::AppSideNav::List::Item>
+          <Shw::Placeholder @height="108px" @text="following content" />
+        </Kds::AppSideNav::List::Item>
+      </ul>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Divider @level={{2}} />
+
+  <Shw::Text::H3>AppSideNav::List::Item</Shw::Text::H3>
+
+  <ul class="shw-component-sim-app-side-nav-body">
+    <Kds::AppSideNav::List::Item>
+      <Shw::Placeholder @height="36px" @text="item" />
+    </Kds::AppSideNav::List::Item>
+  </ul>
+
+  <Shw::Divider @level={{2}} />
+
+  <Shw::Text::H3>AppSideNav::List::Link</Shw::Text::H3>
+
+  <Shw::Text::H4>Content</Shw::Text::H4>
+
+  <Shw::Grid @columns={{4}} as |SG|>
+    <SG.Item @label="Just text">
+      <Kds::AppSideNav::List::Link @text="Boundary" @href="#" />
+    </SG.Item>
+    <SG.Item @label="Icon + text">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @href="#" />
+    </SG.Item>
+    <SG.Item @label="Icon + text + badge">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @badge="Alpha" />
+    </SG.Item>
+    <SG.Item @label="Icon + text + count">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @count="3" />
+    </SG.Item>
+    <SG.Item @label="Icon + text + count + badge">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @count="3" @badge="Alpha" />
+    </SG.Item>
+    <SG.Item @label="Icon + text + yielded badgecount/badge">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary">
+        <Kds::BadgeCount @type="inverted" @size="small" @text="3" />
+        <Kds::Badge @type="inverted" @size="small" @color="success" @text="Beta" />
+      </Kds::AppSideNav::List::Link>
+    </SG.Item>
+    <SG.Item @label="Icon + long text">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="This is a long text that should go on two lines" />
+    </SG.Item>
+    <SG.Item @label="Icon + long text + count + badge">
+      <Kds::AppSideNav::List::Link
+        @icon="boundary"
+        @text="This is a long text that should go on two lines"
+        @count="3"
+        @badge="Alpha"
+      />
+    </SG.Item>
+
+    <SG.Item @label="Text, hasSubItems">
+      <Kds::AppSideNav::List::Link @text="Boundary" @href="#" @hasSubItems={{true}} />
+    </SG.Item>
+    <SG.Item @label="Icon + text, hasSubItems">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @href="#" @hasSubItems={{true}} />
+    </SG.Item>
+    <SG.Item @label="Icon + text + badge, hasSubItems">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @badge="Alpha" @hasSubItems={{true}} />
+    </SG.Item>
+    <SG.Item @label="Icon + text + count, hasSubItems">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @count="3" @hasSubItems={{true}} />
+    </SG.Item>
+    <SG.Item @label="Icon + text + count + badge, hasSubItems">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @count="3" @badge="Alpha" @hasSubItems={{true}} />
+    </SG.Item>
+    <SG.Item @label="Icon + text + yielded badgecount/badge, hasSubItems">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @hasSubItems={{true}}>
+        <Kds::BadgeCount @type="inverted" @size="small" @text="3" />
+        <Kds::Badge @type="inverted" @size="small" @color="success" @text="Beta" />
+      </Kds::AppSideNav::List::Link>
+    </SG.Item>
+    <SG.Item @label="Icon + long text, hasSubItems">
+      <Kds::AppSideNav::List::Link
+        @icon="boundary"
+        @text="This is a long text that should go on two lines"
+        @hasSubItems={{true}}
+      />
+    </SG.Item>
+    <SG.Item @label="Icon + long text + count + badge, hasSubItems">
+      <Kds::AppSideNav::List::Link
+        @icon="boundary"
+        @text="This is a long text that should go on two lines"
+        @count="3"
+        @badge="Alpha"
+        @hasSubItems={{true}}
+      />
+    </SG.Item>
+
+    <SG.Item @label="Just yielded content">
+      <Kds::AppSideNav::List::Link>
+        <Shw::Placeholder @height="20px" @text="yielded content" />
+      </Kds::AppSideNav::List::Link>
+    </SG.Item>
+    <SG.Item @label="Icon + yielded content">
+      {{! we've added an empty label on purpose, to test the layout in this case }}
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="">
+        <Shw::Placeholder @height="20px" @text="yielded content" />
+      </Kds::AppSideNav::List::Link>
+    </SG.Item>
+    <SG.Item @label="Icon + text + yielded content">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary">
+        <Shw::Placeholder @height="20px" @width="auto" @flex="1 1 0" @text="yielded content" />
+      </Kds::AppSideNav::List::Link>
+    </SG.Item>
+    <SG.Item @label="With hasSubItems">
+      <Kds::AppSideNav::List::Link @icon="boundary" @text="Boundary" @hasSubItems={{true}}>
+        <Shw::Placeholder @height="20px" @width="auto" @flex="1 1 0" @text="yielded content" />
+      </Kds::AppSideNav::List::Link>
+    </SG.Item>
+    <SG.Item @label="Text with no style">
+      <Kds::AppSideNav::List::Link>
+        This text needs local styling
+      </Kds::AppSideNav::List::Link>
+    </SG.Item>
+    <SG.Item @label="Text with local style">
+      <Kds::AppSideNav::List::Link>
+        <span class="kds-typography-body-200 kds-font-weight-medium">
+          This text is locally styled
+        </span>
+      </Kds::AppSideNav::List::Link>
+    </SG.Item>
+    <SG.Item @label="External link">
+      <Kds::AppSideNav::List::Link @icon="khulnasoft" @text="KhulnaSoft Cloud Platform" @isHrefExternal={{true}} />
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Text::H4>States</Shw::Text::H4>
+
+  <Shw::Grid @columns={{4}} as |SG|>
+    {{#let (array "default" "hover" "active" "focus") as |states|}}
+      {{#each states as |state|}}
+        <SG.Item @label={{state}}>
+          <Shw::Flex as |SF|>
+            <SF.Item @grow={{true}}>
+              <div class="shw-component-sim-app-side-nav-list-link-wrapper">
+                <Kds::AppSideNav::List::Link
+                  @text="Boundary"
+                  @icon="boundary"
+                  @badge="Alpha"
+                  @count="3"
+                  @href="#"
+                  mock-state-value={{state}}
+                />
+              </div>
+            </SF.Item>
+            <SF.Item @grow={{true}}>
+              <div class="shw-component-sim-app-side-nav-list-link-wrapper">
+                <Kds::AppSideNav::List::Link
+                  @text="This is a long text that should go on two lines"
+                  @icon="boundary"
+                  @href="#"
+                  mock-state-value={{state}}
+                />
+              </div>
+            </SF.Item>
+            <SF.Item @grow={{true}}>
+              <div class="shw-component-sim-app-side-nav-list-link-wrapper">
+                <Kds::AppSideNav::List::Link
+                  @text="Boundary"
+                  @icon="boundary"
+                  @href="#"
+                  @hasSubItems={{true}}
+                  mock-state-value={{state}}
+                />
+              </div>
+            </SF.Item>
+          </Shw::Flex>
+        </SG.Item>
+      {{/each}}
+    {{/let}}
+  </Shw::Grid>
+
+  <Shw::Grid @label="with @isActive=true (link is 'current')" @columns={{4}} as |SG|>
+    {{#let (array "default" "hover" "active" "focus") as |states|}}
+      {{#each states as |state|}}
+        <SG.Item>
+          <div class="shw-component-sim-app-side-nav-list-link-wrapper">
+            <Kds::AppSideNav::List::Link
+              @text="Boundary"
+              @icon="boundary"
+              @href="#"
+              @hasSubItems={{true}}
+              @isActive={{true}}
+              mock-state-value={{state}}
+            />
+          </div>
+        </SG.Item>
+      {{/each}}
+    {{/let}}
+  </Shw::Grid>
+
+  <Shw::Divider @level={{2}} />
+
+  <Shw::Text::H3>AppSideNav::List::BackLink</Shw::Text::H3>
+
+  <Shw::Text::H4>Content</Shw::Text::H4>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="Base">
+      <ul class="shw-component-sim-app-side-nav-body">
+        <Kds::AppSideNav::List::BackLink @text="Back to parent page" @href="#" />
+      </ul>
+    </SF.Item>
+    <SF.Item @label="With very long text">
+      <ul class="shw-component-sim-app-side-nav-body">
+        <Kds::AppSideNav::List::BackLink @text="This is a long text that should go on two lines" @href="#" />
+      </ul>
+    </SF.Item>
+    <SF.Item @label="With very long text and no spaces">
+      <ul class="shw-component-sim-app-side-nav-body">
+        <Kds::AppSideNav::List::BackLink @text="ThisIsLongTextThatShouldWrapToTwoLinesAndNotOverflow" @href="#" />
+      </ul>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::H4>States</Shw::Text::H4>
+
+  <Shw::Grid @columns={{4}} as |SG|>
+    {{#let (array "default" "hover" "active" "focus") as |states|}}
+      {{#each states as |state|}}
+        <SG.Item @label={{state}}>
+          <Shw::Flex @direction="column" as |SF|>
+            <SF.Item>
+              <ul class="shw-component-sim-app-side-nav-body">
+                <Kds::AppSideNav::List::BackLink @text="Back to parent page" @href="#" mock-state-value={{state}} />
+              </ul>
+            </SF.Item>
+            <SF.Item>
+              <ul class="shw-component-sim-app-side-nav-body">
+                <Kds::AppSideNav::List::BackLink
+                  @text="This is a long text that should go on two lines"
+                  @href="#"
+                  mock-state-value={{state}}
+                />
+              </ul>
+            </SF.Item>
+          </Shw::Flex>
+        </SG.Item>
+      {{/each}}
+    {{/let}}
+  </Shw::Grid>
+
+  <Shw::Divider />
+
+  <Shw::Text::H2>AppSideNav::ToggleButton</Shw::Text::H2>
+
+  <Shw::Text::H3>Content</Shw::Text::H3>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="Minimized">
+      <div class="shw-component-sim-toggle-button">
+        <Kds::AppSideNav::ToggleButton aria-label="Open menu" @icon="chevrons-right" />
+      </div>
+    </SF.Item>
+    <SF.Item @label="Expanded">
+      <div class="shw-component-sim-toggle-button">
+        <Kds::AppSideNav::ToggleButton aria-label="Close menu" @icon="chevrons-left" />
+      </div>
+    </SF.Item>
+    <SF.Item @label="Custom icon">
+      <div class="shw-component-sim-toggle-button">
+        <Kds::AppSideNav::ToggleButton aria-label="Menu" @icon="menu" />
+      </div>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::H4>States</Shw::Text::H4>
+
+  <Shw::Flex as |SF|>
+    {{#let (array "default" "hover" "active" "focus") as |states|}}
+      {{#each states as |state|}}
+        <SF.Item @label={{state}}>
+          <div class="shw-component-sim-toggle-button">
+            <Kds::AppSideNav::ToggleButton aria-label="Close menu" @icon="chevrons-left" mock-state-value={{state}} />
+          </div>
+        </SF.Item>
+      {{/each}}
+    {{/let}}
+  </Shw::Flex> --}}
+</section>

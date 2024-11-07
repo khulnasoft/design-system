@@ -1,0 +1,8 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<button class="kds-form-visibility-toggle" type="button" aria-label={{@ariaLabel}} ...attributes>
+  <Kds::Icon @name={{if @isVisible "eye" "eye-off"}} @size="16" />
+  <span class="sr-only" aria-live="polite">{{@ariaMessageText}}</span>
+</button>

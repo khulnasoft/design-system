@@ -1,0 +1,9 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<nav class={{this.classNames}} aria-label={{this.ariaLabel}} ...attributes>
+  <ol class="kds-breadcrumb__list" {{did-insert this.didInsert}}>
+    {{yield}}
+  </ol>
+</nav>

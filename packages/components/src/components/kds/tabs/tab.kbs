@@ -1,0 +1,31 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{! template-lint-disable require-context-role no-invalid-role }}
+<li class={{this.classNames}} ...attributes role="presentation">
+  <button
+    class="kds-tabs__tab-button"
+    role="tab"
+    type="button"
+    id={{this.tabId}}
+    aria-selected={{if this.isSelected "true" "false"}}
+    tabindex={{unless this.isSelected "-1"}}
+    {{did-insert this.didInsertNode @isSelected}}
+    {{did-update this.didUpdateNode @count @isSelected}}
+    {{will-destroy this.willDestroyNode}}
+    {{on "click" this.onClick}}
+    {{on "keyup" this.onKeyUp}}
+  >
+    {{#if @icon}}
+      <Kds::Icon @name={{@icon}} class="kds-tabs__tab-icon" role="presentation" />
+    {{/if}}
+
+    {{yield}}
+
+    {{#if @count}}
+      <Kds::BadgeCount @text={{@count}} @size="small" class="kds-tabs__tab-count" role="presentation" />
+    {{/if}}
+  </button>
+</li>
+{{! template-lint-enable require-context-role no-invalid-role }}

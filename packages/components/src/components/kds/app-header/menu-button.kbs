@@ -1,0 +1,15 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::Button
+  class="kds-app-header__menu-button"
+  @text="Menu"
+  @icon={{this.icon}}
+  @iconPosition="trailing"
+  {{on "click" this.onClick}}
+  aria-controls={{@menuContentId}}
+  aria-expanded={{if @isOpen "true" "false"}}
+  ...attributes
+/>

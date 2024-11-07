@@ -1,0 +1,7 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<button class="kds-dismiss-button" type="button" aria-label={{this.ariaLabel}} ...attributes>
+  <Kds::Icon @name="x" @size="16" />
+</button>

@@ -1,0 +1,18 @@
+/**
+ * Do not edit directly
+ * Generated on Thu, 07 Nov 2024 04:10:55 GMT
+ */
+
+.kds-elevation-high { box-shadow: var(--token-elevation-high-box-shadow); }
+.kds-elevation-higher { box-shadow: var(--token-elevation-higher-box-shadow); }
+.kds-elevation-inset { box-shadow: var(--token-elevation-inset-box-shadow); }
+.kds-elevation-low { box-shadow: var(--token-elevation-low-box-shadow); }
+.kds-elevation-mid { box-shadow: var(--token-elevation-mid-box-shadow); }
+.kds-elevation-overlay { box-shadow: var(--token-elevation-overlay-box-shadow); }
+.kds-surface-inset { box-shadow: var(--token-surface-inset-box-shadow); }
+.kds-surface-base { box-shadow: var(--token-surface-base-box-shadow); }
+.kds-surface-low { box-shadow: var(--token-surface-low-box-shadow); }
+.kds-surface-mid { box-shadow: var(--token-surface-mid-box-shadow); }
+.kds-surface-high { box-shadow: var(--token-surface-high-box-shadow); }
+.kds-surface-higher { box-shadow: var(--token-surface-higher-box-shadow); }
+.kds-surface-overlay { box-shadow: var(--token-surface-overlay-box-shadow); }

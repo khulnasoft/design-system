@@ -1,0 +1,9 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::Form::MaskedInput::Base @value="Lorem ipsum dolor" @isContentMasked={{true}} />
+<Kds::Form::MaskedInput::Field @value="Lorem ipsum dolor" @isContentMasked={{true}} as |F|>
+  <F.Label>This is the label</F.Label>
+</Kds::Form::MaskedInput::Field>

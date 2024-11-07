@@ -1,0 +1,186 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// APP-FRAME
+
+@mixin shw-apply-transform($stack) {
+  $tx: 0;
+  $ty: ($stack - 1) * 5px;
+  $tz: ($stack * 20px);
+  transform:
+    rotateY(30deg)
+    translate3d($tx, $ty, $tz) !important;
+}
+
+body.layouts-app-frame {
+  .shw-component-app-frame-container {
+    position: relative;
+    min-height: 0;
+    overflow: hidden; // hide the skip link which is positioned outside the frame
+    border: 1px solid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 30%);
+
+    .kds-side-nav,
+    .kds-app-side-nav {
+      height: auto;
+      min-height: 0;
+
+      // For simulating minimize behavior
+      &.kds-side-nav--is-minimized,
+      &.kds-app-side-nav--is-minimized {
+        .kds-side-nav__wrapper, 
+        .kds-app-side-nav__wrapper  { 
+          overflow: hidden; 
+        }
+
+        .kds-side-nav__wrapper-body,
+        .kds-app-side-nav__wrapper-body {
+          width: var(--kds-app-sidenav-width-expanded);
+          opacity: 0;
+        }
+
+        .kds-side-nav__wrapper-footer,
+        .kds-app-side-nav__wrapper-footer { 
+          opacity: 0; 
+        }
+      }
+    }
+
+    .kds-app-frame__header:has(.kds-app-header) {
+      position: relative; // position is sticky when used within a screen layout
+    }
+
+    .kds-app-header {
+      &.kds-app-header--is-mobile {
+        .kds-app-header__actions {
+          height: auto; // height fills screen minus app header height when used within a screen layout
+        }
+      }
+    }
+  }
+
+  .shw-layout-app-frame-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    .kds-app-frame {
+      position: relative;
+      height: 100% !important;
+      min-height: 100% !important;
+    }
+
+    .kds-app-frame__modals {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    // remove sticky positioning from examples
+    .kds-app-frame__header,
+    .kds-app-frame__sidebar {
+      position: relative;
+      top: 0;
+    }
+
+    .kds-app-frame__sidebar {
+      height: auto;
+      min-height: 0;
+    }
+  }
+
+  .shw-layout-app-frame-wrapper--with-3d {
+    .kds-app-frame {
+      perspective: 2000px;
+      perspective-origin: 50% 50%;
+    }
+
+    .kds-app-frame__header,
+    .kds-app-frame__sidebar,
+    .kds-app-frame__main,
+    .kds-app-frame__footer,
+    .kds-app-frame__modals {
+      transform-style: preserve-3d;
+      transition: transform 400ms ease-in-out;
+    }
+
+    &.shw-is-3d {
+      outline: 1px dotted #ccc;
+
+      .kds-app-frame__header {
+        @include shw-apply-transform(3);
+      }
+
+      .kds-app-frame__sidebar {
+        @include shw-apply-transform(2);
+      }
+
+      .kds-app-frame__main {
+        @include shw-apply-transform(0);
+      }
+
+      .kds-app-frame__footer {
+        @include shw-apply-transform(1);
+      }
+
+      .kds-app-frame__modals {
+        @include shw-apply-transform(4);
+      }
+    }
+  }
+
+  .shw-layout-app-frame-fake-overlay {
+    position: absolute;
+    z-index: 50; // same as KDS overlay
+    inset: 0;
+    background: var(--token-color-palette-neutral-700);
+    opacity: 0.25;
+  }
+
+  .shw-layout-app-frame-fake-modal {
+    position: absolute;
+    z-index: 50; // same as KDS modal
+    width: 200px;
+    height: 160px;
+    margin: auto;
+    inset: 0;
+  }
+
+  .shw-layout-app-frame-full-width-elem {
+    width: 100%;
+
+    .kds-dropdown-toggle-button {width: 100%;}
+  }
+}
+
+
+// Frameles demo pages
+.layouts-app-frame-frameless {
+  .shw-layout-app-frame__main-content-padding {
+    padding: 1.5rem 4rem 2.25rem 4rem;
+  }
+
+  .kds-side-nav,
+  .kds-app-side-nav {
+    // For simulating minimize behavior
+    &.kds-side-nav--is-minimized,
+    &.kds-app-side-nav--is-minimized {
+      .kds-side-nav__wrapper, 
+      .kds-app-side-nav__wrapper { 
+        overflow: hidden; 
+      }
+
+      .kds-side-nav__wrapper-body,
+      .kds-app-side-nav__wrapper-body {
+        width: var(--kds-app-sidenav-width-expanded);
+        opacity: 0;
+      }
+
+      .kds-side-nav__wrapper-footer,
+      .kds-app-side-nav__wrapper-footer { 
+        opacity: 0; 
+      }
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "Button Component"}}
+
+<Shw::Text::H1>Button</Shw::Text::H1>
+
+<section data-test-percy>
+
+  <Shw::Text::H2>Generated element</Shw::Text::H2>
+
+  <Shw::Flex as |SF|>
+    <SF.Item class="shw-component-button-generated" as |SFI|>
+      <SFI.Label>Default ⇒ <code>&lt;button&gt;</code></SFI.Label>
+      <Kds::Button @icon="plus" @text="Lorem ipsum" @color="primary" />
+      <Kds::Button @icon="plus" @text="Lorem ipsum" @color="primary" disabled />
+    </SF.Item>
+    <SF.Item class="shw-component-button-generated" as |SFI|>
+      <SFI.Label>With <code>@href</code> ⇒ <code>&lt;a&gt;</code></SFI.Label>
+      <Kds::Button @icon="plus" @text="Lorem ipsum" @color="primary" @href="#" />
+    </SF.Item>
+    <SF.Item class="shw-component-button-generated" as |SFI|>
+      <SFI.Label>With<code>@route</code>
+        ⇒
+        <code>&lt;LinkTo&gt;</code>
+        ⇒
+        <code>&lt;a&gt;</code></SFI.Label>
+      <Kds::Button @icon="plus" @text="Lorem ipsum" @color="primary" @route="index" />
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::H2>Content</Shw::Text::H2>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="Only text">
+      <Kds::Button @text="Lorem ipsum" />
+    </SF.Item>
+    <SF.Item @label="Text + leading icon">
+      <Kds::Button @icon="plus" @iconPosition="leading" @text="Lorem ipsum" />
+    </SF.Item>
+    <SF.Item @label="Text + trailing icon">
+      <Kds::Button @icon="arrow-right" @iconPosition="trailing" @text="Lorem ipsum" />
+    </SF.Item>
+    <SF.Item @label="Icon only">
+      <Kds::Button @icon="plus" @isIconOnly={{true}} @text="Lorem ipsum" />
+    </SF.Item>
+    <SF.Item {{style width="200px"}} @label="Icon + Long text">
+      <Kds::Button @icon="plus" @text="This is a very long text that should go on multiple lines" />
+    </SF.Item>
+    <SF.Item {{style width="150px"}} @label="Loading (click to toggle)">
+      <Kds::Button
+        @text={{if this.isLoading "Loading" "Save"}}
+        @icon={{if this.isLoading "loading"}}
+        @isFullWidth={{true}}
+        {{on "click" this.toggleIsLoading}}
+      />
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::H2>Sizes</Shw::Text::H2>
+
+  <Shw::Flex as |SF|>
+    {{#each @model.SIZES as |size|}}
+      <SF.Item @label={{capitalize size}}>
+        <Kds::Button @icon="plus" @text="Lorem ipsum" @size={{size}} />
+        <br />
+        <Kds::Button @icon="plus" @text="Lorem ipsum" @isIconOnly={{true}} @size={{size}} />
+      </SF.Item>
+    {{/each}}
+    <SF.Item @label="Full width">
+      <Shw::Outliner {{style width="300px"}}>
+        <Kds::Button @icon="plus" @text="Lorem ipsum" @isFullWidth={{true}} />
+      </Shw::Outliner>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::H2>Colors</Shw::Text::H2>
+
+  <Shw::Flex as |SF|>
+    {{#each @model.COLORS as |color|}}
+      <SF.Item @label={{capitalize color}}>
+        <Kds::Button @icon="plus" @text="Lorem ipsum" @color={{color}} />
+      </SF.Item>
+    {{/each}}
+  </Shw::Flex>
+
+  <Shw::Text::H2>Display</Shw::Text::H2>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="Block">
+      <div class="shw-component-button-display-sample">
+        <Kds::Button @text="Block" @icon="plus" />
+        <Kds::Button @text="Block" @icon="plus" />
+      </div>
+    </SF.Item>
+    <SF.Item @label="Inline">
+      <div class="shw-component-button-display-sample">
+        <Kds::Button @text="Inline" @icon="plus" @isInline={{true}} />
+        <Kds::Button @text="Inline" @icon="plus" @isInline={{true}} />
+      </div>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::H2>States</Shw::Text::H2>
+
+  {{#each @model.COLORS as |color|}}
+    <Shw::Text::H3>{{capitalize color}}</Shw::Text::H3>
+    <Shw::Grid @columns={{5}} as |SG|>
+      {{#each @model.SIZES as |size|}}
+        {{#each @model.STATES as |state|}}
+          <SG.Item @label="{{capitalize size}} / {{capitalize state}}">
+            {{#if (eq state "disabled")}}
+              <Kds::Button @icon="plus" @text="Lorem" @size={{size}} @color={{color}} disabled />
+            {{else}}
+              <Kds::Button @icon="plus" @text="Lorem" @size={{size}} @color={{color}} mock-state-value={{state}} />
+            {{/if}}
+          </SG.Item>
+        {{/each}}
+      {{/each}}
+      {{#if (not-eq color "tertiary")}}
+        {{#each @model.STATES as |state|}}
+          <SG.Item @label="Full width / {{capitalize state}}">
+            {{#if (eq state "disabled")}}
+              <Kds::Button @icon="plus" @text="Lorem" @color={{color}} @isFullWidth={{true}} disabled />
+            {{else}}
+              <Kds::Button
+                @icon="plus"
+                @text="Lorem"
+                @color={{color}}
+                @isFullWidth={{true}}
+                mock-state-value={{state}}
+              />
+            {{/if}}
+          </SG.Item>
+        {{/each}}
+      {{/if}}
+    </Shw::Grid>
+  {{/each}}
+
+  <Shw::Text::H2>Containers</Shw::Text::H2>
+
+  <Shw::Grid @columns={{4}} as |SG|>
+    <SG.Item @forceMinWidth={{true}} as |SGI|>
+      <SGI.Label>Parent with <code>display: inline-block</code></SGI.Label>
+      <div {{style display="inline-block"}}>
+        <Kds::Button @icon="plus" @iconPosition="leading" @text="Lorem ipsum" />
+      </div>
+      <hr class="shw-component-button-containers-divider" />
+      <div {{style display="inline-block"}}>
+        <Kds::Button @icon="plus" @text="This is a very long text that should go on multiple lines" />
+      </div>
+    </SG.Item>
+    <SG.Item @forceMinWidth={{true}} as |SGI|>
+      <SGI.Label>Parent with <code>display: inline-flex</code></SGI.Label>
+      <div {{style display="inline-flex"}}>
+        <Kds::Button @icon="plus" @iconPosition="leading" @text="Lorem ipsum" />
+      </div>
+      <hr class="shw-component-button-containers-divider" />
+      <div {{style display="inline-flex"}}>
+        <Kds::Button @icon="plus" @text="This is a very long text that should go on multiple lines" />
+      </div>
+    </SG.Item>
+    <SG.Item @forceMinWidth={{true}} as |SGI|>
+      <SGI.Label>Parent with <code>flex-grow: 0</code></SGI.Label>
+      <div {{style display="flex"}}>
+        <div {{style flex-grow="0"}}>
+          <Kds::Button @icon="plus" @iconPosition="leading" @text="Lorem ipsum" />
+        </div>
+      </div>
+      <hr class="shw-component-button-containers-divider" />
+      <div {{style display="flex"}}>
+        <div {{style flex-grow="0"}}>
+          <Kds::Button @icon="plus" @text="This is a very long text that should go on multiple lines" />
+        </div>
+      </div>
+    </SG.Item>
+    <SG.Item @forceMinWidth={{true}} as |SGI|>
+      <SGI.Label>Parent with <code>max-width: fit-content</code></SGI.Label>
+      <div {{style max-width="fit-content"}}>
+        <Kds::Button @icon="plus" @iconPosition="leading" @text="Lorem ipsum" />
+      </div>
+      <hr class="shw-component-button-containers-divider" />
+      <div {{style max-width="fit-content"}}>
+        <Kds::Button @icon="plus" @text="This is a very long text that should go on multiple lines" />
+      </div>
+    </SG.Item>
+  </Shw::Grid>
+
+</section>

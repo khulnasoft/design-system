@@ -1,0 +1,7 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class="kds-dialog-primitive__footer {{@contextualClass}}" ...attributes>
+  {{yield (hash close=this.onDismiss)}}
+</div>

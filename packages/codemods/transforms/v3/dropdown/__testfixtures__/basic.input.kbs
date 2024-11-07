@@ -1,0 +1,11 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::Dropdown @listPosition="left" as |dd|>
+  <dd.ToggleButton @text="Menu left" />
+</Kds::Dropdown>
+<Kds::Dropdown @listPosition="bottom-right" as |dd|>
+  <dd.ToggleButton @text="Menu bottom right" />
+</Kds::Dropdown>

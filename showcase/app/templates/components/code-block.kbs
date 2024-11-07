@@ -1,0 +1,654 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "CodeBlock Component"}}
+
+<Shw::Text::H1>CodeBlock</Shw::Text::H1>
+
+<section data-test-percy>
+  <Shw::Text::H2>Content</Shw::Text::H2>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="one line">
+      <Kds::CodeBlock @language="javascript" @value="console.log('I am JavaScript code');" />
+    </SG.Item>
+    <SG.Item @label="multi-line">
+      <Kds::CodeBlock
+        @language="javascript"
+        @value="let codeLang='JavaScript';
+console.log(`I am ${codeLang} code`);"
+      />
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Text::Body>New lines handling</Shw::Text::Body>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="new lines in Handlebars" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @language="javascript"
+        @value="let codeLang='JavaScript';
+console.log(`I am ${codeLang} code`);"
+      />
+    </SG.Item>
+    <SG.Item @forceMinWidth={{true}} as |SGI|>
+      <SGI.Label>new lines with
+        <code>\n</code>
+        escape sequence in JavaScript
+      </SGI.Label>
+      <Kds::CodeBlock @language="javascript" @value={{this.textWithNewline}} />
+    </SG.Item>
+    <SG.Item @forceMinWidth={{true}} as |SGI|>
+      <SGI.Label><code>\n</code>
+        in Handlebars (not interpreted as newline)
+      </SGI.Label>
+      <Kds::CodeBlock
+        @language="javascript"
+        @value="let codeLang='JavaScript';\nconsole.log(`I am ${codeLang} code`);"
+      />
+    </SG.Item>
+    <SG.Item @forceMinWidth={{true}} as |SGI|>
+      <SGI.Label>Line numbering start changed to "5"
+      </SGI.Label>
+      {{! template-lint-disable no-whitespace-for-layout }}
+      <Kds::CodeBlock
+        @language="javascript"
+        @maxHeight="105px"
+        @lineNumberStart={{5}}
+        @value="function convertObjectToArray (obj) {
+  let arr = Object
+    .keys(obj) // return object's keys as an array
+    .map(key => {return [key, obj[key] ]}) // map a function on each array item
+    .flat()
+    .sort()
+  ;
+  return arr;
+}
+function assertObjectsEqual (actual, expected, testName) {
+  let actualStr = JSON.stringify( convertObjectToArray(actual) );
+  let expectedStr = JSON.stringify( convertObjectToArray(expected) );
+  console.log(`ACTUAL: ${actualStr}  EXPECTED: ${expectedStr}`);
+  if (actualStr === expectedStr) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED [${testName}] Expected ${JSON.stringify(expected)}, but got ${JSON.stringify(actual)}`);
+  }
+}"
+      />
+      {{! template-lint-enable no-whitespace-for-layout }}
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider @level="2" />
+
+  <Shw::Text::H3>Title and description</Shw::Text::H3>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="title">
+      <Kds::CodeBlock @value="console.log('I am JavaScript code');" @language="javascript" as |CB|>
+        <CB.Title>Title</CB.Title>
+      </Kds::CodeBlock>
+    </SG.Item>
+    <SG.Item @label="description">
+      <Kds::CodeBlock @value="console.log('I am JavaScript code');" @language="javascript" as |CB|>
+        <CB.Description>Description</CB.Description>
+      </Kds::CodeBlock>
+    </SG.Item>
+    <SG.Item @label="title and description">
+      <Kds::CodeBlock @value="console.log('I am JavaScript code');" @language="javascript" as |CB|>
+        <CB.Title>Title that may wrap on multiple lines if the parent container is limiting its width</CB.Title>
+        <CB.Description>
+          Description that could contain
+          <a href="#">a link</a>
+          or other basic styling such as
+          <b>bold</b>,
+          <i>italic</i>
+          or even
+          <code>code</code>.
+        </CB.Description>
+      </Kds::CodeBlock>
+    </SG.Item>
+    <SG.Item @label="custom title tag">
+      <Kds::CodeBlock @value="console.log('I am JavaScript code');" @language="javascript" as |CB|>
+        <CB.Title @tag="h2">Title</CB.Title>
+      </Kds::CodeBlock>
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider @level="2" />
+
+  <Shw::Text::H3>Dynamic content</Shw::Text::H3>
+
+  <Shw::Text::Body>
+    <button type="button" {{on "click" this.updateCodeValue}}>
+      Update value
+    </button>
+  </Shw::Text::Body>
+
+  <Shw::Text::Body>
+    <label for="input">Change input value:</label>
+    <input id="input" type="text" value={{this.input}} {{on "input" this.updateInput}} />
+  </Shw::Text::Body>
+
+  <Kds::CodeBlock
+    @value={{this.codeValue}}
+    @language="javascript"
+    @hasCopyButton={{true}}
+    @hasLineNumbers={{false}}
+    id="code-block-with-dynamic-content"
+    as |CB|
+  >
+    <CB.Title>
+      Dynamic content
+    </CB.Title>
+  </Kds::CodeBlock>
+
+  <Shw::Divider />
+
+  <Shw::Text::H2>Options</Shw::Text::H2>
+
+  <Shw::Text::H3>Standalone</Shw::Text::H3>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="isStandalone=false">
+      <Kds::CodeBlock
+        @isStandalone={{false}}
+        @language="javascript"
+        @value="let codeLang='JavaScript';
+console.log(`I am ${codeLang} code`);"
+      />
+    </SG.Item>
+    <SG.Item @label="isStandalone=false, title and description">
+      <Kds::CodeBlock
+        @value="console.log('I am JavaScript code');"
+        @language="javascript"
+        @isStandalone={{false}}
+        as |CB|
+      >
+        <CB.Title>Title</CB.Title>
+        <CB.Description>Description</CB.Description>
+      </Kds::CodeBlock>
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider @level="2" />
+
+  <Shw::Text::H3>Line wrapping</Shw::Text::H3>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="hasLineWrapping=false (default)" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @language="javascript"
+        @value="let codeLang='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam';
+console.log(codeLand);"
+      />
+    </SG.Item>
+    <SG.Item @label="hasLineWrapping=true" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @language="javascript"
+        @hasLineWrapping={{true}}
+        @value="let codeLang='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam';"
+      />
+    </SG.Item>
+    <SG.Item @label="hasLineWrapping=true with long string" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @hasLineWrapping={{true}}
+        @value="hcp-domain-verification=6ea52e476fc6232d974c31453dcd884a68df6cf374892a50a897c87d11125b67"
+      />
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider @level="2" />
+
+  <Shw::Text::H3>Line numbers</Shw::Text::H3>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="hasLineNumbers=false">
+      <Kds::CodeBlock
+        @language="javascript"
+        @hasLineNumbers={{false}}
+        @value="let codeLang='JavaScript';
+    console.log(`I am ${codeLang} code`);"
+      />
+    </SG.Item>
+    <SG.Item @label="hasLineNumbers=false, title and description">
+      <Kds::CodeBlock
+        @language="javascript"
+        @hasLineNumbers={{false}}
+        @value="let codeLang='JavaScript';
+console.log(`I am ${codeLang} code`);"
+        as |CB|
+      >
+        <CB.Title>Title</CB.Title>
+        <CB.Description>Description</CB.Description>
+      </Kds::CodeBlock>
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider @level="2" />
+
+  <Shw::Text::H3>Height limit</Shw::Text::H3>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="maxHeight='105px'" @forceMinWidth={{true}}>
+      {{! template-lint-disable no-whitespace-for-layout }}
+      <Kds::CodeBlock
+        @language="javascript"
+        @maxHeight="105px"
+        @value="function convertObjectToArray (obj) {
+  let arr = Object
+    .keys(obj) // return object's keys as an array
+    .map(key => {return [key, obj[key] ]}) // map a function on each array item
+    .flat()
+    .sort()
+  ;
+  return arr;
+}
+function assertObjectsEqual (actual, expected, testName) {
+  let actualStr = JSON.stringify( convertObjectToArray(actual) );
+  let expectedStr = JSON.stringify( convertObjectToArray(expected) );
+  console.log(`ACTUAL: ${actualStr}  EXPECTED: ${expectedStr}`);
+  if (actualStr === expectedStr) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED [${testName}] Expected ${JSON.stringify(expected)}, but got ${JSON.stringify(actual)}`);
+  }
+}"
+      />
+      {{! template-lint-enable no-whitespace-for-layout }}
+    </SG.Item>
+
+    <SG.Item @label="maxHeight='105px', title and description" @forceMinWidth={{true}}>
+      {{! template-lint-disable no-whitespace-for-layout }}
+      <Kds::CodeBlock
+        @language="javascript"
+        @maxHeight="105px"
+        @value="function convertObjectToArray (obj) {
+  let arr = Object
+    .keys(obj) // return object's keys as an array
+    .map(key => {return [key, obj[key] ]}) // map a function on each array item
+    .flat()
+    .sort()
+  ;
+  return arr;
+}
+function assertObjectsEqual (actual, expected, testName) {
+  let actualStr = JSON.stringify( convertObjectToArray(actual) );
+  let expectedStr = JSON.stringify( convertObjectToArray(expected) );
+  console.log(`ACTUAL: ${actualStr}  EXPECTED: ${expectedStr}`);
+  if (actualStr === expectedStr) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED [${testName}] Expected ${JSON.stringify(expected)}, but got ${JSON.stringify(actual)}`);
+  }
+}"
+        as |CB|
+      >
+        <CB.Title>Title</CB.Title>
+        <CB.Description>Description</CB.Description>
+      </Kds::CodeBlock>
+      {{! template-lint-enable no-whitespace-for-layout }}
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider @level="2" />
+
+  <Shw::Text::H3>Copy button</Shw::Text::H3>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="hasCopyButton=true" @forceMinWidth={{true}}>
+      <Kds::CodeBlock @language="shell-session" @hasCopyButton={{true}} @value="$ brew tap khulnasoft/tap" />
+    </SG.Item>
+    <SG.Item @label="hasCopyButton=true, maxHeight='105px', title and description" @forceMinWidth={{true}}>
+      {{! template-lint-disable no-whitespace-for-layout }}
+      <Kds::CodeBlock
+        id="clipboardTarget2"
+        @hasCopyButton={{true}}
+        @language="javascript"
+        @maxHeight="105px"
+        @value="function convertObjectToArray (obj) {
+  let arr = Object
+    .keys(obj) // return object's keys as an array
+    .map(key => {return [key, obj[key] ]}) // map a function on each array item
+    .flat()
+    .sort()
+  ;
+  return arr;
+}
+function assertObjectsEqual (actual, expected, testName) {
+  let actualStr = JSON.stringify( convertObjectToArray(actual) );
+  let expectedStr = JSON.stringify( convertObjectToArray(expected) );
+  console.log(`ACTUAL: ${actualStr}  EXPECTED: ${expectedStr}`);
+  if (actualStr === expectedStr) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED [${testName}] Expected ${JSON.stringify(expected)}, but got ${JSON.stringify(actual)}`);
+  }
+}"
+        as |CB|
+      >
+        <CB.Title>Title</CB.Title>
+        <CB.Description>Description</CB.Description>
+      </Kds::CodeBlock>
+      {{! template-lint-enable no-whitespace-for-layout }}
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider @level="2" />
+
+  <Shw::Text::H3>Highlight lines</Shw::Text::H3>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="Highlight lines 2 & 4, hasLineNumbers=false" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @language="javascript"
+        @hasLineNumbers={{false}}
+        @highlightLines="2, 4"
+        @value="import Application from '@ember/application';
+import Resolver from 'ember-resolver';
+import loadInitializers from 'ember-load-initializers';
+import config from 'dummy/config/environment';
+
+export default class App extends Application {
+  modulePrefix = config.modulePrefix;
+  podModulePrefix = config.podModulePrefix;
+  Resolver = Resolver;
+}
+
+loadInitializers(App, config.modulePrefix);"
+      />
+    </SG.Item>
+
+    <SG.Item @label="Highlight lines 6-10" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @language="javascript"
+        @highlightLines="6-10"
+        @value="import Application from '@ember/application';
+import Resolver from 'ember-resolver';
+import loadInitializers from 'ember-load-initializers';
+import config from 'dummy/config/environment';
+
+export default class App extends Application {
+  modulePrefix = config.modulePrefix;
+  podModulePrefix = config.podModulePrefix;
+  Resolver = Resolver;
+}
+
+loadInitializers(App, config.modulePrefix);"
+      />
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider @level="2" />
+
+  <Shw::Text::H3>Language</Shw::Text::H3>
+
+  <Shw::Grid @columns={{2}} @gap="2rem" as |SG|>
+    <SG.Item @label="no language (default)" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @value="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
+GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
+Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
+t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
+mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
+NrRFi9wrf+M7Q=="
+      />
+    </SG.Item>
+
+    <SG.Item @label="bash" @forceMinWidth={{true}}>
+      <Kds::CodeBlock @language="bash" @value="aws ec2 --region us-west-1 accept-vpc-peering-connection" />
+    </SG.Item>
+
+    <SG.Item @label="Go" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @language="go"
+        @value="package main
+import 'fmt'
+func main() {
+  fmt.Println('hello world')
+}"
+      />
+    </SG.Item>
+
+    <SG.Item @label="KhulnaSoft Configuration Language" @forceMinWidth={{true}}>
+      {{! template-lint-disable no-whitespace-for-layout }}
+      <Kds::CodeBlock
+        @language="hcl"
+        @value='variable "hvn_id" {
+  description = "The ID of the HCP HVN."
+  type        = string
+  default     = "learn-hcp-vault-hvn"
+}'
+      />
+      {{! template-lint-enable no-whitespace-for-layout }}
+    </SG.Item>
+
+    <SG.Item @label="JSON" @forceMinWidth={{true}}>
+      {{! template-lint-disable no-whitespace-for-layout }}
+      <Kds::CodeBlock
+        @language="json"
+        @value='{
+  "result": [
+    {
+      "expressions": [
+        {
+          "value": true,
+          "text": "data.allow",
+          "location": {
+            "row": 1,
+            "col": 1
+          }
+        }
+      ]
+    }
+  ]
+ }'
+      />
+      {{! template-lint-enable no-whitespace-for-layout }}
+    </SG.Item>
+
+    <SG.Item @label="log" @forceMinWidth={{true}}>
+      {{! template-lint-disable no-whitespace-for-layout }}
+      <Kds::CodeBlock
+        @language="log"
+        @value='web_1            | USE_L10N =3D True
+web_1            | USE_THOUSAND_SEPARATOR =3D False
+web_1            | USE_TZ =3D True
+web_1            | USE_X_FORWARDED_HOST =3D False
+web_1            | USE_X_FORWARDED_PORT =3D False
+web_1            | WSGI_APPLICATION =3D "context.wsgi.application"
+web_1            | X_FRAME_OPTIONS =3D "SAMEORIGIN"
+web_1            | YEAR_MONTH_FORMAT =3D "F Y"
+web_1            |
+web_1            |
+web_1            |
+web_1            | -------------------------------------------------------------------------------
+web_1            | ERROR Internal Server Error: /api/v1/rides/
+web_1            | Traceback (most recent call last):
+web_1            |   File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+web_1            |     response = get_response(request)
+web_1            |   File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+web_1            |     response = self.process_exception_by_middleware(e, request)
+web_1            |   File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+web_1            |     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+web_1            |   File "/usr/local/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+web_1            |     return view_func(*args, **kwargs)
+web_1            |   File "/usr/local/lib/python3.6/site-packages/rest_framework/viewsets.py", line 116, in view
+web_1            |     return self.dispatch(request, *args, **kwargs)
+web_1            |   File "/usr/local/lib/python3.6/site-packages/rest_framework/views.py", line 495, in dispatch
+web_1            |     response = self.handle_exception(exc)
+web_1            |   File "/usr/local/lib/python3.6/site-packages/rest_framework/views.py", line 455, in handle_exception
+web_1            |     self.raise_uncaught_exception(exc)
+web_1            |   File "/usr/local/lib/python3.6/site-packages/rest_framework/views.py", line 492, in dispatch
+web_1            |     response = handler(request, *args, **kwargs)
+web_1            |   File "/code/context/scooters/views.py", line 26, in list
+web_1            |     } for x in query.model.Context.sources]
+web_1            |   File "/code/context/scooters/views.py", line 26, in <listcomp>
+web_1            |     } for x in query.model.Context.sources]
+web_1            | TypeError: source() takes 1 positional argument but 2 were given
+web_1            | [13/Jun/2019 02:54:33] "GET /api/v1/rides/ HTTP/1.1" 500 90495'
+      />
+      {{! template-lint-enable no-whitespace-for-layout }}
+    </SG.Item>
+
+    <SG.Item @label="Shell" @forceMinWidth={{true}}>
+      <Kds::CodeBlock @language="shell-session" @value="$ brew tap khulnasoft/tap" />
+    </SG.Item>
+
+    <SG.Item @label="YAML" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @language="yaml"
+        @value="---
+result:
+- expressions:
+  - value: true
+    text: data.allow
+    location:
+      row: 1
+      col: 1
+"
+      />
+    </SG.Item>
+
+    <SG.Item @label="Ruby" @forceMinWidth={{true}}>
+      <Kds::CodeBlock
+        @language="ruby"
+        @value='Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/noble64"
+end'
+      />
+    </SG.Item>
+
+    <SG.Item @label="Invalid language (foo)" @forceMinWidth={{true}}>
+      {{! template-lint-disable no-whitespace-for-layout }}
+      <Kds::CodeBlock
+        @language="foo"
+        @value='variable "hvn_id" {
+  description = "The ID of the HCP HVN."
+  type        = string
+  default     = "learn-hcp-vault-hvn"
+}'
+      />
+      {{! template-lint-enable no-whitespace-for-layout }}
+    </SG.Item>
+  </Shw::Grid>
+
+  <Shw::Divider />
+
+  <Shw::Text::H2>CodeBlock::CopyButton</Shw::Text::H2>
+
+  <Shw::Text::H3>States</Shw::Text::H3>
+
+  <Shw::Grid @columns={{6}} as |SG|>
+    {{#each @model.STATES as |state|}}
+      <SG.Item @label={{capitalize state}} class="shw-component-code-block-copy-button">
+        <Kds::CodeBlock::CopyButton
+          mock-state-value={{state}}
+          @textToCopy="copy me"
+          class="kds-code-block--theme-dark"
+        />
+      </SG.Item>
+    {{/each}}
+    {{#let (array "success" "error") as |statuses|}}
+      {{#each statuses as |status|}}
+        <SG.Item @label={{capitalize status}} class="shw-component-code-block-copy-button">
+          <Kds::CodeBlock::CopyButton
+            @status={{status}}
+            mock-copy-status={{status}}
+            @textToCopy="copy me"
+            class="kds-code-block--theme-dark"
+          />
+        </SG.Item>
+      {{/each}}
+    {{/let}}
+  </Shw::Grid>
+
+  <Shw::Divider />
+
+  <Shw::Text::H2>Demo</Shw::Text::H2>
+
+  <Shw::Flex @direction="column" @gap="2rem" as |SF|>
+    <SF.Item @label="Within Tabs">
+      <Kds::Tabs {{style width="400px"}} as |T|>
+        <T.Tab>JavaScript</T.Tab>
+        <T.Tab>Go</T.Tab>
+        <T.Tab>Lorem</T.Tab>
+
+        <T.Panel>
+          <Kds::CodeBlock
+            @language="javascript"
+            @highlightLines="2"
+            @value="let codeLang='JavaScript';
+console.log(`I am ${codeLang} code`);"
+          />
+        </T.Panel>
+        <T.Panel>
+          <Kds::CodeBlock
+            @language="go"
+            @highlightLines="2, 4"
+            @hasLineWrapping={{true}}
+            @value="package main
+import 'fmt'
+func main() {
+  res = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+  fmt.Println(res)
+}"
+          />
+        </T.Panel>
+        <T.Panel>
+          <Kds::CodeBlock @language="shell-session" @value="$ brew tap khulnasoft/tap" />
+        </T.Panel>
+      </Kds::Tabs>
+
+    </SF.Item>
+    <SF.Item @label="Within a Dropdown">
+      <Kds::Dropdown @listPosition="bottom-left" as |dd|>
+        <dd.ToggleButton @text="Open menu" />
+        <dd.Generic>
+          <Kds::CodeBlock
+            @hasCopyButton={{true}}
+            @language="go"
+            @highlightLines="2, 4"
+            @value="package main
+import 'fmt'
+func main() {
+  fmt.Println('hello world')
+}"
+          />
+        </dd.Generic>
+      </Kds::Dropdown>
+    </SF.Item>
+    <SF.Item @label="Within a Modal">
+      <Kds::Button @color="secondary" @text="Open modal" {{on "click" this.activateModal}} />
+
+      {{! template-lint-disable no-autofocus-attribute }}
+      {{#if this.isModalActive}}
+        <Kds::Modal id="test-copy-button-modal" @onClose={{this.deactivateModal}} as |M|>
+          <M.Header>
+            Lorem ipsum dolor
+          </M.Header>
+          <M.Body>
+            <Kds::CodeBlock
+              @hasCopyButton={{true}}
+              @language="go"
+              @highlightLines="2, 4"
+              @value="package main
+import 'fmt'
+func main() {
+  fmt.Println('hello world')
+}"
+            />
+          </M.Body>
+          <M.Footer as |F|>
+            <Kds::ButtonSet>
+              <Kds::Button type="submit" @text="OK" {{on "click" this.deactivateModal}} />
+              <Kds::Button type="button" @text="Cancel" @color="secondary" {{on "click" F.close}} />
+            </Kds::ButtonSet>
+          </M.Footer>
+        </Kds::Modal>
+      {{/if}}
+    </SF.Item>
+  </Shw::Flex>
+</section>

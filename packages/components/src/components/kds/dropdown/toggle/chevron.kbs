@@ -1,0 +1,7 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class="kds-dropdown-toggle-chevron">
+  <Kds::Icon @name="chevron-down" />
+</div>

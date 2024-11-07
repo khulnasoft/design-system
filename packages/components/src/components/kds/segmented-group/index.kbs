@@ -1,0 +1,15 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class="kds-segmented-group" ...attributes>
+  {{yield
+    (hash
+      Button=(component "kds/button")
+      Dropdown=(component "kds/dropdown")
+      Select=(component "kds/form/select/base")
+      TextInput=(component "kds/form/text-input/base")
+      Generic=(component "kds/yield")
+    )
+  }}
+</div>

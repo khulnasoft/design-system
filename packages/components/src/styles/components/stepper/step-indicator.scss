@@ -1,0 +1,231 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// STEPPER > INDICATOR > STEP
+//
+
+$kds-stepper-indicator-step-statuses: (
+  "incomplete",
+  "progress",
+  "processing",
+  "complete"
+);
+$kds-stepper-indicator-step-size: 24px;
+
+// Base stepper indicator styling
+.kds-stepper-indicator-step {
+  position: relative;
+  width: $kds-stepper-indicator-step-size;
+  height: $kds-stepper-indicator-step-size;
+}
+
+.kds-stepper-indicator-step__svg-hexagon {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 1px 1px rgba(101, 106, 118, 5%));
+}
+
+.kds-stepper-indicator-step__status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kds-stepper-indicator-step__icon {
+  width: 12px;
+  height: 12px;
+}
+
+.kds-stepper-indicator-step__text {
+  width: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+}
+
+// STATUS
+
+// Non-interactive (default)
+
+// Non-interactive props that correspond with status
+$kds-stepper-indicator-step-non-interactive-props: (
+  "incomplete": (
+    "text-color": var(--token-color-foreground-strong),
+    "fill-color": var(--token-color-surface-faint),
+    "stroke-color": var(--token-color-foreground-strong),
+  ),
+  "progress": (
+    "text-color": var(--token-color-foreground-high-contrast),
+    "fill-color": var(--token-color-foreground-strong),
+    "stroke-color": var(--token-color-foreground-strong),
+  ),
+  "processing": (
+    "text-color": var(--token-color-foreground-high-contrast),
+    "fill-color": var(--token-color-foreground-strong),
+    "stroke-color": var(--token-color-foreground-strong),
+  ),
+  "complete": (
+    "text-color": var(--token-color-foreground-high-contrast),
+    "fill-color": var(--token-color-foreground-strong),
+    "stroke-color": var(--token-color-foreground-strong),
+  ),
+);
+
+@each $status in $kds-stepper-indicator-step-statuses {
+  // For each status of the non-interactive variant, set the text color, svg fill, and svg stroke colors based on $non-interactive-props
+  .kds-stepper-indicator-step--status-#{$status} {
+    .kds-stepper-indicator-step__status {
+      color: map-get(
+        $kds-stepper-indicator-step-non-interactive-props,
+        $status,
+        "text-color"
+      );
+    }
+
+    .kds-stepper-indicator-step__svg-hexagon path {
+      fill: map-get(
+        $kds-stepper-indicator-step-non-interactive-props,
+        $status,
+        "fill-color"
+      );
+      stroke: map-get(
+        $kds-stepper-indicator-step-non-interactive-props,
+        $status,
+        "stroke-color"
+      );
+    }
+  }
+}
+
+// Interactive
+
+// Determine states/status and corresponding styles
+$kds-stepper-indicator-step-status-props: (
+  "incomplete": (
+    "text-color-default": var(--token-color-foreground-primary),
+    "fill-color-default": var(--token-color-surface-interactive),
+    "stroke-color-default": var(--token-color-border-strong),
+    "fill-color-hover": var(--token-color-surface-interactive-hover),
+    "fill-color-active": var(--token-color-surface-interactive-active),
+  ),
+  "progress": (
+    "text-color-default": var(--token-color-foreground-high-contrast),
+    "fill-color-default": var(--token-color-palette-blue-200),
+    "stroke-color-default": var(--token-color-palette-blue-300),
+    "fill-color-hover": var(--token-color-palette-blue-300),
+    "stroke-color-hover": var(--token-color-palette-blue-400),
+    "fill-color-active": var(--token-color-palette-blue-400),
+    "stroke-color-active": var(--token-color-palette-blue-400),
+  ),
+  "processing": (
+    "text-color-default": var(--token-color-foreground-high-contrast),
+    "fill-color-default": var(--token-color-palette-blue-200),
+    "stroke-color-default": var(--token-color-palette-blue-300),
+    "fill-color-hover": var(--token-color-palette-blue-300),
+    "stroke-color-hover": var(--token-color-palette-blue-400),
+    "fill-color-active": var(--token-color-palette-blue-400),
+    "stroke-color-active": var(--token-color-palette-blue-400),
+  ),
+  "complete": (
+    "text-color-default": var(--token-color-palette-blue-200),
+    "fill-color-default": var(--token-color-surface-action),
+    "stroke-color-default": var(--token-color-palette-blue-300),
+    "text-color-hover": var(--token-color-palette-blue-300),
+    "fill-color-hover": var(--token-color-palette-blue-100),
+    "stroke-color-hover": var(--token-color-palette-blue-400),
+    "text-color-active": var(--token-color-palette-blue-400),
+    "fill-color-active": var(--token-color-palette-blue-100),
+    "stroke-color-active": var(--token-color-palette-blue-400),
+  ),
+);
+
+.kds-stepper-indicator-step--is-interactive {
+  cursor: pointer;
+
+  @each $status in $kds-stepper-indicator-step-statuses {
+    // For each status set the text, svg fill, and svg stroke color based on $kds-stepper-indicator-step-status-props
+    &.kds-stepper-indicator-step--status-#{$status} {
+      .kds-stepper-indicator-step__status {
+        color: map-get(
+          $kds-stepper-indicator-step-status-props,
+          $status,
+          "text-color-default"
+        );
+      }
+
+      .kds-stepper-indicator-step__svg-hexagon path {
+        fill: map-get(
+          $kds-stepper-indicator-step-status-props,
+          $status,
+          "fill-color-default"
+        );
+        stroke: map-get(
+          $kds-stepper-indicator-step-status-props,
+          $status,
+          "stroke-color-default"
+        );
+      }
+
+      &:hover,
+      &.mock-hover {
+        .kds-stepper-indicator-step__status {
+          color: map-get(
+            $kds-stepper-indicator-step-status-props,
+            $status,
+            "text-color-hover"
+          );
+        }
+
+        .kds-stepper-indicator-step__svg-hexagon {
+          path {
+            fill: map-get(
+              $kds-stepper-indicator-step-status-props,
+              $status,
+              "fill-color-hover"
+            );
+            stroke: map-get(
+              $kds-stepper-indicator-step-status-props,
+              $status,
+              "stroke-color-hover"
+            );
+          }
+        }
+      }
+
+      &:active,
+      &.mock-active {
+        .kds-stepper-indicator-step__status {
+          color: map-get(
+            $kds-stepper-indicator-step-status-props,
+            $status,
+            "text-color-active"
+          );
+        }
+
+        .kds-stepper-indicator-step__svg-hexagon {
+          path {
+            fill: map-get(
+              $kds-stepper-indicator-step-status-props,
+              $status,
+              "fill-color-active"
+            );
+            stroke: map-get(
+              $kds-stepper-indicator-step-status-props,
+              $status,
+              "stroke-color-active"
+            );
+          }
+        }
+      }
+    }
+  }
+}

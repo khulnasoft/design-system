@@ -1,0 +1,14 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::AppFooter::Item>
+  <ul class="kds-app-footer__legal-links" aria-label={{this.ariaLabel}} ...attributes>
+    <Kds::AppFooter::Link @href={{this.hrefForSupport}}>Support</Kds::AppFooter::Link>
+    <Kds::AppFooter::Link @href={{this.hrefForTerms}}>Terms</Kds::AppFooter::Link>
+    <Kds::AppFooter::Link @href={{this.hrefForPrivacy}}>Privacy</Kds::AppFooter::Link>
+    <Kds::AppFooter::Link @href={{this.hrefForSecurity}}>Security</Kds::AppFooter::Link>
+    <Kds::AppFooter::Link @href={{this.hrefForAccessibility}}>Accessibility</Kds::AppFooter::Link>
+  </ul>
+</Kds::AppFooter::Item>

@@ -1,0 +1,38 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div
+  class={{this.classNames}}
+  role={{this.role}}
+  aria-live={{if this.role "polite"}}
+  aria-labelledby={{this.ariaLabelledBy}}
+  {{did-insert this.didInsert}}
+  ...attributes
+>
+  {{#if this.icon}}
+    <div class="kds-alert__icon">
+      <Kds::Icon @name={{this.icon}} @size={{this.iconSize}} @stretched={{true}} />
+    </div>
+  {{/if}}
+
+  <div class="kds-alert__content">
+    <div class="kds-alert__text {{if (eq @type 'compact') 'kds-typography-body-100' 'kds-typography-body-200'}}">
+      {{yield (hash Title=(component "kds/alert/title"))}}
+      {{yield (hash Description=(component "kds/alert/description"))}}
+    </div>
+
+    <div class="kds-alert__actions">
+      {{yield
+        (hash
+          Button=(component "kds/button" size="small") LinkStandalone=(component "kds/link/standalone" size="small")
+        )
+      }}
+    </div>
+    {{yield (hash Generic=(component "kds/yield"))}}
+  </div>
+
+  {{#if this.onDismiss}}
+    <Kds::DismissButton class="kds-alert__dismiss" {{on "click" this.onDismiss}} />
+  {{/if}}
+</div>

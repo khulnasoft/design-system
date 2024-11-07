@@ -1,0 +1,16 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<button
+  type="button"
+  class={{this.classNames}}
+  {{kds-clipboard text=@textToCopy onSuccess=this.onSuccess onError=this.onError}}
+  aria-label={{concat "copy " @textToCopy}}
+  ...attributes
+>
+  <Kds::Text::Code class="kds-copy-snippet__text" @tag="span" @size="100">
+    {{this.textToShow}}
+  </Kds::Text::Code>
+  <Kds::Icon @name={{this.icon}} class="kds-copy-snippet__icon" />
+</button>

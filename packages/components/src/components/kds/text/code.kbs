@@ -1,0 +1,13 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Text
+  @group="code"
+  @size={{this.size}}
+  @weight={{this.weight}}
+  @align={{@align}}
+  @color={{@color}}
+  @tag={{@tag}}
+  ...attributes
+>{{yield}}</Kds::Text>

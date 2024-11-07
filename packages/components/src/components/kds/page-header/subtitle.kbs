@@ -1,0 +1,11 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Text::Body
+  class="kds-page-header__subtitle"
+  @tag="p"
+  @size="200"
+  @color="faint"
+  ...attributes
+>{{yield}}</Kds::Text::Body>

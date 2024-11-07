@@ -1,0 +1,41 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+.kds-icon {
+  display: block;
+}
+
+.kds-icon--is-inline {
+  display: inline-block;
+}
+
+@keyframes kds-icon-animation-rotation {
+  to {transform: rotate(360deg);}
+}
+
+.kds-icon--animation-loading {
+  animation: kds-icon-animation-rotation 9s linear infinite;
+}
+
+.kds-icon--animation-running {
+  animation: kds-icon-animation-rotation 9s linear infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .kds-icon--animation-loading {
+    animation-duration: .7s;
+  }
+
+  .kds-icon--animation-running {
+    animation-duration: 1s;
+  }
+}
+
+.flight-sprite-container {
+  position: absolute;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}

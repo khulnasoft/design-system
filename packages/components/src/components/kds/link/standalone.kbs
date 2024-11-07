@@ -1,0 +1,28 @@
+<Kds::Interactive
+  class={{this.classNames}}
+  @current-when={{@current-when}}
+  @models={{kds-link-to-models @model @models}}
+  @query={{kds-link-to-query @query}}
+  @replace={{@replace}}
+  @route={{@route}}
+  @isRouteExternal={{@isRouteExternal}}
+  @href={{@href}}
+  @isHrefExternal={{@isHrefExternal}}
+  ...attributes
+>
+  {{#if (eq this.iconPosition "leading")}}
+    <span class="kds-link-standalone__icon">
+      <Kds::Icon @name={{this.icon}} @size={{this.iconSize}} @stretched={{true}} />
+    </span>
+    <span class="kds-link-standalone__text">
+      {{this.text}}
+    </span>
+  {{else}}
+    <span class="kds-link-standalone__text">
+      {{this.text}}
+    </span>
+    <span class="kds-link-standalone__icon">
+      <Kds::Icon @name={{this.icon}} @size={{this.iconSize}} @stretched={{true}} />
+    </span>
+  {{/if}}
+</Kds::Interactive>

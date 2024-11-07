@@ -1,0 +1,13 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::SideNav::List::Item>
+  <div
+    class="kds-side-nav__list-title kds-typography-body-100 kds-font-weight-semibold"
+    id={{this.titleId}}
+    {{did-insert this.didInsertTitle}}
+    ...attributes
+  >{{~yield~}}</div>
+</Kds::SideNav::List::Item>

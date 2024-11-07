@@ -1,0 +1,7 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Dropdown as |dd|>
+  <dd.Interactive @href="#" @text="Edit" />
+</Kds::Dropdown>

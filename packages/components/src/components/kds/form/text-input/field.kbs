@@ -1,0 +1,43 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Form::Field
+  @layout="vertical"
+  @extraAriaDescribedBy={{@extraAriaDescribedBy}}
+  @isRequired={{@isRequired}}
+  @isOptional={{@isOptional}}
+  @id={{@id}}
+  as |F|
+>
+  {{! Notice: the order of the elements is not relevant here, because is controlled at "Kds::Form::Field" component level }}
+  {{yield (hash Label=F.Label HelperText=F.HelperText Error=F.Error)}}
+  {{#if F.CharacterCount}}
+    {{yield (hash CharacterCount=(component F.CharacterCount value=@value))}}
+  {{/if}}
+  <F.Control>
+    <div class="kds-form-text-input__wrapper" {{style width=@width}}>
+      <Kds::Form::TextInput::Base
+        @type={{this.type}}
+        @value={{@value}}
+        @isInvalid={{@isInvalid}}
+        @isLoading={{@isLoading}}
+        @hasVisibilityToggle={{this.showVisibilityToggle}}
+        required={{@isRequired}}
+        ...attributes
+        id={{F.id}}
+        aria-describedby={{F.ariaDescribedBy}}
+      />
+      {{#if this.showVisibilityToggle}}
+        <Kds::Form::VisibilityToggle
+          @isVisible={{this.isPasswordMasked}}
+          @ariaLabel={{this.visibilityToggleAriaLabel}}
+          @ariaMessageText={{this.visibilityToggleAriaMessageText}}
+          aria-controls={{F.id}}
+          class="kds-form-text-input__visibility-toggle"
+          {{on "click" this.onClickTogglePasswordReadability}}
+        />
+      {{/if}}
+    </div>
+  </F.Control>
+</Kds::Form::Field>

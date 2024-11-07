@@ -1,0 +1,18 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<th class={{this.classNames}} {{style width=@width minWidth=@width}} ...attributes scope={{(or @scope "col")}}>
+  {{#if @isVisuallyHidden}}
+    <span class="sr-only">{{yield}}</span>
+  {{else}}
+    {{#if @tooltip}}
+      <div class="kds-table__th-content">
+        <span id={{this.labelId}} class="kds-typography-body-200 kds-font-weight-semibold">{{yield}}</span>
+        <Kds::Table::ThButtonTooltip @tooltip={{@tooltip}} @labelId={{this.labelId}} />
+      </div>
+    {{else}}
+      <span class="kds-typography-body-200 kds-font-weight-semibold">{{yield}}</span>
+    {{/if}}
+  {{/if}}
+</th>

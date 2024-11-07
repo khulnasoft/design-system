@@ -1,0 +1,22 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{!
+  THIS SUBCOMPONENT IS NOW DEPRECATED
+}}
+<Kds::Interactive
+  class="kds-side-nav__icon-button"
+  @current-when={{@current-when}}
+  @models={{kds-link-to-models @model @models}}
+  @query={{kds-link-to-query @query}}
+  @replace={{@replace}}
+  @route={{@route}}
+  @isRouteExternal={{@isRouteExternal}}
+  @href={{@href}}
+  @isHrefExternal={{@isHrefExternal}}
+  ...attributes
+  aria-label={{this.ariaLabel}}
+>
+  <Kds::Icon @name={{@icon}} @stretched={{true}} @size="24" />
+</Kds::Interactive>

@@ -1,0 +1,28 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// COMPONENTS > TABLE
+
+#show-content-components-table {
+  .doc-table-valign-demo {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .doc-table-scrollable-wrapper {
+    overflow-x: auto;
+  }
+
+  .doc-table-max-content-width {
+    width: max-content;
+  }
+
+  .doc-table-multiselect-with-pagination-demo {
+    .kds-table + .kds-pagination {
+      margin-top: 16px;
+    }
+  }
+}

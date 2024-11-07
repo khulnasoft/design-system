@@ -1,0 +1,8 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Dropdown as |dd|>
+  <dd.Title @text="Title text" />
+  <dd.Interactive @href="#">{{if this.conditional this.testValue1 this.testValue2}}</dd.Interactive>
+</Kds::Dropdown>

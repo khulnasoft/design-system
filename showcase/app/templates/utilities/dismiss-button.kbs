@@ -1,0 +1,22 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "DismissButton Component"}}
+
+<Shw::Text::H1>DismissButton</Shw::Text::H1>
+
+<section data-test-percy>
+
+  <Shw::Text::H2>States</Shw::Text::H2>
+
+  <Shw::Grid @columns={{4}} {{style width="fit-content"}} as |SG|>
+    {{#each @model.STATES as |state|}}
+      <SG.Item @label={{capitalize state}} class="shw-utility-dismiss-button-sample-state">
+        <Kds::DismissButton mock-state-value={{state}} />
+      </SG.Item>
+    {{/each}}
+  </Shw::Grid>
+
+</section>

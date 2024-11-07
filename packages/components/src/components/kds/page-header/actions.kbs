@@ -1,0 +1,5 @@
+{{!
+Copyright (c) KhulnaSoft, Ltd.
+SPDX-License-Identifier: MPL-2.0
+}}
+<div class="kds-page-header__actions" ...attributes>{{yield}}</div>

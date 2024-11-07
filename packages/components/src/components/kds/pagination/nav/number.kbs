@@ -1,0 +1,17 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Interactive
+  class={{this.classNames}}
+  @route={{@route}}
+  @query={{kds-link-to-query @query}}
+  @models={{kds-link-to-models @model @models}}
+  @replace={{@replace}}
+  {{on "click" this.onClick}}
+  ...attributes
+  aria-current={{if @isSelected "page" null}}
+>
+  <Kds::Text::Body @tag="span" @size="100" @weight="medium"><span class="sr-only">page
+    </span>{{this.page}}</Kds::Text::Body>
+</Kds::Interactive>

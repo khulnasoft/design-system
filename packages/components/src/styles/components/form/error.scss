@@ -1,0 +1,30 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// FORM > ERROR
+//
+
+.kds-form-error {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: var(--token-form-error-color);
+}
+
+.kds-form-error__icon {
+  flex: none;
+  width: var(--token-form-error-icon-size);
+  height: var(--token-form-error-icon-size);
+  margin: 2px 0 2px 0;
+}
+
+.kds-form-error__content {
+  flex: 1 1 auto;
+}
+
+.kds-form-error__message {
+  margin: 0;
+}

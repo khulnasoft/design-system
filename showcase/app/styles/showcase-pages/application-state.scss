@@ -1,0 +1,45 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// APPLICATION-STATE
+
+body.application-state {
+  .shw-component-application-state-button-highlight {
+    margin: 24px 0;
+  }
+
+  .shw-component-application-state-layout-highlight {
+    .shw-flex__item {
+      outline: 1px dashed #78909c;
+    }
+
+    .kds-application-state {
+      // named color usage purely for layout testing
+      outline: 2px dotted magenta;
+    }
+
+    .kds-application-state__media {
+      // named color usage purely for layout testing
+      outline: 1px solid green;
+    }
+
+    .kds-application-state__header,
+    .kds-application-state__body,
+    .kds-application-state__footer {
+      // named color usage purely for layout testing
+      outline: 1px solid cyan;
+    }
+  }
+
+  .shw-component-application-state-avatar {
+    width: 125px;
+    height: 125px;
+    border-radius: 100%;
+  }
+
+  .shw-component-application-state-banner {
+    width: 680px;
+  }
+}

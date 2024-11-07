@@ -1,0 +1,49 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// MASKED-INPUT
+//
+
+$kds-form-masked-input-button-size: 24px;
+
+.kds-form-masked-input {
+  position: relative;
+  display: grid;
+  grid-template-areas: "input copy-button";
+  grid-template-columns: 1fr auto;
+  width: 100%;
+
+  .kds-form-masked-input__control {
+    grid-area: input;
+    padding-right: calc(var(--token-form-control-padding) + $kds-form-masked-input-button-size);
+    scrollbar-width: thin;
+  }
+}
+
+.kds-form-masked-input--is-masked {
+  .kds-form-masked-input__control {
+    -webkit-text-security: disc;
+  }
+}
+
+.kds-form-masked-input--is-not-masked {
+  .kds-form-masked-input__control {
+    -webkit-text-security: none;
+  }
+}
+
+.kds-form-masked-input__toggle-button {
+  position: absolute;
+  top: calc(var(--token-form-control-padding) - var(--token-form-control-border-width));
+  right: calc(var(--token-form-control-padding) - var(--token-form-control-border-width));
+  grid-area: input;
+}
+
+.kds-form-masked-input__copy-button {
+  grid-area: copy-button;
+  align-self: flex-start;
+  margin-left: 8px;
+}

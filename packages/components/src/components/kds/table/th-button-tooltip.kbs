@@ -1,0 +1,15 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<button
+  type="button"
+  class={{this.classNames}}
+  {{kds-tooltip this.tooltip}}
+  aria-labelledby="{{this.prefixLabelId}} {{@labelId}}"
+  ...attributes
+>
+  <span id={{this.prefixLabelId}} class="kds-table__th-button-aria-label-hidden-segment">More information for</span>
+  <Kds::Icon @name="info" />
+</button>

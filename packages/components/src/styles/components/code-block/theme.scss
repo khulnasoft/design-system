@@ -1,0 +1,164 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// THEMING
+
+.kds-code-block--theme-dark {
+  // COLORS
+
+  // Descriptive color names:
+
+  --kds-code-block-color-blue: #2d8eff;
+  --kds-code-block-color-cyan: #32fff7;
+  --kds-code-block-color-green: #86ff13;
+  --kds-code-block-color-orange: #ffa800;
+  --kds-code-block-color-purple: #c76cff;
+  --kds-code-block-color-red: #ff3b20;
+
+  // Semantic color names:
+
+  // Base UI colors:
+  --kds-code-block-color-foreground-primary: #d5d7db;
+  --kds-code-block-color-foreground-faint: #b2b6bd;
+  --kds-code-block-color-surface-primary: #0d0e12;
+  --kds-code-block-color-surface-faint: #15181e;
+  // status ----
+  --kds-code-block-color-foreground-success: #009241;
+  --kds-code-block-color-foreground-critical: #ef3016;
+  // interactive ---
+  --kds-code-block-color-foreground-interactive: #dedfe3;
+  --kds-code-block-color-foreground-interactive-hover: #fff;
+  --kds-code-block-color-foreground-interactive-active: #f1f2f3;
+  --kds-code-block-color-surface-interactive-active: #2b303c;
+  // actions ---
+  --kds-code-block-color-foreground-action: #2b89ff;
+  --kds-code-block-color-foreground-action-hover: #389aff;
+  --kds-code-block-color-foreground-action-active: #4ca1ff;
+  // borders
+  --kds-code-block-color-border-strong: rgba(178, 182, 189, 40%); // #b2b6bd66
+  --kds-code-block-color-border-primary: rgba(178, 182, 189, 20%); // #b2b6bd33
+  // selection
+  --kds-code-block-color-foreground-selection: #0d0e12;
+  --kds-code-block-color-surface-selection: #86ff13;
+
+  // CodeBlock UI:
+  // lines of code - highlighted ----
+  --kds-code-block-color-line-highlight: rgba(0, 74, 222, 20%);
+  --kds-code-block-color-line-highlight-border: #1555d4;
+
+  // Syntax highlighting tokens:
+  // general ----
+  --kds-code-block-color-token: var(--kds-code-block-color-foreground-primary);
+  // specific ----
+  --kds-code-block-color-atrule: var(--kds-code-block-color-blue);
+  --kds-code-block-color-code-block-attr-name: var(--kds-code-block-color-blue);
+  --kds-code-block-color-attr-value: var(--kds-code-block-color-blue);
+  --kds-code-block-color-boolean: var(--kds-code-block-color-purple);
+  --kds-code-block-color-builtin: var(--kds-code-block-color-orange);
+  --kds-code-block-color-char: var(--kds-code-block-color-orange);
+  --kds-code-block-color-class-name: var(--kds-code-block-color-blue);
+  --kds-code-block-color-comment: var(--kds-code-block-color-foreground-faint);
+  --kds-code-block-color-control: var(--kds-code-block-color-cyan);
+  --kds-code-block-color-constant: var(--kds-code-block-color-purple);
+  --kds-code-block-color-deleted: var(--kds-code-block-color-red);
+  --kds-code-block-color-entity: var(--kds-code-block-color-green);
+  --kds-code-block-color-function: var(--kds-code-block-color-blue);
+  --kds-code-block-color-important: var(--kds-code-block-color-red);
+  --kds-code-block-color-keyword: var(--kds-code-block-color-green);
+  --kds-code-block-color-namespace: var(--kds-code-block-color-red);
+  --kds-code-block-color-number: var(--kds-code-block-color-purple);
+  --kds-code-block-color-operator: var(--kds-code-block-color-cyan);
+  --kds-code-block-color-prolog: var(--kds-code-block-color-foreground-primary);
+  --kds-code-block-color-property: var(--kds-code-block-color-blue);
+  --kds-code-block-color-punctuation: var(--kds-code-block-color-foreground-primary);
+  --kds-code-block-color-regex: var(--kds-code-block-color-orange);
+  --kds-code-block-color-script: var(--kds-code-block-color-foreground-primary);
+  --kds-code-block-color-selector: var(--kds-code-block-color-green);
+  --kds-code-block-color-string: var(--kds-code-block-color-orange);
+  --kds-code-block-color-symbol: var(--kds-code-block-color-orange);
+  --kds-code-block-color-tag: var(--kds-code-block-color-green);
+  --kds-code-block-color-url: var(--kds-code-block-color-cyan);
+  // language-scoped:
+  // css ----
+  --kds-code-block-color-lang-css: var(--kds-code-block-color-purple);
+  --kds-code-block-color-lang-css-token: var(--kds-code-block-color-green);
+  --kds-code-block-color-lang-css-atrule: var(--kds-code-block-color-purple);
+  --kds-code-block-color-lang-css-entity: var(--kds-code-block-color-blue);
+  --kds-code-block-color-lang-css-function: var(--kds-code-block-color-cyan);
+  --kds-code-block-color-lang-css-property: var(--kds-code-block-color-cyan);
+  --kds-code-block-color-lang-css-punctuation: var(--kds-code-block-color-orange);
+  --kds-code-block-color-lang-css-not-atrule: var(--kds-code-block-color-foreground-primary);
+  --kds-code-block-color-lang-css-selector: var(--kds-code-block-color-blue);
+  --kds-code-block-color-lang-css-url: var(--kds-code-block-color-orange);
+  // javascript ----
+  --kds-code-block-color-lang-js-constant: var(--kds-code-block-color-orange);
+  // markup/html ----
+  --kds-code-block-color-lang-markup-attr-value: var(--kds-code-block-color-yellow);
+  --kds-code-block-color-lang-markup-entity-named: var(--kds-code-block-color-purple);
+  --kds-code-block-color-lang-markup-entity-not-named: var(--kds-code-block-color-green);
+}
+
+
+.kds-code-block {
+  // Syntax highlighting ----
+
+  // General tokens
+  .token { color: var(--kds-code-block-color-token); }
+
+  .token.atrule { color: var(--kds-code-block-color-atrule); }
+  .token.attr-name { color: var(--kds-code-block-color-attr-name); }
+  .token.attr-value { color: var(--kds-code-block-color-attr-value); }
+  .token.boolean { color: var(--kds-code-block-color-boolean); }
+  .token.builtin { color: var(--kds-code-block-color-builtin); }
+  .token.char { color: var(--kds-code-block-color-char); }
+  .token.class-name { color: var(--kds-code-block-color-class-name); }
+  .token.comment { color: var(--kds-code-block-color-comment); }
+  .token.constant { color: var(--kds-code-block-color-constant); }
+  .token.deleted { color: var(--kds-code-block-color-deleted); }
+  .token.entity { color: var(--kds-code-block-color-entity); }
+  .token.function { color: var(--kds-code-block-color-function); }
+  .token.important { color: var(--kds-code-block-color-important); }
+  .token.keyword { color: var(--kds-code-block-color-keyword); }
+  .token.namespace { color: var(--kds-code-block-color-namespace); }
+  .token.number { color: var(--kds-code-block-color-number); }
+  .token.operator { color: var(--kds-code-block-color-operator); }
+  .token.punctuation { color: var(--kds-code-block-color-punctuation); }
+  .token.prolog { color: var(--kds-code-block-color-prolog); }
+  .token.property { color: var(--kds-code-block-color-property); }
+  .token.regex { color: var(--kds-code-block-color-regex); }
+  .token.script { color: var(--kds-code-block-color-script); }
+  .token.selector { color: var(--kds-code-block-color-selector); }
+  .token.string { color: var(--kds-code-block-color-string); }
+  .token.symbol { color: var(--kds-code-block-color-symbol); }
+  .token.tag { color: var(--kds-code-block-color-tag); }
+  .token.url { color: var(--kds-code-block-color-url); }
+  .token.variable { color: var(--kds-code-block-color-comment); }
+
+  // Language-specific
+  .language-css {
+    color: var(--kds-code-block-color-lang-css);
+
+    .token { color: var(--kds-code-block-color-lang-css-token); }
+    .token.atrule { color: var(--kds-code-block-color-lang-css-atrule); }
+    .token.rule:not(.atrule) { color: var(--kds-code-block-color-lang-css-not-atrule); }
+    .token.entity { color: var(--kds-code-block-color-lang-css-entity); }
+    .token.function { color: var(--kds-code-block-color-lang-css-function); }
+    .token.property { color: var(--kds-code-block-color-lang-css-property); }
+    .token.punctuation { color: var(--kds-code-block-color-lang-css-punctuatione); }
+    .token.selector { color: var(--kds-code-block-color-lang-css-selector); }
+    .token.url { color: var(--kds-code-block-color-lang-css-url); }
+  }
+
+  .language-javascript {
+    .token.constant { color: var(--kds-code-block-color-lang-js-constant); }
+  }
+
+  .language-markup,
+  .language-html {
+    .token.attr-value { color: var(--kds-code-block-color-lang-markup-attr-value); }
+    .token.entity.named-entity { color: var(--kds-code-block-color-lang-markup-entity-named); }
+    .token.entity:not(.named-entity) { color: var(--kds-code-block-color-lang-markup-entity-not-named); }
+  }
+}

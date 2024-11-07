@@ -1,0 +1,93 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// KDS COMPONENTS
+
+@import "@khulnasoft/design-system-components";
+@import "@khulnasoft/design-system-power-select-overrides";
+
+// Tokens (CSS props)
+@import "tokens";
+
+// Global declarations
+@import "global";
+@import "typography";
+@import "spacing";
+
+// "Doc" components
+@import "doc-components";
+
+// Markdown
+@import "markdown";
+
+// Page-specific declarations
+@import "pages/application"; // main application frame
+@import "pages/home"; // homepage (index)
+@import "pages/about/principles";
+@import "pages/foundations/landing";
+@import "pages/foundations/icon";
+@import "pages/foundations/typography";
+@import "pages/components/accordion";
+@import "pages/components/alert";
+@import "pages/components/app-footer";
+@import "pages/components/application-state";
+@import "pages/components/button";
+@import "pages/components/code-block";
+@import "pages/components/copy-snippet";
+@import "pages/components/copy-button";
+@import "pages/components/dropdown";
+@import "pages/components/flyout";
+@import "pages/components/landing";
+@import "pages/components/modal";
+@import "pages/components/pagination";
+@import "pages/components/radio-card";
+@import "pages/components/rich-tooltip";
+@import "pages/components/side-nav";
+@import "pages/components/super-select";
+@import "pages/components/table";
+@import "pages/components/tabs";
+@import "pages/layouts/app-frame";
+@import "pages/whats-new/changelog";
+@import "pages/patterns/table-multi-select";
+@import "pages/patterns/filter-patterns";
+@import "pages/utilities/dialog-primitive";
+
+// Third-party declarations
+@import "prism-dracula";
+@import "ember-power-select";
+
+// GLOBALS
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.doc-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+}

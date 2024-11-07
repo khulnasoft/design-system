@@ -1,0 +1,28 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<header class="kds-page-header" ...attributes>
+  {{yield (hash Breadcrumb=(component "kds/yield"))}}
+  <div class="kds-page-header__body">
+    {{yield (hash IconTile=(component "kds/icon-tile" size="medium"))}}
+    <div class="kds-page-header__main">
+      <div class="kds-page-header__content">
+        <div class="kds-page-header__title-wrapper">
+          {{yield (hash Title=(component "kds/page-header/title"))}}
+          {{yield (hash Badges=(component "kds/page-header/badges"))}}
+        </div>
+        <div class="kds-page-header__metadata">
+          {{yield
+            (hash
+              Subtitle=(component "kds/page-header/subtitle")
+              Description=(component "kds/page-header/description")
+              Generic=(component "kds/yield")
+            )
+          }}
+        </div>
+      </div>
+      {{yield (hash Actions=(component "kds/page-header/actions"))}}
+    </div>
+  </div>
+</header>

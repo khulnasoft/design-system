@@ -1,0 +1,5 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Text::Body @tag="span" @size="200" class="ember-power-select-placeholder">{{@placeholder}}</Kds::Text::Body>

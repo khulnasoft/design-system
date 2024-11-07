@@ -1,0 +1,52 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "ButtonSet Component"}}
+
+<Shw::Text::H1>ButtonSet</Shw::Text::H1>
+
+<section data-test-percy>
+
+  <Shw::Text::H2>Content</Shw::Text::H2>
+
+  <Shw::Flex @direction="column" as |SF|>
+    <SF.Item @label="Default">
+      <Kds::ButtonSet>
+        <Kds::Button @text="Submit" type="submit" />
+        <Kds::Button @text="Cancel" @color="secondary" @href="https://khulnasoft.com" />
+      </Kds::ButtonSet>
+    </SF.Item>
+    <SF.Item @label="Parent with max-width">
+      <Shw::Outliner {{style width="300px"}}>
+        <Kds::ButtonSet>
+          <Kds::Button @text="This is a very long text" type="submit" />
+          <Kds::Button @text="This is also a very long text" @color="secondary" @href="https://khulnasoft.com" />
+        </Kds::ButtonSet>
+      </Shw::Outliner>
+    </SF.Item>
+    <SF.Item @label="Parent with max-width and buttons full with">
+      <Shw::Outliner {{style width="300px"}}>
+        <Kds::ButtonSet>
+          <Kds::Button @text="Save" @isFullWidth={{true}} />
+          <Kds::Button @text="Cancel" @isFullWidth={{true}} @color="secondary" @href="#" />
+        </Kds::ButtonSet>
+      </Shw::Outliner>
+    </SF.Item>
+    <SF.Item {{style width="300px"}} @label="Idle/Loading states (click 'Save' to toggle)">
+      <Shw::Outliner {{style width="300px"}}>
+        <Kds::ButtonSet>
+          <Kds::Button
+            @text={{if this.isLoading "Loading" "Save"}}
+            @icon={{if this.isLoading "loading"}}
+            @isFullWidth={{true}}
+            {{on "click" this.toggleIsLoading}}
+          />
+          <Kds::Button @text="Cancel" @isFullWidth={{true}} @color="secondary" @href="#" />
+        </Kds::ButtonSet>
+      </Shw::Outliner>
+    </SF.Item>
+  </Shw::Flex>
+
+</section>

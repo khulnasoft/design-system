@@ -1,0 +1,28 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<div class={{this.classNames}} ...attributes>
+  <div class="kds-code-block__header">
+    {{~yield (hash Title=(component "kds/code-block/title"))~}}
+    {{~yield (hash Description=(component "kds/code-block/description"))~}}
+  </div>
+  <div class="kds-code-block__body">
+    {{! content within pre tag is whitespace-sensitive; do not add new lines! }}
+    <pre
+      class="kds-code-block__code"
+      {{style maxHeight=@maxHeight}}
+      data-line={{@highlightLines}}
+      data-start={{@lineNumberStart}}
+      id={{this.preCodeId}}
+      tabindex="0"
+    ><code {{did-insert this.setPrismCode}} {{did-update this.setPrismCode this.code @language}}>
+        {{~this.prismCode~}}
+      </code></pre>
+
+    {{#if @hasCopyButton}}
+      <Kds::CodeBlock::CopyButton @targetToCopy="#{{this.preCodeId}}" aria-describedby={{this.preCodeId}} />
+    {{/if}}
+  </div>
+</div>

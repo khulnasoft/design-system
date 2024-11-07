@@ -1,0 +1,90 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// APPLICATION-STATE COMPONENT
+//
+
+$kds-application-state-content-max-width: 480px;
+
+.kds-application-state {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: fit-content;
+  margin: 0 auto; // this will center the component in the parent container
+
+  &.kds-application-state--align-center {
+    align-items: center;
+    text-align: center;
+
+    .kds-application-state__header,
+    .kds-application-state__body,
+    .kds-application-state__footer {
+      width: auto;
+    }
+  }
+}
+
+.kds-application-state__media {
+  margin-bottom: 32px;
+
+  > * {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+.kds-application-state__header {
+  display: grid;
+  grid-template-areas:
+    "error error"
+    "icon title";
+  grid-template-columns: min-content 1fr;
+  align-items: center;
+  width: 100%;
+  max-width: $kds-application-state-content-max-width;
+  color: var(--token-color-foreground-strong);
+}
+
+.kds-application-state__error-code {
+  grid-area: error;
+  margin-bottom: 4px;
+}
+
+.kds-application-state__icon {
+  grid-area: icon;
+  margin-right: 8px; // instead of column gap
+  padding-top: 4px; // this seems to align the icon along with line 21
+}
+
+.kds-application-state__title {
+  grid-row: 2;
+  font-weight: var(--token-typography-font-weight-semibold);
+
+  &:not(.kds-application-state__icon + &) {
+    grid-column: icon / title;
+  }
+}
+
+.kds-application-state__body {
+  width: 100%;
+  max-width: $kds-application-state-content-max-width;
+  margin: 12px 0 0;
+  color: var(--token-color-foreground-primary);
+}
+
+.kds-application-state__footer {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: $kds-application-state-content-max-width;
+  margin-top: 24px;
+
+  // forces the third child and on to be on the right side
+  > :nth-child(3) {
+    margin-left: auto;
+  }
+}

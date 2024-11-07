@@ -1,0 +1,12 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<div class={{this.classNames}} ...attributes>
+  {{yield
+    (hash
+      Item=(component "kds/accordion/item" titleTag=this.titleTag size=this.size type=this.type forceState=@forceState)
+    )
+  }}
+</div>

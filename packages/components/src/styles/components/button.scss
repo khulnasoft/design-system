@@ -1,0 +1,121 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// BUTTON COMPONENT
+//
+// notice: pseudo-classes for the states *must* follow the order link > visited > hover > focus > active
+//
+
+@use "../mixins/button" as *;
+
+.kds-button {
+  @include kds-button();
+
+  // the <a> element behaves differently than a <button>
+  @at-root a#{&} {
+    width: fit-content;
+
+    // for more background on the use of underlining as defined below read the following document: https://docs.google.com/document/d/1acLxdRqmy92vQ8ArShPxoBFmAV0StsbZrqEic6MVt20
+    &:hover,
+    &:focus,
+    &:active,
+    &.mock-hover,
+    &.mock-focus,
+    &.mock-active {
+      text-decoration: underline;
+    }
+  }
+
+  // This covers all of the browsers and focus scenarios (due to the custom focus design).
+  //
+  // IMPORTANT: we need to use also the [disabled] selector because if the "disabled" attribute is applied to a "Button as link",
+  // the ":disabled" pseudo-selector is not applied to the element in the browser (rightly) because a link can't be disabled
+  // but from the product perspective there may be use cases where they need to have a "Button as link" that looks disabled anyway
+  //
+  &:disabled,
+  &[disabled],
+  &.mock-disabled,
+  &:disabled:focus,
+  &[disabled]:focus,
+  &.mock-disabled:focus,
+  &:disabled:hover,
+  &[disabled]:hover,
+  &.mock-disabled:hover {
+    @include kds-button-state-disabled();
+  }
+
+  &.kds-button--width-full {
+    width: 100%;
+    max-width: 100%;
+
+    .kds-button__text {
+      flex: 0 0 auto;
+    }
+  }
+
+  &:focus,
+  &.mock-focus {
+    @include kds-button-state-focus();
+  }
+}
+
+.kds-button__icon {
+  display: block;
+}
+
+.kds-button__text {
+  display: block;
+  flex: 1 0 0;
+  // <button> and <a> elements have different intrinsic text alignments, so we need to normalize it
+  text-align: center;
+}
+
+// COLORS & STATES
+// Note: the order of the pseuo-selectors need to stay the way they are; it doesn't match the Figma file but it's the correct order for browsers to render the styles correctly.
+
+.kds-button--color-primary {
+  @include kds-button-color-primary();
+}
+
+.kds-button--color-secondary {
+  @include kds-button-color-secondary();
+}
+
+.kds-button--color-tertiary {
+  @include kds-button-color-tertiary();
+}
+
+.kds-button--color-critical {
+  @include kds-button-color-critical();
+}
+
+// SIZE
+@include kds-button-size-classes("kds-button");
+
+// ISINLINE
+.kds-button--is-inline {
+  display: inline-flex;
+}
+
+
+// SPECIAL
+
+// we apply a visual treatment to alert the developer if a "href" HTML attribute is used (instead of the "@href" Ember argument)
+
+button.kds-button[href] {
+  color: white !important;
+  background-color: red !important;
+  border: none;
+
+  .kds-button__text,
+  &::before {
+    display: none;
+  }
+
+  &::after {
+    content: ' Attention: you’re passing a "href" attribute to the "Kds::Button" component, you should use an "@href" argument.';
+  }
+}

@@ -1,0 +1,25 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// ACCORDION
+
+body.components-accordion {
+  // layout example content
+  .shw-component-accordion-layout {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .shw-component-accordion-layout--justify {
+    justify-content: space-between;
+  }
+
+  .shw-component-accordion-standalone-button {
+    position: relative;
+    width: fit-content;
+    // this variable is set on the parent element
+    --kds-accordion-item-focus-ring-offset: 0;
+  }
+}

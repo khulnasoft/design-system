@@ -1,0 +1,44 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{#if @disabled}}
+  <Kds::Interactive class={{this.classNames}} aria-label={{this.content.ariaLabel}} disabled={{true}} ...attributes>
+    <Kds::Icon @name={{this.content.icon}} />
+    {{#if this.showLabel}}
+      <Kds::Text::Body
+        class="kds-pagination-nav__arrow-label"
+        @tag="span"
+        @size="100"
+        @weight="medium"
+        aria-hidden="true"
+      >
+        {{this.content.label}}
+      </Kds::Text::Body>
+    {{/if}}
+  </Kds::Interactive>
+{{else}}
+  <Kds::Interactive
+    class={{this.classNames}}
+    @route={{@route}}
+    @query={{kds-link-to-query @query}}
+    @models={{kds-link-to-models @model @models}}
+    @replace={{@replace}}
+    {{on "click" this.onClick}}
+    aria-label={{this.content.ariaLabel}}
+    ...attributes
+  >
+    <Kds::Icon @name={{this.content.icon}} />
+    {{#if this.showLabel}}
+      <Kds::Text::Body
+        class="kds-pagination-nav__arrow-label"
+        @tag="span"
+        @size="100"
+        @weight="medium"
+        aria-hidden="true"
+      >
+        {{this.content.label}}
+      </Kds::Text::Body>
+    {{/if}}
+  </Kds::Interactive>
+{{/if}}

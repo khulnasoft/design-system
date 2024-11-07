@@ -1,0 +1,16 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<li class="kds-form-super-select__option-group" role="group" aria-labelledby={{this.groupTitleId}}>
+  <Kds::Text::Body
+    @tag="div"
+    @size="100"
+    @weight="semibold"
+    class="kds-form-super-select__option-group-title"
+    id={{this.groupTitleId}}
+  >
+    {{@group.groupName}}
+  </Kds::Text::Body>
+  {{yield}}
+</li>

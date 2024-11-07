@@ -1,0 +1,45 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{! template-lint-disable no-invalid-role require-context-role require-presentational-children }}
+<li class={{this.classNames}} role="none">
+  <Kds::Interactive
+    @current-when={{@current-when}}
+    @models={{kds-link-to-models @model @models}}
+    @query={{kds-link-to-query @query}}
+    @replace={{@replace}}
+    @route={{@route}}
+    @isRouteExternal={{@isRouteExternal}}
+    @href={{@href}}
+    @isHrefExternal={{@isHrefExternal}}
+    class="kds-dropdown-list-item__interactive"
+    ...attributes
+    role="option"
+    aria-selected={{if @selected "true" "false"}}
+  >
+    {{#if @icon}}
+      <span class="kds-dropdown-list-item__interactive-icon kds-dropdown-list-item__interactive-icon--leading">
+        <Kds::Icon @name={{@icon}} />
+      </span>
+    {{/if}}
+    <Kds::Text::Body @tag="span" @size="200" @weight="medium" class="kds-dropdown-list-item__interactive-text">
+      {{yield}}
+    </Kds::Text::Body>
+    {{#if @count}}
+      <Kds::Text::Body
+        class="kds-dropdown-list-item__count"
+        @tag="span"
+        @size="100"
+        @weight="medium"
+        @color="faint"
+      >{{@count}}</Kds::Text::Body>
+    {{/if}}
+    <span class="kds-dropdown-list-item__checkmark">
+      {{#if @selected}}
+        <Kds::Icon class="kds-dropdown-list-item__checkmark-icon" @name="check" />
+      {{/if}}
+    </span>
+  </Kds::Interactive>
+</li>
+{{! template-lint-enable no-invalid-role require-context-role require-presentational-children }}

@@ -1,0 +1,13 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class="kds-application-state__body" ...attributes>
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    <Kds::Text::Body class="kds-application-state__body-text" @tag="p" @size="300">
+      {{@text}}
+    </Kds::Text::Body>
+  {{/if}}
+</div>

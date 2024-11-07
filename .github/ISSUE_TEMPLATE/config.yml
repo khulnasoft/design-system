@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Helios Design System support
+    url: https://design.khulnasoft.com/about/support
+    about: Support page with links to resources and guidance on how to get support from the Helios Design Systems team
+  - name: Icon request (for KhulnaSoft internal users)
+    url: https://go.hashi.co/kds-support
+    about: Request a new icon (or changes to an existing one), and we'll get back to you ASAP.
+  - name: Component/pattern request (for KhulnaSoft internal users)
+    url: https://go.hashi.co/kds-support
+    about: Request a new component/pattern (or changes to an existing one), and we'll get back to you ASAP.
+  - name: Report a bug or an issue (for KhulnaSoft internal users)
+    url: https://go.hashi.co/kds-support
+    about: Report a bug, an accessibility problem, or a security issue.

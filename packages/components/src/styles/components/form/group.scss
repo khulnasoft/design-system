@@ -1,0 +1,61 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// FORM > GROUP
+//
+
+.kds-form-group { // notice: this is a <fieldset> element
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.kds-form-group__legend { // notice: this is a <legend> element
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+
+.kds-form-group__control-fields-wrapper {
+  // when the group contains a "legend", we reduce the visual weight of the "label"
+  .kds-form-group__legend ~ & {
+    .kds-form-label {
+      font-weight: var(--token-typography-font-weight-regular);
+    }
+  }
+}
+
+.kds-form-group--layout-vertical {
+  .kds-form-group__control-fields-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kds-form-group__control-field + .kds-form-group__control-field {
+    margin-top: 12px;
+  }
+}
+
+.kds-form-group--layout-horizontal {
+  .kds-form-group__control-fields-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -4px;
+  }
+
+  .kds-form-group__control-field {
+    margin-right: 16px;
+    margin-bottom: 4px;
+  }
+}
+
+.kds-form-group__helper-text {
+  margin-bottom: 8px;
+}
+
+.kds-form-group__error {
+  margin-top: 8px;
+}

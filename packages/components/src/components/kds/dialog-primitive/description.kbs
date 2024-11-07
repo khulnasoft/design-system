@@ -1,0 +1,10 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div
+  class="kds-dialog-primitive__description kds-typography-body-200 kds-foreground-primary {{@contextualClass}}"
+  ...attributes
+>
+  {{yield}}
+</div>
