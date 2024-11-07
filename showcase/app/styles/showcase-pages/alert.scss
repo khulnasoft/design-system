@@ -1,0 +1,22 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// ALERT
+
+body.components-alert {
+  // we outline the "compact" variant to make its bounding box visible
+  .kds-alert--type-compact {
+    outline: 1px dotted var(--shw-color-gray-400);
+  }
+
+  .shw-component-alert-sample-custom-content-after-actions {
+    @include shw-font-family("system sans");
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+}
+

@@ -1,0 +1,56 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<main class="doc-page-home" id="main">
+  <div class="doc-page-home__content">
+    <div class="doc-page-home__hero">
+      <h1><span class="doc-page-home__hero-helios">Helios</span> Design System</h1>
+      <p>The Helios Design System from KhulnaSoft provides the open source building blocks to design and implement
+        consistent, accessible, and delightful product experiences.</p>
+      <div class="doc-page-home__hero-links">
+        <Doc::LinkWithIcon
+          @route="show"
+          @model="whats-new/release-notes"
+          @label="Release Notes"
+          @icon="arrow-right"
+          @isAnimated={{true}}
+          @eventName="Hero - Release Notes"
+        />
+        <Doc::LinkWithIcon
+          @href="https://go.hashi.co/kds-rollout"
+          @label="Helios Roadmap"
+          @icon="external-link"
+          @isAnimated={{true}}
+          @eventName="Hero - Roadmap"
+        />
+        <Doc::LinkWithIcon
+          @href="https://go.hashi.co/kds-feedback"
+          @label="Share Feedback"
+          @icon="external-link"
+          @isAnimated={{true}}
+          @eventName="Hero - Feedback"
+        />
+      </div>
+    </div>
+    <ul class="doc-page-home__cards" role="list" aria-label="the cornerstones of the helios design system">
+      {{#each this.cards as |card|}}
+        <li class="doc-page-home__card">
+          <p class="doc-page-home__card-title">{{capitalize card.title}}</p>
+          <p class="doc-page-home__card-description">{{capitalize card.description}}</p>
+          <Doc::LinkWithIcon
+            class="doc-page-home__card-link"
+            @route={{card.route}}
+            @label="Explore"
+            @icon="arrow-right"
+            @fillParent={{true}}
+            @isAnimated={{true}}
+            aria-label={{concat "Explore " card.title ": " card.description}}
+            @eventName={{concat "Card - " card.title}}
+          />
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</main>

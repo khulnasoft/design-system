@@ -1,0 +1,24 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<label class={{this.classNames}} {{style maxWidth=@maxWidth}}>
+  <span class="kds-form-radio-card__content">
+    {{yield (hash Icon=(component "kds/icon" size="24"))}}
+    {{yield (hash Label=(component "kds/form/radio-card/label"))}}
+    {{yield (hash Badge=(component "kds/badge"))}}
+    {{yield (hash Description=(component "kds/form/radio-card/description"))}}
+    {{yield (hash Generic=(component "kds/yield"))}}
+  </span>
+  <span class="kds-form-radio-card__control-wrapper">
+    <Kds::Form::Radio::Base
+      class="kds-form-radio-card__control"
+      @value={{@value}}
+      name={{@name}}
+      checked={{@checked}}
+      disabled={{@disabled}}
+      aria-describedby={{@extraAriaDescribedBy}}
+      ...attributes
+    />
+  </span>
+</label>

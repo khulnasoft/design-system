@@ -1,0 +1,11 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<button
+  type="button"
+  class={{this.classNames}}
+  {{kds-tooltip this.text options=this.options}}
+  ...attributes
+>{{~yield~}}</button>

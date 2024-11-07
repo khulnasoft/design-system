@@ -1,0 +1,50 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// FORM > BASE ELEMENTS
+
+body.components-form-base-elements {
+  .shw-component-form-base-elements-container-with-badge {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
+  .shw-component-form-base-elements-layout-highlight {
+    .kds-form-field--layout-vertical,
+    .kds-form-field--layout-flag {
+      outline: 2px dashed #e3f2fd;
+    }
+
+    .kds-form-field__label {
+      background-color: #e3f2fd;
+    }
+
+    .kds-form-field__helper-text {
+      background-color: #e8f5e9;
+    }
+
+    .kds-form-field__error {
+      background-color: #ffebee;
+    }
+
+    .kds-form-group--layout-vertical,
+    .kds-form-group--layout-horizontal {
+      outline: 2px dashed #e3f2fd;
+
+      .kds-form-legend {
+        background-color: #fff8e1;
+      }
+
+      .kds-form-helper-text {
+        background-color: #e8f5e9;
+      }
+
+      .kds-form-error {
+        background-color: #ffebee;
+      }
+    }
+  }
+}

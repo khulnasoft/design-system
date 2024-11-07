@@ -1,0 +1,14 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::Table::ThSort @onClick={{this.onClickCallback}}>Label</Kds::Table::ThSort>
+
+<Kds::Table>
+  <:head as |H|>
+    <H.Tr>
+      <H.ThSort @onClick={{this.onClickCallback}}>Label</H.ThSort>
+    </H.Tr>
+  </:head>
+</Kds::Table>

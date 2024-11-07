@@ -1,0 +1,24 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class={{this.classNames}} ...attributes>
+  {{#if this.hasHeader}}
+    {{yield (hash Header=(component "kds/app-frame/parts/header"))}}
+  {{/if}}
+  {{#if this.hasSidebar}}
+    {{yield (hash Sidebar=(component "kds/app-frame/parts/sidebar"))}}
+  {{/if}}
+  {{!
+    IMPORTANT: since the modals may be injected via portal or `in-element` with code that lives in the "main" container,
+    the "modal" container needs to be present in the DOM _before_ the "main" block, otherwise it may cause errors
+    where the target DOM element is not found (for example in tests where the modal may be immediately opened on first render).
+  }}
+  {{#if this.hasModals}}
+    {{yield (hash Modals=(component "kds/app-frame/parts/modals"))}}
+  {{/if}}
+  {{yield (hash Main=(component "kds/app-frame/parts/main"))}}
+  {{#if this.hasFooter}}
+    {{yield (hash Footer=(component "kds/app-frame/parts/footer"))}}
+  {{/if}}
+</div>

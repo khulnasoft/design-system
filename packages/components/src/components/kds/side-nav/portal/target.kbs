@@ -1,0 +1,14 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<div class="kds-side-nav__content" ...attributes>
+  <PortalTarget
+    @multiple={{true}}
+    @onChange={{this.panelsChanged}}
+    @name={{if @targetName @targetName "kds-side-nav-portal-target"}}
+    class="kds-side-nav__content-panels kds-side-nav-hide-when-minimized"
+    {{did-update this.didUpdateSubnav this.numSubnavs}}
+  />
+</div>

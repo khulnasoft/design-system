@@ -1,0 +1,21 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::DisclosurePrimitive class="kds-reveal" @isOpen={{@isOpen}} ...attributes>
+  <:toggle as |t|>
+    <Kds::Reveal::Toggle::Button
+      aria-controls={{this.contentId}}
+      @text={{this.getText t.isOpen}}
+      @isOpen={{t.isOpen}}
+      {{on "click" t.onClickToggle}}
+    />
+  </:toggle>
+
+  <:content>
+    <div class="kds-reveal__content kds-typography-body-200 kds-foreground-primary" id={{this.contentId}}>
+      {{yield}}
+    </div>
+  </:content>
+</Kds::DisclosurePrimitive>

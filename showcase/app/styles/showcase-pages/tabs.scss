@@ -1,0 +1,45 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// TAB
+
+body.components-tabs {
+
+  // we add extra spacing to increase visual separation between the different use cases and examples
+  .kds-tabs {
+    margin-bottom: 36px;
+  }
+
+  .shw-component-tabs-layout-highlight {
+    .kds-tabs__tab {
+      outline: 1px dashed #78909c;
+      outline-offset: -1px;
+    }
+  }
+
+  .shw-component-tabs-sample-ul-wrapper {
+    display: contents;
+    list-style: none;
+  }
+
+  .shw-component-tabs-example-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .shw-component-tabs-example-heading-button-set {
+    @include shw-font-family("system sans");
+    display: flex;
+    gap: 6px;
+    font-size: 0.875rem;
+  }
+
+  .shw-component-tabs-selector-example {
+    position: relative;
+
+    .kds-tabs__tab-indicator {width: 100%;}
+  }
+}

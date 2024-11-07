@@ -1,0 +1,33 @@
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "declaration": true,
+
+    // Without this set to false, no declaration files are created.
+    // Reference: https://github.com/typed-ember/glint/issues/599
+    // Remove once the linked issue is resolved.
+    "noEmitOnError": false,
+
+    "declarationDir": "declarations",
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "skipLibCheck": true,
+    "rootDir": "./src",
+    // Resolve template-only from ember-source instead of @types/ember__component@v3
+    "paths": {
+      "@ember/component/template-only": [
+        "../../node_modules/ember-source/types/stable/@ember/component/template-only.d.ts"
+      ],
+    }
+  },
+  "include": ["src/**/*", "unpublished-development-types/**/*"],
+  "glint": {
+    "environment": ["ember-loose"]
+  }
+}

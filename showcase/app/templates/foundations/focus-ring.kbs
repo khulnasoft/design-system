@@ -1,0 +1,42 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "Focus ring"}}
+
+<Shw::Text::H1>Focus ring</Shw::Text::H1>
+
+<section data-test-percy>
+
+  <Shw::Text::Body>Base "focus ring" effect</Shw::Text::Body>
+
+  <Shw::Flex as |SF|>
+    <SF.Item>
+      <div class="kds-focus-ring-action-box-shadow">
+        <Shw::Placeholder @text="no radius" @width="100" @height="100" @background="transparent" />
+      </div>
+    </SF.Item>
+    <SF.Item>
+      <div class="kds-focus-ring-action-box-shadow" {{style border-radius="5px"}}>
+        <Shw::Placeholder @text="with border radius" @width="100" @height="100" @background="transparent" />
+      </div>
+    </SF.Item>
+  </Shw::Flex>
+
+  <Shw::Text::Body>Color variants</Shw::Text::Body>
+
+  <Shw::Flex as |SF|>
+    <SF.Item @label="action">
+      <div class="kds-focus-ring-action-box-shadow">
+        <Shw::Placeholder @text="with border radius" @width="100" @height="100" @background="transparent" />
+      </div>
+    </SF.Item>
+    <SF.Item @label="critical">
+      <div class="kds-focus-ring-critical-box-shadow">
+        <Shw::Placeholder @text="with border radius" @width="100" @height="100" @background="transparent" />
+      </div>
+    </SF.Item>
+  </Shw::Flex>
+
+</section>

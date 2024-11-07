@@ -1,0 +1,10 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class={{this.classNames}} id={{this.id}} {{did-insert this.onInsert}} {{will-destroy this.onRemove}} ...attributes>
+  <Kds::Icon class="kds-form-error__icon" @name="alert-diamond-fill" />
+  <Kds::Text::Body class="kds-form-error__content" @tag="div" @size="100" @weight="medium">
+    {{yield (hash Message=(component "kds/form/error/message"))}}
+  </Kds::Text::Body>
+</div>

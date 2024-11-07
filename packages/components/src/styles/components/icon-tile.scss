@@ -1,0 +1,145 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// ICON-TILE COMPONENT
+//
+
+$kds-icon-tile-sizes: ( "small", "medium", "large" );
+$kds-icon-tile-types: ( "object","resource","logo" );
+$kds-icon-tile-colors-products: ( "boundary", "consul", "hcp", "nomad", "packer", "terraform", "vagrant", "vault", "vault-secrets", "vault-radar", "waypoint" );
+$kds-icon-tile-border-width: 1px;
+$kds-icon-tile-box-shadow: 0 1px 1px rgba(#656a76, 0.05);
+
+
+.kds-icon-tile {
+  position: relative;
+  display: flex;
+  border: $kds-icon-tile-border-width solid transparent;
+  border-radius: 4px;
+  box-shadow: $kds-icon-tile-box-shadow;
+}
+
+.kds-icon-tile__icon,
+.kds-icon-tile__logo {
+  display: flex;
+  margin: auto;
+}
+
+.kds-icon-tile__extra {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  display: flex;
+  box-sizing: content-box; // the border is outside
+  background-color: var(--token-color-surface-primary);
+  border: 1px solid var(--token-color-border-primary);
+  box-shadow: $kds-icon-tile-box-shadow;
+}
+
+.kds-icon-tile__extra-icon {
+  display: flex;
+  margin: auto;
+  color: var(--token-color-foreground-strong);
+}
+
+// SIZE
+
+// these values later may come from the design tokens
+$kds-icon-tile-size-props: (
+  "small": (
+    "size": 1.75rem, // 28px
+    "border-radius": 5px,
+    "icon-size": 1rem, // 16px
+    "logo-size": 1.125rem, // 18px
+    "extra-size": 1.125rem, // 18px
+    "extra-border-radius": 4px,
+    "extra-icon-size": 0.75rem,
+  ),
+  "medium": (
+    "size": 2.5rem, // 40px
+    "border-radius": 6px,
+    "icon-size": 1.5rem, // 24px
+    "logo-size": 1.75rem, // 28px
+    "extra-size": 1.5rem, // 24px
+    "extra-border-radius": 5px,
+    "extra-icon-size": 1rem,
+  ),
+  "large": (
+    "size": 3rem, // 48px
+    "border-radius": 6px,
+    "icon-size": 1.5rem, // 24px
+    "logo-size": 2rem, // 32px
+    "extra-size": 1.5rem, // 24px
+    "extra-border-radius": 5px,
+    "extra-icon-size": 1rem,
+  )
+);
+
+@each $size in $kds-icon-tile-sizes {
+  .kds-icon-tile--size-#{$size} {
+    width: map-get($kds-icon-tile-size-props, $size, "size");
+    height: map-get($kds-icon-tile-size-props, $size, "size");
+    border-radius: map-get($kds-icon-tile-size-props, $size, "border-radius");
+
+    .kds-icon-tile__icon {
+      width: map-get($kds-icon-tile-size-props, $size, "icon-size");
+      height: map-get($kds-icon-tile-size-props, $size, "icon-size");
+    }
+
+    .kds-icon-tile__logo {
+      width: map-get($kds-icon-tile-size-props, $size, "logo-size");
+      height: map-get($kds-icon-tile-size-props, $size, "logo-size");
+    }
+
+    .kds-icon-tile__extra {
+      width: map-get($kds-icon-tile-size-props, $size, "extra-size");
+      height: map-get($kds-icon-tile-size-props, $size, "extra-size");
+      border-radius: map-get($kds-icon-tile-size-props, $size, "extra-border-radius");
+    }
+
+    .kds-icon-tile__extra-icon {
+      width: map-get($kds-icon-tile-size-props, $size, "extra-icon-size");
+      height: map-get($kds-icon-tile-size-props, $size, "extra-icon-size");
+    }
+  }
+}
+
+
+// LOGO - COLOR
+
+.kds-icon-tile--logo {
+  // notice: we are using colored icons so we don't need to set the "color" property here
+  background-color: var(--token-color-surface-primary);
+  border-color: var(--token-color-border-primary);
+}
+
+// ICON - COLOR
+
+.kds-icon-tile--icon {
+  &.kds-icon-tile--color-neutral {
+    color: var(--token-color-foreground-faint);
+    background-color: var(--token-color-surface-faint);
+    border-color: var(--token-color-border-primary);
+  }
+
+  @each $product in $kds-icon-tile-colors-products {
+    @if ($product == "hcp") {
+      // exception for HCP (we use neutral colors, we don't have specific product colors for foreground/background)
+      &.kds-icon-tile--color-hcp {
+        color: var(--token-color-palette-#{$product}-brand);
+        background-color: var(--token-color-surface-faint);
+        border-color: var(--token-color-border-primary);
+      }
+    } @else {
+      &.kds-icon-tile--color-#{$product} {
+        color: var(--token-color-#{$product}-foreground);
+        background: linear-gradient(135deg, var(--token-color-#{$product}-gradient-faint-start) 0%, var(--token-color-#{$product}-gradient-faint-stop) 100%);
+        border-color: var(--token-color-#{$product}-border);
+      }
+    }
+  }
+}
+

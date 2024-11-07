@@ -1,0 +1,26 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class="kds-application-state__header" ...attributes>
+  {{#if @errorCode}}
+    <Kds::Text::Body class="kds-application-state__error-code" @tag="div" @size="100" @weight="medium" @color="faint">
+      ERROR
+      {{@errorCode}}
+    </Kds::Text::Body>
+  {{/if}}
+  {{#if @icon}}
+    <div class="kds-application-state__icon">
+      <Kds::Icon @color="var(--token-color-foreground-strong)" @name={{@icon}} @size="24" @isInline={{true}} />
+    </div>
+  {{/if}}
+  <Kds::Text::Display
+    class="kds-application-state__title"
+    @tag={{this.titleTag}}
+    @size="300"
+    @weight="semibold"
+    @color="strong"
+  >
+    {{@title}}
+  </Kds::Text::Display>
+</div>

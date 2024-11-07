@@ -1,0 +1,9 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<div class="kds-app-footer__copyright" ...attributes>
+  <Kds::Icon @name="khulnasoft" />
+  <Kds::Text::Body @tag="span" @size="100">© {{this.year}} KhulnaSoft</Kds::Text::Body>
+</div>

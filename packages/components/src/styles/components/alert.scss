@@ -1,0 +1,228 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// ALERT COMPONENT
+//
+
+.kds-alert {
+  display: flex;
+  align-items: flex-start;
+}
+
+// ICON
+
+.kds-alert__icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+
+  .kds-alert--type-compact & {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+// CONTENT (TEXT + ACTIONS + GENERIC)
+
+.kds-alert__content {
+  flex: 1 1 auto;
+}
+
+// TEXT (TITLE & DESCRIPTION)
+
+.kds-alert__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+  color: var(--token-color-foreground-warning-on-surface);
+}
+
+.kds-alert__description {
+  word-break: break-word;
+
+  // we add very basic styling for elements that may be injected via the "description" string
+
+  strong {
+    font-weight: var(--token-typography-font-weight-semibold);
+  }
+
+  code,
+  pre {
+    display: inline;
+    padding: 1px 5px;
+    font-size: 0.9em; // as discussed with designers, we reduce the size for optical/visual balance
+    font-family: var(--token-typography-code-100-font-family);
+    line-height: 1em;
+    background-color: var(--token-color-surface-primary);
+    border: 1px solid var(--token-color-palette-neutral-200);
+    border-radius: 5px;
+  }
+
+  // Default styling for bare HTML links not using KDS::Link components
+  a:not([class*="kds-"]) {
+    color: var(--token-color-foreground-strong);
+
+    &:focus,
+    &:focus-visible {
+      text-decoration: none;
+      outline: 2px solid var(--token-color-focus-action-internal);
+      outline-offset: 1px;
+    }
+
+    &:hover {
+      color: var(--token-color-foreground-primary);
+    }
+
+    &:active {
+      color: var(--token-color-foreground-faint);
+    }
+  }
+}
+
+// ACTIONS
+
+.kds-alert__actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  > * {
+    margin-top: 16px;
+  }
+}
+
+// DISMISS
+
+.kds-alert__dismiss {
+  margin-top: 2px; // for alignment with the main icon and text
+  margin-left: 16px;
+
+  .kds-alert--type-compact & {
+    margin-top: 1px;
+  }
+}
+
+// TYPES
+
+.kds-alert--type-page {
+  padding: 16px 48px; // by design
+}
+
+.kds-alert--type-inline {
+  padding: 16px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+}
+
+.kds-alert--type-compact {
+  .kds-alert__icon {
+    margin-top: 2px; // notice: the icon size for the "compact" type is 14px, not 20px, so this 2px extra are needed to reach the exact same height as the "description" text line-height
+    margin-right: 8px;
+  }
+
+  // extra safety
+  .kds-alert__title {
+    display: none;
+
+    & + .kds-alert__description {
+      margin-top: 0;
+    }
+  }
+}
+
+// COLORS (& TYPES)
+
+.kds-alert--color-neutral {
+  &.kds-alert--type-page {
+    background-color: var(--token-color-surface-faint);
+    box-shadow: 0 1px 0 0 var(--token-color-palette-alpha-300);
+  }
+
+  &.kds-alert--type-inline {
+    background-color: var(--token-color-surface-faint);
+    border-color: var(--token-color-border-strong); // notice: in the "neutral" color the "inline" has a slightly darker border color compared to the others to increase contrast (eg. could be used on a light gray background)
+  }
+
+  // different color by design
+  .kds-alert__icon {
+    color: var(--token-color-foreground-faint);
+  }
+
+  .kds-alert__title {
+    color: var(--token-color-foreground-primary);
+  }
+}
+
+.kds-alert--color-highlight {
+  &.kds-alert--type-page {
+    background-color: var(--token-color-surface-highlight);
+    box-shadow: 0 1px 0 0 var(--token-color-border-highlight);
+  }
+
+  &.kds-alert--type-inline {
+    background-color: var(--token-color-surface-highlight);
+    border-color: var(--token-color-border-highlight);
+  }
+
+  .kds-alert__icon,
+  .kds-alert__title {
+    color: var(--token-color-foreground-highlight-on-surface);
+  }
+}
+
+.kds-alert--color-success {
+  &.kds-alert--type-page {
+    background-color: var(--token-color-surface-success);
+    box-shadow: 0 1px 0 0 var(--token-color-border-success);
+  }
+
+  &.kds-alert--type-inline {
+    background-color: var(--token-color-surface-success);
+    border-color: var(--token-color-border-success);
+  }
+
+  .kds-alert__icon,
+  .kds-alert__title {
+    color: var(--token-color-foreground-success-on-surface);
+  }
+}
+
+.kds-alert--color-warning {
+  &.kds-alert--type-page {
+    background-color: var(--token-color-surface-warning);
+    box-shadow: 0 1px 0 0 var(--token-color-border-warning);
+  }
+
+  &.kds-alert--type-inline {
+    background-color: var(--token-color-surface-warning);
+    border-color: var(--token-color-border-warning);
+  }
+
+  .kds-alert__icon,
+  .kds-alert__title {
+    color: var(--token-color-foreground-warning-on-surface);
+  }
+}
+
+.kds-alert--color-critical {
+  &.kds-alert--type-page {
+    background-color: var(--token-color-surface-critical);
+    box-shadow: 0 1px 0 0 var(--token-color-border-critical);
+  }
+
+  &.kds-alert--type-inline {
+    background-color: var(--token-color-surface-critical);
+    border-color: var(--token-color-border-critical);
+  }
+
+  .kds-alert__icon,
+  .kds-alert__title {
+    color: var(--token-color-foreground-critical-on-surface);
+  }
+}

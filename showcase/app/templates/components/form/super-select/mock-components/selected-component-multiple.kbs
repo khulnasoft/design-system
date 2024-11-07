@@ -1,0 +1,10 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{! This is not an KDS component, but a supporting file for `form/super-select.kbs` which requires a component to be passed in for the showcase }}
+<span>
+  {{! @glint-expect-error - option is known to be an object in this mock component }}
+  {{@option.size}}
+</span>

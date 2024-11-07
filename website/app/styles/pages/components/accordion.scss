@@ -1,0 +1,28 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+
+// COMPONENTS > ACCORDION
+
+#show-content-components-accordion {
+  .doc-accordion-item-toggle-content-flex-layout {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .doc-accordion-flex-layout {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .doc-accordion-demo-heading {
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,10 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{! IMPORTANT: we removed any extra newlines before/after the `let` to reduce the issues with unexpected whitespaces (see https://github.com/khulnasoft/design-system/pull/1652) }}
+{{#let (element this.componentTag) as |Tag|}}<Tag
+    class={{this.classNames}}
+    {{style color=this.customColor}}
+    ...attributes
+  >{{yield}}</Tag>{{/let}}

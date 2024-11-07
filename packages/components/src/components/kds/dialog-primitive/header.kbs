@@ -1,0 +1,42 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div
+  class="kds-dialog-primitive__header {{if @contextualClassPrefix (concat @contextualClassPrefix '__header')}}"
+  ...attributes
+>
+  {{#if @icon}}
+    <Kds::Icon
+      class="kds-dialog-primitive__icon {{if @contextualClassPrefix (concat @contextualClassPrefix '__icon')}}"
+      @name={{@icon}}
+      @size="24"
+    />
+  {{/if}}
+
+  {{#let (element this.titleTag) as |Tag|}}<Tag
+      class="kds-dialog-primitive__title {{if @contextualClassPrefix (concat @contextualClassPrefix '__title')}}"
+      id={{@id}}
+    >
+      {{#if @tagline}}
+        <Kds::Text::Body
+          class="kds-dialog-primitive__tagline
+            {{if @contextualClassPrefix (concat @contextualClassPrefix '__tagline')}}"
+          @tag="div"
+          @size="100"
+        >
+          {{@tagline}}
+        </Kds::Text::Body>
+      {{/if}}
+
+      <Kds::Text::Display @tag="div" @size="300" @weight="semibold">
+        {{yield}}
+      </Kds::Text::Display>
+    </Tag>
+  {{/let}}
+
+  <Kds::DismissButton
+    class="kds-dialog-primitive__dismiss {{if @contextualClassPrefix (concat @contextualClassPrefix '__dismiss')}}"
+    {{on "click" this.onDismiss}}
+  />
+</div>

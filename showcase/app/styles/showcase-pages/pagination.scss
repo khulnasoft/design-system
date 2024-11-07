@@ -1,0 +1,38 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// PAGINATION
+
+body.components-pagination {
+  .shw-component-pagination-sample {
+    // no declarations
+  }
+
+  .shw-component-pagination-layout-highlight {
+    .kds-pagination-info,
+    .kds-pagination-nav,
+    .kds-pagination-nav__control,
+    .kds-pagination-nav__ellipsis,
+    .kds-pagination-size-selector {
+      outline: 1px dashed #78909c;
+    }
+  }
+
+  .shw-component-pagination-ul-wrapper {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  // paginated tables demo
+
+  .shw-component-pagination-table-demo {
+    margin: 18px auto 36px;
+
+    .kds-table + .kds-pagination {
+      margin-top: 16px;
+    }
+  }
+}

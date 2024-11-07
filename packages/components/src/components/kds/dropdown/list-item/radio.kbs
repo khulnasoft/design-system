@@ -1,0 +1,24 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<li class="kds-dropdown-list-item kds-dropdown-list-item--variant-radio">
+  <label class="kds-dropdown-list-item__label kds-typography-body-200" for={{this.id}}>
+    <Kds::Form::Radio::Base class="kds-dropdown-list-item__control" id={{this.id}} @value={{@value}} ...attributes />
+    {{#if @icon}}
+      <div class="kds-dropdown-list-item__icon">
+        <Kds::Icon @name={{@icon}} />
+      </div>
+    {{/if}}
+    <span class="kds-dropdown-list-item__text-content">{{yield}}</span>
+
+    {{#if @count}}
+      <Kds::Text::Body
+        class="kds-dropdown-list-item__count"
+        @tag="span"
+        @size="100"
+        @weight="medium"
+      >{{@count}}</Kds::Text::Body>
+    {{/if}}
+  </label>
+</li>

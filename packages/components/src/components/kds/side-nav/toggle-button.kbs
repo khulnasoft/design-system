@@ -1,0 +1,7 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<button class="kds-side-nav__toggle-button" type="button" ...attributes>
+  <Kds::Icon @name={{@icon}} />
+</button>

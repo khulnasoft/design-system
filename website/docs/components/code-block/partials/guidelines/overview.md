@@ -1,0 +1,1 @@
+The Code Block is used to display, format, and highlight the syntax of code snippets.

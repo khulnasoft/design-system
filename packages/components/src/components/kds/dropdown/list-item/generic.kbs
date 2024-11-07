@@ -1,0 +1,7 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<li class="kds-dropdown-list-item kds-dropdown-list-item--variant-generic" ...attributes>
+  {{yield}}
+</li>

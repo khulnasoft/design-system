@@ -1,0 +1,19 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<th
+  class={{this.classNames}}
+  aria-sort={{this.ariaSort}}
+  {{style width=@width minWidth=@width}}
+  ...attributes
+  scope="col"
+>
+  <div class="kds-table__th-content">
+    <span id={{this.labelId}} class="kds-typography-body-200 kds-font-weight-semibold">{{yield}}</span>
+    {{#if @tooltip}}
+      <Kds::Table::ThButtonTooltip @tooltip={{@tooltip}} @labelId={{this.labelId}} />
+    {{/if}}
+    <Kds::Table::ThButtonSort @sortOrder={{@sortOrder}} @onClick={{@onClickSort}} @labelId={{this.labelId}} />
+  </div>
+</th>

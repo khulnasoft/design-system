@@ -1,0 +1,9 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<div class={{this.classNames}} ...attributes>
+  {{yield}}
+</div>
+<Doc::ScrollToTop />

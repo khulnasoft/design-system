@@ -1,0 +1,67 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// APP-FOOTER
+
+body.components-app-footer {
+  .shw-component-app-footer-layout-highlight {
+    .kds-app-footer,
+    .kds-app-footer__list,
+    .kds-app-footer__list-item,
+    .kds-app-footer__copyright {
+      outline: 1px dashed #78909c;
+    }
+
+    .shw-component-app-footer-desktop-view,
+    .shw-component-app-footer-tablet-view,
+    .shw-component-app-footer-mobile-large-view,
+    .shw-component-app-footer-mobile-small-view {
+      .kds-app-footer__list-item { background: lighten(#006ae7, 30%); }
+      .kds-app-footer__legal-links { background: lighten(#006ae7, 45%); }
+      // using !important to override inline style:
+      .shw-app-footer-extra { background: #ff7575 !important; }
+
+      .kds-app-footer__copyright {
+        color: #fff;
+        background: #000;
+
+        .kds-icon { fill: currentColor; }
+      }
+    }
+  }
+
+  .shw-component-app-footer-tablet-view {
+    max-width: 665px;
+  }
+
+  .shw-component-app-footer-mobile-large-view {
+    max-width: 366px;
+  }
+
+  .shw-component-app-footer-mobile-small-view {
+    max-width: 290px;
+  }
+
+  .kds-app-footer--theme-dark {
+    position: relative;
+    background: var(--token-color-palette-neutral-700);
+
+    &::after {
+      position: absolute;
+      z-index: -1;
+      display: block;
+      background: inherit;
+      content: "";
+      inset: -8px;
+    }
+  }
+
+  .shw-component-app-footer-add-extra-margin-to-dark-block {
+    ul.kds-app-footer--theme-dark {
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+  }
+}

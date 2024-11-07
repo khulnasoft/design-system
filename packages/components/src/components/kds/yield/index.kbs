@@ -1,0 +1,6 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{! template-lint-disable no-yield-only }}
+{{yield}}

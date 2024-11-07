@@ -1,0 +1,43 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::PopoverPrimitive @isOpen={{@isOpen}} @onClose={{@onClose}} @enableClickEvents={{true}} as |PP|>
+  <div class={{this.classNames}} ...attributes {{PP.setupPrimitiveContainer}}>
+    {{yield
+      (hash
+        ToggleButton=(component
+          "kds/dropdown/toggle/button" isOpen=PP.isOpen setupPrimitiveToggle=PP.setupPrimitiveToggle
+        )
+        ToggleIcon=(component "kds/dropdown/toggle/icon" isOpen=PP.isOpen setupPrimitiveToggle=PP.setupPrimitiveToggle)
+      )
+    }}
+    <div
+      tabindex="-1"
+      class={{this.classNamesContent}}
+      {{style width=@width max-height=@height}}
+      {{PP.setupPrimitivePopover anchoredPositionOptions=this.anchoredPositionOptions}}
+    >
+      {{#if (or PP.isOpen @preserveContentInDom)}}
+        {{yield (hash Header=(component "kds/dropdown/header"))}}
+        <ul class="kds-dropdown__list" {{did-insert this.didInsertList}}>
+          {{yield
+            (hash
+              close=PP.hidePopover
+              Checkbox=(component "kds/dropdown/list-item/checkbox")
+              Checkmark=(component "kds/dropdown/list-item/checkmark")
+              CopyItem=(component "kds/dropdown/list-item/copy-item")
+              Description=(component "kds/dropdown/list-item/description")
+              Generic=(component "kds/dropdown/list-item/generic")
+              Interactive=(component "kds/dropdown/list-item/interactive")
+              Radio=(component "kds/dropdown/list-item/radio")
+              Separator=(component "kds/dropdown/list-item/separator")
+              Title=(component "kds/dropdown/list-item/title")
+            )
+          }}
+        </ul>
+        {{yield (hash close=PP.hidePopover Footer=(component "kds/dropdown/footer"))}}
+      {{/if}}
+    </div>
+  </div>
+</Kds::PopoverPrimitive>

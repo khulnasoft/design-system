@@ -1,0 +1,30 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Text::Body class={{this.classNames}} @tag="span" @size="100" @weight="medium" @color="primary" ...attributes>
+  {{#if this.onDismiss}}
+    <button class="kds-tag__dismiss" type="button" aria-label={{this.ariaLabel}} {{on "click" this.onDismiss}}>
+      <Kds::Icon class="kds-tag__dismiss-icon" @name="x" @size="16" />
+    </button>
+  {{/if}}
+  {{#if (or @href @route)}}
+    <Kds::Interactive
+      class="kds-tag__link"
+      @current-when={{@current-when}}
+      @models={{kds-link-to-models @model @models}}
+      @query={{kds-link-to-query @query}}
+      @replace={{@replace}}
+      @route={{@route}}
+      @isRouteExternal={{@isRouteExternal}}
+      @href={{@href}}
+      @isHrefExternal={{@isHrefExternal}}
+    >
+      {{this.text}}
+    </Kds::Interactive>
+  {{else}}
+    <span class="kds-tag__text">
+      {{this.text}}
+    </span>
+  {{/if}}
+</Kds::Text::Body>

@@ -1,0 +1,11 @@
+{
+    "color": {
+        "khulnasoft": {
+            "brand": {
+                "value": "{color.palette.khulnasoft-brand.value}",
+                "type": "color",
+                "group": "branding"
+            }
+        }
+    }
+}

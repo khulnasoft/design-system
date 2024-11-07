@@ -1,0 +1,12 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Portal @target={{if @targetName @targetName "kds-app-side-nav-portal-target"}}>
+  <div class="kds-app-side-nav__content-panel" ...attributes>
+    <Kds::AppSideNav::List aria-label={{@ariaLabel}} as |ListElements|>
+      {{yield ListElements}}
+    </Kds::AppSideNav::List>
+  </div>
+</Portal>

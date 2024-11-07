@@ -1,0 +1,8 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class="kds-form-toggle">
+  <input class="kds-form-toggle__control" type="checkbox" ...attributes value={{@value}} role="switch" />
+  <div class="kds-form-toggle__facade"></div>
+</div>

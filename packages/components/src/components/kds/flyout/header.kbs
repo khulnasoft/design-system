@@ -1,0 +1,21 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{!
+  THIS SUBCOMPONENT IS NOW DEPRECATED
+}}
+<div class="kds-flyout__header" ...attributes>
+  {{#if @icon}}
+    <Kds::Icon class="kds-flyout__icon" @name={{@icon}} @size="24" />
+  {{/if}}
+  <Kds::Text::Display class="kds-flyout__title" @tag="div" @size="300" @weight="semibold" id={{@id}}>
+    {{#if @tagline}}
+      <Kds::Text::Body class="kds-flyout__tagline" @tag="div" @size="100" @weight="regular" @color="faint">
+        {{@tagline}}
+      </Kds::Text::Body>
+    {{/if}}
+    {{yield}}
+  </Kds::Text::Display>
+  <Kds::DismissButton class="kds-flyout__dismiss" {{on "click" @onDismiss}} />
+</div>

@@ -1,0 +1,5 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<input type="radio" class="kds-form-radio" ...attributes value={{@value}} />

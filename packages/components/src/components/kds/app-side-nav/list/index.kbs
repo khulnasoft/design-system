@@ -1,0 +1,19 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<nav class="kds-app-side-nav__list-wrapper" aria-labelledby="kds-app-side-nav-header" ...attributes>
+  {{yield (hash ExtraBefore=(component "kds/yield"))}}
+  <ul class="kds-app-side-nav__list" role="list" aria-labelledby={{this.titleIds}}>
+    {{yield
+      (hash
+        Item=(component "kds/app-side-nav/list/item")
+        BackLink=(component "kds/app-side-nav/list/back-link")
+        Title=(component "kds/app-side-nav/list/title" didInsertTitle=this.didInsertTitle)
+        Link=(component "kds/app-side-nav/list/link")
+      )
+    }}
+  </ul>
+  {{yield (hash ExtraAfter=(component "kds/yield"))}}
+</nav>

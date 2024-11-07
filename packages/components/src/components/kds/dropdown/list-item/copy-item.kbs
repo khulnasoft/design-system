@@ -1,0 +1,16 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<li class={{this.classNames}} ...attributes>
+  {{#if @copyItemTitle}}
+    <Kds::Text::Body
+      class="kds-dropdown-list-item__copy-item-title"
+      @tag="div"
+      @size="100"
+      @weight="semibold"
+      @color="faint"
+    >{{@copyItemTitle}}</Kds::Text::Body>
+  {{/if}}
+  <Kds::Copy::Snippet @color="secondary" @textToCopy={{this.text}} @isTruncated={{this.isTruncated}} />
+</li>

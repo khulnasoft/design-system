@@ -1,0 +1,36 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// APP-SIDE-NAV - VARS
+//
+
+
+// LOCAL VARIABLES
+// we use `kds-app` as prefix to distinguish them from the normal tokens
+// notice: they may be overwritten at consumer-level side if needed by re-defining the variables in a container element
+
+:root {
+  // breakpoint
+  --kds-app-desktop-breakpoint: 1088px; // this is used only to read its value via JS and set the `kds-app-side-nav--is-desktop` class
+  // widths
+  --kds-app-side-nav-width-minimized: 16px;
+  --kds-app-side-nav-width-expanded: 280px;
+  --kds-app-side-nav-width-fixed: var(--kds-app-sidenav-width-expanded);
+  // animation
+  --kds-app-side-nav-animation-duration: 200ms;
+  --kds-app-side-nav-animation-delay: var(--kds-app-sidenav-animation-duration);
+  --kds-app-side-nav-animation-easing: cubic-bezier(0.65, 0, 0.35, 1);
+  // toggle-button
+  --kds-app-side-nav-toggle-button-width: 24px;
+}
+
+// reduced motion
+
+@media (prefers-reduced-motion) {
+  :root {
+    --kds-app-side-nav-animation-duration: 0;
+  }
+}

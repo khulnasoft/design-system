@@ -1,0 +1,6 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::Icon @name="test" @isInline={{this.isInline}} />

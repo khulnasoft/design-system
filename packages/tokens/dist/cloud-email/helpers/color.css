@@ -1,0 +1,47 @@
+/**
+ * Do not edit directly
+ * Generated on Thu, 07 Nov 2024 04:10:55 GMT
+ */
+
+.kds-border-primary { border: 1px solid #656a7633; }
+.kds-border-faint { border: 1px solid #656a761a; }
+.kds-border-strong { border: 1px solid #3b3d4566; }
+.kds-border-action { border: 1px solid #cce3fe; }
+.kds-border-highlight { border: 1px solid #ead2fe; }
+.kds-border-success { border: 1px solid #cceeda; }
+.kds-border-warning { border: 1px solid #fbeabf; }
+.kds-border-critical { border: 1px solid #fbd4d4; }
+.kds-foreground-strong { color: #0c0c0e; }
+.kds-foreground-primary { color: #3b3d45; }
+.kds-foreground-faint { color: #656a76; }
+.kds-foreground-high-contrast { color: #ffffff; }
+.kds-foreground-disabled { color: #8c909c; }
+.kds-foreground-action { color: #1060ff; }
+.kds-foreground-action-hover { color: #0c56e9; }
+.kds-foreground-action-active { color: #0046d1; }
+.kds-foreground-highlight { color: #a737ff; }
+.kds-foreground-highlight-on-surface { color: #911ced; }
+.kds-foreground-highlight-high-contrast { color: #42215b; }
+.kds-foreground-success { color: #008a22; }
+.kds-foreground-success-on-surface { color: #00781e; }
+.kds-foreground-success-high-contrast { color: #054220; }
+.kds-foreground-warning { color: #bb5a00; }
+.kds-foreground-warning-on-surface { color: #9e4b00; }
+.kds-foreground-warning-high-contrast { color: #542800; }
+.kds-foreground-critical { color: #e52228; }
+.kds-foreground-critical-on-surface { color: #c00005; }
+.kds-foreground-critical-high-contrast { color: #51130a; }
+.kds-page-primary { background-color: #ffffff; }
+.kds-page-faint { background-color: #fafafa; }
+.kds-surface-primary { background-color: #ffffff; }
+.kds-surface-faint { background-color: #fafafa; }
+.kds-surface-strong { background-color: #f1f2f3; }
+.kds-surface-interactive { background-color: #ffffff; }
+.kds-surface-interactive-hover { background-color: #f1f2f3; }
+.kds-surface-interactive-active { background-color: #dedfe3; }
+.kds-surface-interactive-disabled { background-color: #fafafa; }
+.kds-surface-action { background-color: #f2f8ff; }
+.kds-surface-highlight { background-color: #f9f2ff; }
+.kds-surface-success { background-color: #f2fbf6; }
+.kds-surface-warning { background-color: #fff9e8; }
+.kds-surface-critical { background-color: #fff5f5; }

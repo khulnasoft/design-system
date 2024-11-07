@@ -1,0 +1,44 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// COPY > BUTTON
+//
+
+// mostly the kds-button but with a few style tweaks
+// so the CSS is scoped to the component class (we're not changing any of the other class names)
+.kds-copy-button {
+  cursor: pointer;
+
+  .kds-button__icon {
+    color: var(--token-color-foreground-action);
+  }
+
+  &:hover,
+  &.mock-hover {
+    .kds-button__icon {
+      color: var(--token-color-foreground-action-hover);
+    }
+  }
+
+  &:active,
+  &.mock-active {
+    .kds-button__icon {
+      color: var(--token-color-foreground-action-active);
+    }
+  }
+
+  &.kds-copy-button--status-success {
+    .kds-button__icon {
+      color: var(--token-color-foreground-success);
+    }
+  }
+
+  &.kds-copy-button--status-error {
+    .kds-button__icon {
+      color: var(--token-color-foreground-critical);
+    }
+  }
+}

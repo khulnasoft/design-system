@@ -1,0 +1,5 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class="kds-pagination-nav__ellipsis" ...attributes>...</div>

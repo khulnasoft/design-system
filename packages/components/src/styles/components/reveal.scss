@@ -1,0 +1,32 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// REVEAL COMPONENT
+//
+
+.kds-reveal { width: fit-content; }
+
+.kds-reveal__toggle-button {
+  // overriding some styles of the tertiary button, per design specs
+  min-height: 1.75rem; // 28px, Override default so padding difference will be visible
+  padding: 0.313rem 0.313rem 0.313rem 0.188rem; // 6px 6px 6px 4px, taking into account the 1px border & icon spacing
+
+  .kds-icon-chevron-down {
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform 0.3s;
+    }
+  }
+}
+
+.kds-reveal__toggle-button--is-open {
+  .kds-icon-chevron-down {
+    transform: rotate(-180deg);
+  }
+}
+
+.kds-reveal__content {
+  margin-top: 4px;
+}

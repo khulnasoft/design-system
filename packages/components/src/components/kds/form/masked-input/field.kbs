@@ -1,0 +1,35 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Form::Field
+  @layout="vertical"
+  @extraAriaDescribedBy={{@extraAriaDescribedBy}}
+  @isRequired={{@isRequired}}
+  @isOptional={{@isOptional}}
+  @id={{@id}}
+  as |F|
+>
+  {{! Notice: the order of the elements is not relevant here, because is controlled at "Kds::Form::Field" component level }}
+  {{yield (hash Label=F.Label HelperText=F.HelperText Error=F.Error)}}
+  {{#if F.CharacterCount}}
+    {{yield (hash CharacterCount=(component F.CharacterCount value=@value))}}
+  {{/if}}
+  <F.Control>
+    <Kds::Form::MaskedInput::Base
+      @hasCopyButton={{@hasCopyButton}}
+      @isMultiline={{@isMultiline}}
+      @isContentMasked={{@isContentMasked}}
+      @visibilityToggleAriaLabel={{@visibilityToggleAriaLabel}}
+      @visibilityToggleAriaMessageText={{@visibilityToggleAriaMessageText}}
+      @value={{@value}}
+      @isInvalid={{@isInvalid}}
+      @width={{@width}}
+      @height={{@height}}
+      @id={{F.id}}
+      required={{@isRequired}}
+      ...attributes
+      aria-describedby={{F.ariaDescribedBy}}
+    />
+  </F.Control>
+</Kds::Form::Field>

@@ -1,0 +1,47 @@
+/**
+ * Do not edit directly
+ * Generated on Thu, 07 Nov 2024 04:10:55 GMT
+ */
+
+.kds-border-primary { border: 1px solid var(--token-color-border-primary); }
+.kds-border-faint { border: 1px solid var(--token-color-border-faint); }
+.kds-border-strong { border: 1px solid var(--token-color-border-strong); }
+.kds-border-action { border: 1px solid var(--token-color-border-action); }
+.kds-border-highlight { border: 1px solid var(--token-color-border-highlight); }
+.kds-border-success { border: 1px solid var(--token-color-border-success); }
+.kds-border-warning { border: 1px solid var(--token-color-border-warning); }
+.kds-border-critical { border: 1px solid var(--token-color-border-critical); }
+.kds-foreground-strong { color: var(--token-color-foreground-strong); }
+.kds-foreground-primary { color: var(--token-color-foreground-primary); }
+.kds-foreground-faint { color: var(--token-color-foreground-faint); }
+.kds-foreground-high-contrast { color: var(--token-color-foreground-high-contrast); }
+.kds-foreground-disabled { color: var(--token-color-foreground-disabled); }
+.kds-foreground-action { color: var(--token-color-foreground-action); }
+.kds-foreground-action-hover { color: var(--token-color-foreground-action-hover); }
+.kds-foreground-action-active { color: var(--token-color-foreground-action-active); }
+.kds-foreground-highlight { color: var(--token-color-foreground-highlight); }
+.kds-foreground-highlight-on-surface { color: var(--token-color-foreground-highlight-on-surface); }
+.kds-foreground-highlight-high-contrast { color: var(--token-color-foreground-highlight-high-contrast); }
+.kds-foreground-success { color: var(--token-color-foreground-success); }
+.kds-foreground-success-on-surface { color: var(--token-color-foreground-success-on-surface); }
+.kds-foreground-success-high-contrast { color: var(--token-color-foreground-success-high-contrast); }
+.kds-foreground-warning { color: var(--token-color-foreground-warning); }
+.kds-foreground-warning-on-surface { color: var(--token-color-foreground-warning-on-surface); }
+.kds-foreground-warning-high-contrast { color: var(--token-color-foreground-warning-high-contrast); }
+.kds-foreground-critical { color: var(--token-color-foreground-critical); }
+.kds-foreground-critical-on-surface { color: var(--token-color-foreground-critical-on-surface); }
+.kds-foreground-critical-high-contrast { color: var(--token-color-foreground-critical-high-contrast); }
+.kds-page-primary { background-color: var(--token-color-page-primary); }
+.kds-page-faint { background-color: var(--token-color-page-faint); }
+.kds-surface-primary { background-color: var(--token-color-surface-primary); }
+.kds-surface-faint { background-color: var(--token-color-surface-faint); }
+.kds-surface-strong { background-color: var(--token-color-surface-strong); }
+.kds-surface-interactive { background-color: var(--token-color-surface-interactive); }
+.kds-surface-interactive-hover { background-color: var(--token-color-surface-interactive-hover); }
+.kds-surface-interactive-active { background-color: var(--token-color-surface-interactive-active); }
+.kds-surface-interactive-disabled { background-color: var(--token-color-surface-interactive-disabled); }
+.kds-surface-action { background-color: var(--token-color-surface-action); }
+.kds-surface-highlight { background-color: var(--token-color-surface-highlight); }
+.kds-surface-success { background-color: var(--token-color-surface-success); }
+.kds-surface-warning { background-color: var(--token-color-surface-warning); }
+.kds-surface-critical { background-color: var(--token-color-surface-critical); }

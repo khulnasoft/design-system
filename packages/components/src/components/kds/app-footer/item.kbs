@@ -1,0 +1,8 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<li class="kds-app-footer__list-item" ...attributes>
+  {{yield}}
+</li>

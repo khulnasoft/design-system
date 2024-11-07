@@ -1,0 +1,30 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{#if @showNoSelectedMessage}}
+  <Kds::Text::Body @tag="div" @size="200" class="kds-form-super-select__no-options-selected kds-foreground-strong">
+    No options selected
+  </Kds::Text::Body>
+{{/if}}
+<div class="kds-form-super-select__after-options">
+  {{#if @content}}
+    <Kds::Text::Body @tag="div" @size="100" class="kds-foreground-strong">
+      {{@content}}
+    </Kds::Text::Body>
+  {{else}}
+    {{#if (or @showAll @showSelected @clearSelected)}}
+      {{#if @showOnlySelected}}
+        <Kds::Button @text="Show all" @size="small" @color="secondary" {{on "click" @showAll}} />
+      {{else}}
+        <Kds::Button @text="Show selected" @size="small" @color="secondary" {{on "click" @showSelected}} />
+      {{/if}}
+      {{#if (not-eq @selectedCount "0")}}
+        <Kds::Button @text="Clear selected" @size="small" @color="secondary" {{on "click" @clearSelected}} />
+      {{/if}}
+    {{/if}}
+    <Kds::Text::Body @tag="div" @size="100" class="kds-form-super-select__result-count kds-foreground-strong">
+      {{@resultCountMessage}}
+    </Kds::Text::Body>
+  {{/if}}
+</div>

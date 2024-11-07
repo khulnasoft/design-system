@@ -1,0 +1,1 @@
+The App Footer is a universal component designed to provide essential links and content at the bottom of the application.

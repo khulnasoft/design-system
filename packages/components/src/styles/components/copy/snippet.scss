@@ -1,0 +1,133 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// COPY > SNIPPET
+//
+@use "../../mixins/focus-ring" as *;
+
+@mixin kds-copy-snippet-success-error() {
+  &.kds-copy-snippet--status-success {
+    background-color: var(--token-color-surface-interactive);
+
+    .kds-copy-snippet__icon {
+      color: var(--token-color-foreground-success);
+    }
+  }
+
+  &.kds-copy-snippet--status-error {
+    background-color: var(--token-color-surface-interactive);
+
+    .kds-copy-snippet__icon {
+      color: var(--token-color-foreground-critical);
+    }
+  }
+}
+
+.kds-copy-snippet {
+  @include kds-focus-ring-with-pseudo-element();
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 4px;
+  text-align: left;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.kds-copy-snippet--color-primary {
+  color: var(--token-color-foreground-action);
+  background-color: transparent;
+
+  &:hover,
+  &.mock-hover {
+    color: var(--token-color-foreground-action-hover);
+    background-color: var(--token-color-surface-interactive);
+    border-color: var(--token-color-border-strong);
+  }
+
+  &:active,
+  &.mock-active {
+    color: var(--token-color-foreground-action-active);
+    background-color: var(--token-color-surface-interactive-active);
+    border-color: var(--token-color-border-strong);
+  }
+
+  @include kds-copy-snippet-success-error();
+}
+
+.kds-copy-snippet--color-secondary {
+  color: var(--token-color-foreground-primary);
+  background-color: transparent;
+
+  .kds-copy-snippet__icon {
+    color: var(--token-color-foreground-action);
+  }
+
+  &:hover,
+  &.mock-hover {
+    background-color: var(--token-color-surface-interactive);
+    border-color: var(--token-color-border-strong);
+
+    .kds-copy-snippet__icon {
+      color: var(--token-color-foreground-action-hover);
+    }
+  }
+
+  &:active,
+  &.mock-active {
+    background-color: var(--token-color-surface-interactive-active);
+    border-color: var(--token-color-border-strong);
+
+    .kds-copy-snippet__icon {
+      color: var(--token-color-foreground-action-active);
+    }
+  }
+
+  @include kds-copy-snippet-success-error();
+}
+
+.kds-copy-snippet--status-success {
+  background-color: var(--token-color-surface-interactive);
+
+  .kds-copy-snippet__icon {
+    color: var(--token-color-foreground-success);
+  }
+}
+
+.kds-copy-snippet--status-error {
+  background-color: var(--token-color-surface-interactive);
+
+  .kds-copy-snippet__icon {
+    color: var(--token-color-foreground-critical);
+  }
+}
+
+.kds-copy-snippet__text {
+  flex: 1 0 0;
+}
+
+.kds-copy-snippet__icon {
+  flex: none;
+}
+
+.kds-copy-snippet--width-full {
+  width: 100%;
+  max-width: 100%;
+}
+
+.kds-copy-snippet--is-truncated {
+  width: 100%;
+  max-width: 100%;
+
+  .kds-copy-snippet__text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

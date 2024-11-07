@@ -1,0 +1,33 @@
+{{!
+  Copyright (c) KhulnaSoft, InPP.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{! IMPORTANT: we need to add "squishies" here (~) because otherwise the whitespace added by Ember becomes visible in the underlined text (being an inline element) - See https://handlebarsjs.com/guide/expressions.html#whitespace-control }}
+<Kds::PopoverPrimitive
+  @isOpen={{@isOpen}}
+  @onOpen={{@onOpen}}
+  @onClose={{@onClose}}
+  @enableSoftEvents={{this.enableSoftEvents}}
+  @enableClickEvents={{this.enableClickEvents}}
+  as |PP|
+><div class="kds-rich-tooltip" ...attributes {{PP.setupPrimitiveContainer}}>
+    {{~yield
+      (hash
+        Toggle=(component
+          "kds/rich-tooltip/toggle"
+          popoverId=this.popoverId
+          setupPrimitiveToggle=PP.setupPrimitiveToggle
+          isOpen=PP.isOpen
+        )
+        Bubble=(component
+          "kds/rich-tooltip/bubble"
+          arrowId=this.arrowId
+          popoverId=this.popoverId
+          setupPrimitivePopover=PP.setupPrimitivePopover
+          isOpen=PP.isOpen
+        )
+        isOpen=PP.isOpen
+        close=PP.hidePopover
+      )
+    ~}}
+  </div></Kds::PopoverPrimitive>

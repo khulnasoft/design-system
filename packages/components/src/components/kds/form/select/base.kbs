@@ -1,0 +1,7 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<select class={{this.classNames}} {{style width=@width}} ...attributes>
+  {{yield (hash Options=(component "kds/yield"))}}
+</select>

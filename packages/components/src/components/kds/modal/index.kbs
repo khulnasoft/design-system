@@ -1,0 +1,41 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::DialogPrimitive::Wrapper
+  class={{this.classNames}}
+  ...attributes
+  aria-labelledby={{this.id}}
+  {{did-insert this.didInsert}}
+  {{will-destroy this.willDestroyNode}}
+  {{! @glint-expect-error - https://github.com/josemarluedke/ember-focus-trap/issues/86 }}
+  {{focus-trap isActive=this.isOpen focusTrapOptions=(hash onDeactivate=this.onDismiss clickOutsideDeactivates=true)}}
+>
+  <:header>
+    {{yield
+      (hash
+        Header=(component
+          "kds/dialog-primitive/header"
+          id=this.id
+          onDismiss=this.onDismiss
+          contextualClassPrefix="kds-modal"
+          titleTag="h1"
+        )
+      )
+    }}
+  </:header>
+  <:body>
+    {{yield (hash Body=(component "kds/dialog-primitive/body" contextualClass="kds-modal__body"))}}
+  </:body>
+  <:footer>
+    {{yield
+      (hash
+        Footer=(component "kds/dialog-primitive/footer" onDismiss=this.onDismiss contextualClass="kds-modal__footer")
+      )
+    }}
+  </:footer>
+</Kds::DialogPrimitive::Wrapper>
+
+{{#if this.isOpen}}
+  <Kds::DialogPrimitive::Overlay @contextualClass="kds-modal__overlay" />
+{{/if}}

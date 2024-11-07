@@ -1,0 +1,26 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+{{page-title "KDS Showcase"}}
+
+{{#if this.isFrameless}}
+  {{outlet}}
+{{else}}
+  <header class="shw-page-header">
+    <LinkTo @route="index" class="shw-page-header__logo" aria-label="home page">
+      <Shw::Logo::DesignSystem />
+    </LinkTo>
+    <div class="shw-page-header__title">Components showcase</div>
+  </header>
+
+  <aside class="shw-page-aside">
+    <LinkTo class="shw-back-to-components-list" @route="index"><Kds::Icon @name="arrow-left" />
+      Component list</LinkTo>
+  </aside>
+
+  <main id="main" class="shw-page-main">
+    {{outlet}}
+  </main>
+{{/if}}

@@ -1,0 +1,59 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// SEGMENTED-GROUP
+//
+
+.kds-segmented-group {
+  display: inline-flex;
+
+  > .kds-button,
+  > .kds-dropdown,
+  > .kds-form-select,
+  > .kds-form-text-input {
+    &:first-child:not(:only-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+
+      &::before,
+      .kds-dropdown-toggle-button,
+      .kds-dropdown-toggle-button::before {
+        border-top-right-radius: inherit;
+        border-bottom-right-radius: inherit;
+      }
+    }
+
+    &:last-child:not(:only-child) {
+      margin-left: -1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+      &::before,
+      .kds-dropdown-toggle-button,
+      .kds-dropdown-toggle-button::before {
+        border-top-left-radius: inherit;
+        border-bottom-left-radius: inherit;
+      }
+    }
+
+    &:not(:first-child, :last-child, :only-child) {
+      margin-left: -1px;
+      border-radius: 0;
+
+      &::before,
+      .kds-dropdown-toggle-button,
+      .kds-dropdown-toggle-button::before {
+        border-radius: inherit;
+      }
+    }
+
+    &:focus,
+    &.mock-focus,
+    .kds-dropdown-toggle-button:focus {
+      z-index: 1;
+    }
+  }
+}

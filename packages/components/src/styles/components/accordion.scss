@@ -1,0 +1,198 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// ACCORDION
+//
+
+@use "../mixins/button" as *;
+@use "../mixins/focus-ring" as *;
+
+.kds-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.kds-accordion--type-card {
+  &.kds-accordion--size-small {
+    gap: 4px;
+  }
+
+  &.kds-accordion--size-medium {
+    gap: 8px;
+  }
+
+  &.kds-accordion--size-large {
+    gap: 12px;
+  }
+}
+
+// ACCORDION ITEM COMPONENT (nested child)
+
+.kds-accordion-item--size-small {
+  --kds-accordion-item-toggle-padding: 8px;
+  --kds-accordion-item-toggle-padding-left: 8px;
+  --kds-accordion-item-content-padding-top: 4px;
+  --kds-accordion-item-content-padding-right: 8px;
+  --kds-accordion-item-content-padding-bottom: 8px;
+  --kds-accordion-item-content-padding-left: 12px;
+  --kds-accordion-item-gap: 8px;
+  --kds-accordion-item-icon-size: 16px;
+}
+
+.kds-accordion-item--size-medium {
+  --kds-accordion-item-toggle-padding: 12px;
+  --kds-accordion-item-toggle-padding-left: 8px;
+  --kds-accordion-item-content-padding-top: 4px;
+  --kds-accordion-item-content-padding-right: 12px;
+  --kds-accordion-item-content-padding-bottom: 12px;
+  --kds-accordion-item-content-padding-left: 12px;
+  --kds-accordion-item-gap: 12px;
+  --kds-accordion-item-icon-size: 20px;
+}
+
+.kds-accordion-item--size-large {
+  --kds-accordion-item-toggle-padding: 16px;
+  --kds-accordion-item-toggle-padding-left: 12px;
+  --kds-accordion-item-content-padding-top: 4px;
+  --kds-accordion-item-content-padding-right: 16px;
+  --kds-accordion-item-content-padding-bottom: 16px;
+  --kds-accordion-item-content-padding-left: 16px;
+  --kds-accordion-item-gap: 12px;
+  --kds-accordion-item-icon-size: 24px;
+}
+
+.kds-accordion-item--type-card {
+  --kds-accordion-item-focus-ring-offset: 0;
+  background: var(--token-color-surface-primary);
+  border-radius: 6px;
+
+  &.kds-accordion-item--does-not-contain-interactive:not(.kds-accordion-item--is-static) {
+    box-shadow: var(--token-surface-mid-box-shadow);
+
+    &:hover,
+    &.mock-hover {
+      box-shadow: var(--token-surface-high-box-shadow);
+    }
+  }
+
+  &.kds-accordion-item--contains-interactive,
+  &.kds-accordion-item--is-static {
+    box-shadow: var(--token-surface-base-box-shadow);
+  }
+}
+
+.kds-accordion-item--type-flush {
+  --kds-accordion-item-focus-ring-offset: 3px;
+  border-bottom: 1px solid var(--token-color-border-primary);
+
+  &.kds-accordion-item--does-not-contain-interactive:not(.kds-accordion-item--is-static) > .kds-disclosure-primitive__toggle {
+    &:hover,
+    &.mock-hover {
+      .kds-accordion-item__toggle {
+        background: var(--token-color-surface-interactive-hover);
+      }
+    }
+
+    &:active,
+    &.mock-active {
+      .kds-accordion-item__toggle {
+        background: var(--token-color-surface-interactive-active);
+      }
+    }
+  }
+}
+
+// TOGGLE BLOCK
+
+.kds-accordion-item__toggle {
+  position: relative;
+  display: flex;
+  gap: var(--kds-accordion-item-gap);
+  align-items: center;
+  padding: var(--kds-accordion-item-toggle-padding) var(--kds-accordion-item-toggle-padding) var(--kds-accordion-item-toggle-padding) var(--kds-accordion-item-toggle-padding-left);
+}
+
+.kds-accordion-item__button {
+  padding: 0;
+
+  &:hover { cursor: pointer; }
+
+  .kds-icon {
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform 0.3s;
+    }
+  }
+
+  // we hide it instead of not rendering it at all, to preserve the visual layout of the item, without requiring special CSS workarounds to compensate for the missing element
+  .kds-accordion-item--is-static.kds-accordion-item & {
+    visibility: hidden;
+  }
+}
+
+// entire toggle area is interactive
+.kds-accordion-item__button--parent-does-not-contain-interactive {
+  @include kds-focus-ring-with-pseudo-element($top: var(--kds-accordion-item-focus-ring-offset), $right: var(--kds-accordion-item-focus-ring-offset), $bottom: var(--kds-accordion-item-focus-ring-offset), $left: var(--kds-accordion-item-focus-ring-offset));
+
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -1px 0;
+  color: var(--token-color-foreground-primary);
+  background: transparent;
+  border: 0;
+}
+
+// only chevron button area is interactive
+.kds-accordion-item__button--parent-contains-interactive {
+  @include kds-button();
+
+  &:focus,
+  &.mock-focus {
+    @include kds-button-state-focus();
+  }
+
+  // `kds-button-color-secondary` determines the focus color and needs to be placed after `kds-button-state-focus`
+  @include kds-button-color-secondary();
+}
+
+.kds-accordion-item__button {
+  width: var(--kds-accordion-item-icon-size);
+  height: var(--kds-accordion-item-icon-size);
+}
+
+// animate chevron icon
+.kds-accordion-item__button--is-open {
+  .kds-icon-chevron-down {
+    transform: rotate(-180deg);
+  }
+}
+
+// Consumer added content that appears next to the chevron button:
+.kds-accordion-item__toggle-content {
+  flex: 1;
+}
+
+// CONTENT BLOCK
+
+.kds-accordion-item__content {
+  .kds-accordion-item & {
+    padding: var(--kds-accordion-item-content-padding-top) var(--kds-accordion-item-content-padding-right) var(--kds-accordion-item-content-padding-bottom) var(--kds-accordion-item-content-padding-left);
+  }
+}
+
+// Adjust content padding and border for nested flush accordions
+
+.kds-accordion-item--type-flush .kds-accordion-item__content:has(> .kds-accordion--type-flush) {
+  padding: 0 var(--kds-accordion-item-content-padding-right) 0 var(--kds-accordion-item-content-padding-left);
+  border-top: 1px solid var(--token-color-border-primary);
+
+  .kds-accordion-item--type-flush {
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

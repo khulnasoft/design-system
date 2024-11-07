@@ -1,0 +1,15 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<dialog class="kds-dialog-primitive__wrapper" ...attributes>
+  <div class="kds-dialog-primitive__wrapper-header">
+    {{yield to="header"}}
+  </div>
+  <div class="kds-dialog-primitive__wrapper-body">
+    {{yield to="body"}}
+  </div>
+  <div class="kds-dialog-primitive__wrapper-footer">
+    {{yield to="footer"}}
+  </div>
+</dialog>

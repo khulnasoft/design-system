@@ -1,0 +1,39 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<button
+  class={{this.classNames}}
+  id={{this.toggleButtonId}}
+  ...attributes
+  type="button"
+  aria-expanded={{if @isOpen "true" "false"}}
+  {{@setupPrimitiveToggle}}
+>
+  {{#if @icon}}
+    <div class="kds-dropdown-toggle-button__icon">
+      <Kds::Icon @name={{@icon}} @stretched={{true}} />
+    </div>
+  {{/if}}
+  <div class="kds-dropdown-toggle-button__text">
+    {{this.text}}
+  </div>
+  {{#if @count}}
+    <Kds::BadgeCount
+      @text={{@count}}
+      @size="small"
+      @type={{this.badgeType}}
+      class="kds-dropdown-toggle-button__count"
+    />
+  {{/if}}
+  {{#if @badge}}
+    <Kds::Badge
+      @text={{@badge}}
+      @icon={{@badgeIcon}}
+      @size="small"
+      @type={{this.badgeType}}
+      class="kds-dropdown-toggle-button__badge"
+    />
+  {{/if}}
+  <Kds::Dropdown::Toggle::Chevron />
+</button>

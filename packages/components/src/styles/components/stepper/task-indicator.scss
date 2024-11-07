@@ -1,0 +1,89 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+//
+// STEPPER > INDICATOR > TASK
+//
+
+$kds-stepper-indicator-task-statuses: (
+  "incomplete",
+  "progress",
+  "processing",
+  "complete"
+);
+$kds-stepper-indicator-task-size: 16px;
+
+// Determine states and corresponding styles
+$kds-stepper-indicator-task-status-props: (
+  "incomplete": (
+    "color-default": var(--token-color-palette-neutral-300),
+    "color-hover": var(--token-color-foreground-action-hover),
+    "color-active": var(--token-color-foreground-action-active),
+  ),
+  "progress": (
+    "color-default": var(--token-color-foreground-action),
+    "color-hover": var(--token-color-foreground-action-hover),
+    "color-active": var(--token-color-foreground-action-active),
+  ),
+  "processing": (
+    "color-default": var(--token-color-foreground-action),
+    "color-hover": var(--token-color-foreground-action-hover),
+    "color-active": var(--token-color-foreground-action-active),
+  ),
+  "complete": (
+    "color-default": var(--token-color-foreground-success),
+    "color-hover": var(--token-color-palette-green-300),
+    "color-active": var(--token-color-palette-green-400),
+  ),
+);
+
+// Base styling for indicator::task
+.kds-stepper-indicator-task {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $kds-stepper-indicator-task-size;
+  height: $kds-stepper-indicator-task-size;
+  color: var(--token-color-foreground-strong);
+}
+
+.kds-stepper-indicator-task__icon {
+  width: 12px;
+  height: 12px;
+}
+
+.kds-stepper-indicator-task--is-interactive {
+  cursor: pointer;
+
+  @each $status in $kds-stepper-indicator-task-statuses {
+    // For each status set the icon color based on the $kds-stepper-indicator-task-status-props
+    &.kds-stepper-indicator-task--status-#{$status} {
+      color: map-get(
+        $kds-stepper-indicator-task-status-props,
+        $status,
+        "color-default"
+      );
+
+      &:hover,
+      &.mock-hover {
+        color: map-get(
+          $kds-stepper-indicator-task-status-props,
+          $status,
+          "color-hover"
+        );
+      }
+
+      &:active,
+      &.mock-active {
+        color: map-get(
+          $kds-stepper-indicator-task-status-props,
+          $status,
+          "color-active"
+        );
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::AppSideNav::List::Item>
+  <Kds::Interactive
+    class="kds-app-side-nav__list-item-link kds-app-side-nav__list-item-link--back-link"
+    @current-when={{@current-when}}
+    @models={{kds-link-to-models @model @models}}
+    @query={{kds-link-to-query @query}}
+    @replace={{@replace}}
+    @route={{@route}}
+    @isRouteExternal={{@isRouteExternal}}
+    @href={{@href}}
+    @isHrefExternal={{@isHrefExternal}}
+    ...attributes
+  >
+    <Kds::Icon class="kds-app-side-nav__list-item-icon-leading" @name="chevron-left" />
+    <span class="kds-app-side-nav__list-item-text kds-typography-body-200 kds-font-weight-medium">
+      {{@text}}
+    </span>
+  </Kds::Interactive>
+</Kds::AppSideNav::List::Item>

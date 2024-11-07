@@ -1,0 +1,5 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<input class="kds-form-file-input kds-typography-body-200" ...attributes type="file" />

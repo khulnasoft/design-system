@@ -1,0 +1,11 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<Kds::Text::Display
+  class="kds-form-radio-card__label"
+  @tag="span"
+  @size="300"
+  @weight="bold"
+  ...attributes
+>{{yield}}</Kds::Text::Display>

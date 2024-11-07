@@ -1,0 +1,40 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class={{this.classNames}} {{style width=@width}}>
+  {{#if @isMultiline}}
+    <Kds::Form::Textarea::Base
+      class="kds-form-masked-input__control"
+      @value={{@value}}
+      @isInvalid={{@isInvalid}}
+      @height={{@height}}
+      id={{this.id}}
+      ...attributes
+    />
+  {{else}}
+    <Kds::Form::TextInput::Base
+      class="kds-form-masked-input__control"
+      @value={{@value}}
+      @isInvalid={{@isInvalid}}
+      id={{this.id}}
+      ...attributes
+    />
+  {{/if}}
+  <Kds::Form::VisibilityToggle
+    @isVisible={{this.isContentMasked}}
+    @ariaLabel={{this.visibilityToggleAriaLabel}}
+    @ariaMessageText={{this.visibilityToggleAriaMessageText}}
+    aria-controls={{this.id}}
+    class="kds-form-masked-input__toggle-button"
+    {{on "click" this.onClickToggleMasking}}
+  />
+  {{#if @hasCopyButton}}
+    <Kds::Copy::Button
+      class="kds-form-masked-input__copy-button"
+      @text={{this.copyButtonText}}
+      @isIconOnly={{true}}
+      @targetToCopy="#{{this.id}}"
+    />
+  {{/if}}
+</div>

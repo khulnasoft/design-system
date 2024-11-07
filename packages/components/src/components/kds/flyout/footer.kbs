@@ -1,0 +1,10 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{!
+  THIS SUBCOMPONENT IS NOW DEPRECATED
+}}
+<div class="kds-flyout__footer" ...attributes>
+  {{yield (hash close=@onDismiss)}}
+</div>

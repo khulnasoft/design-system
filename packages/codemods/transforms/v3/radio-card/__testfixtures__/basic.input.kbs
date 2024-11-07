@@ -1,0 +1,16 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::Form::RadioCard @name="radio-card" @value="value" @layout="fixed" />
+<Kds::Form::RadioCard @name="radio-card" @value="value" @layout="fixed" as |R|>
+  <R.Label>L7 permissions</R.Label>
+</Kds::Form::RadioCard>
+
+<Kds::Form::RadioCard::Group @name="radio-card-group" @layout="fixed" as |G|>
+  <G.RadioCard @value="value" />
+</Kds::Form::RadioCard::Group>
+<Kds::Form::RadioCard::Group @name="radio-card-group" @layout="vertical" as |G|>
+  <G.RadioCard @value="value" />
+</Kds::Form::RadioCard::Group>

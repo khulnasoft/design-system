@@ -1,0 +1,6 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{! we use `:empty` in CSS so we have to avoid whitespaces }}
+<div class="kds-app-frame__modals" ...attributes>{{~yield~}}</div>

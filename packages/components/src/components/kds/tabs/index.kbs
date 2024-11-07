@@ -1,0 +1,47 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+{{! template-lint-disable no-invalid-role }}
+<div
+  class={{this.classNames}}
+  {{did-insert this.didInsert}}
+  {{did-update this.didUpdateSelectedTabIndex this.selectedTabIndex}}
+  {{did-update this.didUpdateSelectedTabId this.selectedTabId}}
+  {{did-update this.didUpdateParentVisibility @isParentVisible}}
+  ...attributes
+>
+  <div class="kds-tabs__tablist-wrapper">
+    <ul class="kds-tabs__tablist" role="tablist">
+      {{yield
+        (hash
+          Tab=(component
+            "kds/tabs/tab"
+            didInsertNode=this.didInsertTab
+            didUpdateNode=this.didUpdateTab
+            willDestroyNode=this.willDestroyTab
+            tabIds=this.tabIds
+            selectedTabIndex=this.selectedTabIndex
+            onClick=this.onClick
+            onKeyUp=this.onKeyUp
+          )
+        )
+      }}
+      <li class="kds-tabs__tab-indicator" role="presentation"></li>
+    </ul>
+  </div>
+
+  {{yield
+    (hash
+      Panel=(component
+        "kds/tabs/panel"
+        didInsertNode=this.didInsertPanel
+        willDestroyNode=this.willDestroyPanel
+        tabIds=this.tabIds
+        panelIds=this.panelIds
+        selectedTabIndex=this.selectedTabIndex
+      )
+    )
+  }}
+</div>
+{{! template-lint-enable no-invalid-role }}

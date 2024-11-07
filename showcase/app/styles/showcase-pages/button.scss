@@ -1,0 +1,27 @@
+/**
+ * Copyright (c) KhulnaSoft, Ltd.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+// BUTTON
+
+body.components-button {
+  .shw-component-button-display-sample {
+    min-width: 200px;
+    padding: 4px;
+    text-align: right;
+    outline: 1px dashed var(--shw-color-gray-400);
+  }
+
+  .shw-component-button-generated {
+    > .kds-button + .kds-button {
+      margin-top: 8px;
+    }
+  }
+
+  .shw-component-button-containers-divider {
+    display: block;
+    margin: 4px 0;
+    border: none;
+  }
+}

@@ -1,0 +1,16 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+<div class="kds-pagination-size-selector" ...attributes>
+  <label class="kds-typography-body-100 kds-font-weight-medium" for={{this.SizeSelectorId}}>
+    {{this.label}}
+  </label>
+  <Kds::Form::Select::Base id={{this.SizeSelectorId}} {{on "change" this.onChange}} as |S|>
+    <S.Options>
+      {{#each this.pageSizes as |size|}}
+        <option value={{size}} selected={{if (eq size this.selectedSize) true null}}>{{size}}</option>
+      {{/each}}
+    </S.Options>
+  </Kds::Form::Select::Base>
+</div>

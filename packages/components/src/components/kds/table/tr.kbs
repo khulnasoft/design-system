@@ -1,0 +1,22 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<tr class="kds-table__tr" ...attributes>
+  {{#if @isSelectable}}
+    <Kds::Table::ThSelectable
+      @isSelected={{@isSelected}}
+      @selectionScope={{@selectionScope}}
+      @selectionKey={{this.selectionKey}}
+      @selectionAriaLabelSuffix={{@selectionAriaLabelSuffix}}
+      @sortBySelectedOrder={{@sortBySelectedOrder}}
+      @didInsert={{@didInsert}}
+      @willDestroy={{@willDestroy}}
+      @onClickSortBySelected={{@onClickSortBySelected}}
+      @onSelectionChange={{@onSelectionChange}}
+    />
+  {{/if}}
+
+  {{yield}}
+</tr>

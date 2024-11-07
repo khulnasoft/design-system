@@ -1,0 +1,20 @@
+{{!
+  Copyright (c) KhulnaSoft, Ltd.
+  SPDX-License-Identifier: MPL-2.0
+}}
+
+<Kds::AppFooter::Link
+  class={{this.classNames}}
+  style={{this.itemStyle}}
+  @current-when={{@current-when}}
+  @models={{kds-link-to-models @model @models}}
+  @query={{kds-link-to-query @query}}
+  @replace={{@replace}}
+  @route={{@route}}
+  @isRouteExternal={{@isRouteExternal}}
+  @href={{this.href}}
+  @isHrefExternal={{@isHrefExternal}}
+  @icon={{this.statusIcon}}
+  @iconPosition="leading"
+  ...attributes
+>{{this.text}}</Kds::AppFooter::Link>
