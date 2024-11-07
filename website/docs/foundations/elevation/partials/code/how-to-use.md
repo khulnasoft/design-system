@@ -36,10 +36,10 @@ Use the `elevation` and `surface` [design tokens](./tokens) directly in your CSS
 
 ```scss
 // for product applications
-@import "~@khulnasoft/design-system-tokens/dist/products/css/helpers/elevation.css";
+@use "~@khulnasoft/design-system-tokens/dist/products/css/helpers/elevation.css";
 
 // for khulnasoft developer platform
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/elevation.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/elevation.css";
 ```
 
 2. Use a predefined CSS helper class.

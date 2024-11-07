@@ -31,10 +31,10 @@ To use this class, ensure you’ve imported the relevant CSS file:
 
 ```scss
 // for product applications
-@import "~@khulnasoft/design-system-tokens/dist/products/css/helpers/focus-ring.css";
+@use "~@khulnasoft/design-system-tokens/dist/products/css/helpers/focus-ring.css";
 
 // for khulnasoft developer platform
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/focus-ring.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/focus-ring.css";
 ```
 
 ## Examples

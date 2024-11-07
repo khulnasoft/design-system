@@ -87,18 +87,18 @@ $kds-badge-size-props: (
 
 @each $size in $kds-badge-sizes {
   .kds-badge--size-#{$size} {
-    gap: map-get($kds-badge-size-props, $size, "gap");
-    min-height: map-get($kds-badge-size-props, $size, "height");
-    padding: calc(#{map-get($kds-badge-size-props, $size, "padding-vertical")} - #{$kds-badge-border-width}) calc(#{map-get($kds-badge-size-props, $size, "padding-horizontal")} - #{$kds-badge-border-width});
+    gap: map.get($kds-badge-size-props, $size, "gap");
+    min-height: map.get($kds-badge-size-props, $size, "height");
+    padding: calc(#{map.get($kds-badge-size-props, $size, "padding-vertical")} - #{$kds-badge-border-width}) calc(#{map.get($kds-badge-size-props, $size, "padding-horizontal")} - #{$kds-badge-border-width});
 
     .kds-badge__icon {
-      width: map-get($kds-badge-size-props, $size, "icon-size");
-      height: map-get($kds-badge-size-props, $size, "icon-size");
+      width: map.get($kds-badge-size-props, $size, "icon-size");
+      height: map.get($kds-badge-size-props, $size, "icon-size");
     }
 
     .kds-badge__text {
-      font-size: map-get($kds-badge-size-props, $size, "font-size");
-      line-height: map-get($kds-badge-size-props, $size, "line-height");
+      font-size: map.get($kds-badge-size-props, $size, "font-size");
+      line-height: map.get($kds-badge-size-props, $size, "line-height");
     }
   }
 }
@@ -151,13 +151,13 @@ $kds-badge-size-props: (
 
     &.kds-badge--type-inverted {
       color: var(--token-color-foreground-high-contrast);
-      background-color: map-get($kds-badge-colors-props, $color, "inverted-background-color");
+      background-color: map.get($kds-badge-colors-props, $color, "inverted-background-color");
     }
 
     &.kds-badge--type-outlined {
       color: var(--token-color-foreground-#{$color});
       background-color: transparent;
-      border-color: map-get($kds-badge-colors-props, $color, "outlined-border-color");
+      border-color: map.get($kds-badge-colors-props, $color, "outlined-border-color");
     }
   }
 }

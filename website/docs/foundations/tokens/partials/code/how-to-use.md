@@ -21,9 +21,9 @@ Use the design tokens in your style declarations as CSS custom properties.
 
 ```scss
 // for product applications
-@import "~@khulnasoft/design-system-tokens/dist/products/css/tokens.css";
+@use "~@khulnasoft/design-system-tokens/dist/products/css/tokens.css";
 // for khulnasoft developer platform
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/tokens.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/tokens.css";
 ```
 
 2. If a component accepts a color parameter you can use a design token too.

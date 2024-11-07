@@ -273,24 +273,24 @@ $kds-button-size-props: (
 @mixin kds-button-size-classes($blockName) {
   @each $size in $kds-button-sizes {
     .#{$blockName}--size-#{$size} {
-      min-height: map-get($kds-button-size-props, $size, "min-height");
-      padding: map-get($kds-button-size-props, $size, "padding-vertical") map-get($kds-button-size-props, $size, "padding-horizontal");
+      min-height: map.get($kds-button-size-props, $size, "min-height");
+      padding: map.get($kds-button-size-props, $size, "padding-vertical") map.get($kds-button-size-props, $size, "padding-horizontal");
 
       .#{$blockName}__icon {
-        width: map-get($kds-button-size-props, $size, "icon-size");
-        height: map-get($kds-button-size-props, $size, "icon-size");
+        width: map.get($kds-button-size-props, $size, "icon-size");
+        height: map.get($kds-button-size-props, $size, "icon-size");
       }
 
       .#{$blockName}__text {
-        font-size: map-get($kds-button-size-props, $size, "font-size");
-        line-height: map-get($kds-button-size-props, $size, "line-height");
+        font-size: map.get($kds-button-size-props, $size, "font-size");
+        line-height: map.get($kds-button-size-props, $size, "line-height");
       }
 
       &.#{$blockName}--is-icon-only {
         // overrides to have the icon-only button squared
-        min-width: map-get($kds-button-size-props, $size, "min-height");
-        padding-right: map-get($kds-button-size-props, $size, "padding-vertical");
-        padding-left: map-get($kds-button-size-props, $size, "padding-vertical");
+        min-width: map.get($kds-button-size-props, $size, "min-height");
+        padding-right: map.get($kds-button-size-props, $size, "padding-vertical");
+        padding-left: map.get($kds-button-size-props, $size, "padding-vertical");
       }
     }
   }

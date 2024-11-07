@@ -61,7 +61,7 @@ $kds-stepper-indicator-task-status-props: (
   @each $status in $kds-stepper-indicator-task-statuses {
     // For each status set the icon color based on the $kds-stepper-indicator-task-status-props
     &.kds-stepper-indicator-task--status-#{$status} {
-      color: map-get(
+      color: map.get(
         $kds-stepper-indicator-task-status-props,
         $status,
         "color-default"
@@ -69,7 +69,7 @@ $kds-stepper-indicator-task-status-props: (
 
       &:hover,
       &.mock-hover {
-        color: map-get(
+        color: map.get(
           $kds-stepper-indicator-task-status-props,
           $status,
           "color-hover"
@@ -78,7 +78,7 @@ $kds-stepper-indicator-task-status-props: (
 
       &:active,
       &.mock-active {
-        color: map-get(
+        color: map.get(
           $kds-stepper-indicator-task-status-props,
           $status,
           "color-active"

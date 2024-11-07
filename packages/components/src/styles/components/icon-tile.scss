@@ -80,29 +80,29 @@ $kds-icon-tile-size-props: (
 
 @each $size in $kds-icon-tile-sizes {
   .kds-icon-tile--size-#{$size} {
-    width: map-get($kds-icon-tile-size-props, $size, "size");
-    height: map-get($kds-icon-tile-size-props, $size, "size");
-    border-radius: map-get($kds-icon-tile-size-props, $size, "border-radius");
+    width: map.get($kds-icon-tile-size-props, $size, "size");
+    height: map.get($kds-icon-tile-size-props, $size, "size");
+    border-radius: map.get($kds-icon-tile-size-props, $size, "border-radius");
 
     .kds-icon-tile__icon {
-      width: map-get($kds-icon-tile-size-props, $size, "icon-size");
-      height: map-get($kds-icon-tile-size-props, $size, "icon-size");
+      width: map.get($kds-icon-tile-size-props, $size, "icon-size");
+      height: map.get($kds-icon-tile-size-props, $size, "icon-size");
     }
 
     .kds-icon-tile__logo {
-      width: map-get($kds-icon-tile-size-props, $size, "logo-size");
-      height: map-get($kds-icon-tile-size-props, $size, "logo-size");
+      width: map.get($kds-icon-tile-size-props, $size, "logo-size");
+      height: map.get($kds-icon-tile-size-props, $size, "logo-size");
     }
 
     .kds-icon-tile__extra {
-      width: map-get($kds-icon-tile-size-props, $size, "extra-size");
-      height: map-get($kds-icon-tile-size-props, $size, "extra-size");
-      border-radius: map-get($kds-icon-tile-size-props, $size, "extra-border-radius");
+      width: map.get($kds-icon-tile-size-props, $size, "extra-size");
+      height: map.get($kds-icon-tile-size-props, $size, "extra-size");
+      border-radius: map.get($kds-icon-tile-size-props, $size, "extra-border-radius");
     }
 
     .kds-icon-tile__extra-icon {
-      width: map-get($kds-icon-tile-size-props, $size, "extra-icon-size");
-      height: map-get($kds-icon-tile-size-props, $size, "extra-icon-size");
+      width: map.get($kds-icon-tile-size-props, $size, "extra-icon-size");
+      height: map.get($kds-icon-tile-size-props, $size, "extra-icon-size");
     }
   }
 }

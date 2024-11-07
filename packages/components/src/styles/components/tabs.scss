@@ -142,12 +142,12 @@ $kds-tabs-size-props: (
 @each $size in $kds-tabs-sizes {
   .kds-tabs--size-#{$size} {
     .kds-tabs__tab {
-      height: map-get($kds-tabs-size-props, $size, "tab-height");
-      padding: var(--token-tabs-tab-padding-vertical) map-get($kds-tabs-size-props, $size, "tab-padding-horizontal");
+      height: map.get($kds-tabs-size-props, $size, "tab-height");
+      padding: var(--token-tabs-tab-padding-vertical) map.get($kds-tabs-size-props, $size, "tab-padding-horizontal");
     }
   
     .kds-tabs__tab-button {
-      font-size: map-get($kds-tabs-size-props, $size, "tab-font-size");
+      font-size: map.get($kds-tabs-size-props, $size, "tab-font-size");
     }
   }
 }

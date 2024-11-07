@@ -52,11 +52,11 @@ $kds-badge-count-size-props: (
 
 @each $size in $kds-badge-count-sizes {
   .kds-badge-count--size-#{$size} {
-    min-height: map-get($kds-badge-count-size-props, $size, "height");
-    padding: calc(#{map-get($kds-badge-count-size-props, $size, "padding-vertical")} - #{$kds-badge-count-border-width}) calc(#{map-get($kds-badge-count-size-props, $size, "padding-horizontal")} - #{$kds-badge-count-border-width});
-    font-size: map-get($kds-badge-count-size-props, $size, "font-size");
-    line-height: map-get($kds-badge-count-size-props, $size, "line-height");
-    border-radius: math.div(map-get($kds-badge-count-size-props, $size, "height"), 2);
+    min-height: map.get($kds-badge-count-size-props, $size, "height");
+    padding: calc(#{map.get($kds-badge-count-size-props, $size, "padding-vertical")} - #{$kds-badge-count-border-width}) calc(#{map.get($kds-badge-count-size-props, $size, "padding-horizontal")} - #{$kds-badge-count-border-width});
+    font-size: map.get($kds-badge-count-size-props, $size, "font-size");
+    line-height: map.get($kds-badge-count-size-props, $size, "line-height");
+    border-radius: math.div(map.get($kds-badge-count-size-props, $size, "height"), 2);
   }
 }
 

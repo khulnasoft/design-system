@@ -15,17 +15,17 @@ To use this component in your application, follow [the getting started guide on 
 If you’re already using [`design-system-components`](https://github.com/khulnasoft/design-system/blob/main/packages/components/README.md), import the overrides:
 
 ```scss
-@import "@khulnasoft/design-system-components";
-@import "@khulnasoft/design-system-power-select-overrides";
+@use "@khulnasoft/design-system-components";
+@use "@khulnasoft/design-system-power-select-overrides";
 ```
 
 If you’re not using [`design-system-components`](https://github.com/khulnasoft/design-system/blob/main/packages/components/README.md) but need to use these custom PowerSelect styles, add [`design-system-tokens`](https://github.com/khulnasoft/design-system/blob/main/packages/tokens/README.md) to your project.
 
 ```scss
 // for product applications
-@import "~@khulnasoft/design-system-tokens/dist/products/css/tokens.css";
+@use "~@khulnasoft/design-system-tokens/dist/products/css/tokens.css";
 // for khulnasoft developer platform
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/tokens.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/tokens.css";
 ```
 
 ## How to use these overrides

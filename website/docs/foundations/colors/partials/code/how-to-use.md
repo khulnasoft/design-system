@@ -10,10 +10,10 @@ We currently only provide CSS helpers for the “semantic” colors, so if you n
 
 ```scss
 // for product applications
-@import "~@khulnasoft/design-system-tokens/dist/products/css/helpers/colors.css";
+@use "~@khulnasoft/design-system-tokens/dist/products/css/helpers/colors.css";
 
 // for khulnasoft developer platform
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/colors.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/colors.css";
 
 ```
 

@@ -56,7 +56,7 @@ minifyCSS: {
 5. Add the following line to the main Sass file in your application (for example, in `app.scss`):
 
 ```scss
-@import "@khulnasoft/design-system-components";
+@use "@khulnasoft/design-system-components";
 ```
 
 #### CSS
@@ -204,7 +204,7 @@ To use the icons which are meant to be animated ([loading](/icons/library?search
 
 ```scss
 // the path here depends if you’re using 'svg-react' or 'svg' icons
-@import ~@khulnasoft/flight-icons/svg-react/animation.css';
+@use ~@khulnasoft/flight-icons/svg-react/animation.css';
 ```
 
 Then declare them the same way you would with any other icon.
@@ -237,16 +237,16 @@ Import design tokens as CSS variables by adding one of the following lines to th
 
 ```scss
 // for product applications (Ember apps)
-@import "@khulnasoft/design-system-tokens/dist/products/css/tokens.css";
+@use "@khulnasoft/design-system-tokens/dist/products/css/tokens.css";
 
 // for Cloud UI email templating
-@import "@khulnasoft/design-system-tokens/dist/cloud-email/tokens.css";
+@use "@khulnasoft/design-system-tokens/dist/cloud-email/tokens.css";
 
 // for KhulnaSoft developer platform
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/tokens.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/tokens.css";
 
 // for KhulnaSoft web/marketing websites
-@import '@khulnasoft/design-system-tokens/dist/marketing/css/tokens.css';
+@use '@khulnasoft/design-system-tokens/dist/marketing/css/tokens.css';
 ```
 
 ### Import styles as CSS helper classes
@@ -255,28 +255,28 @@ Import CSS helper classes by adding any of the following lines to the main Sass 
 
 ```scss
 // for product applications (Ember apps)
-@import "@khulnasoft/design-system-tokens/dist/products/css/helpers/colors.css";
-@import "@khulnasoft/design-system-tokens/dist/products/css/helpers/elevation.css";
-@import "@khulnasoft/design-system-tokens/dist/products/css/helpers/typography.css";
-@import "@khulnasoft/design-system-tokens/dist/products/css/helpers/focus-ring.css";
+@use "@khulnasoft/design-system-tokens/dist/products/css/helpers/colors.css";
+@use "@khulnasoft/design-system-tokens/dist/products/css/helpers/elevation.css";
+@use "@khulnasoft/design-system-tokens/dist/products/css/helpers/typography.css";
+@use "@khulnasoft/design-system-tokens/dist/products/css/helpers/focus-ring.css";
 
 // for Cloud UI email templating
-@import "@khulnasoft/design-system-tokens/dist/cloud-email/helpers/colors.css";
-@import "@khulnasoft/design-system-tokens/dist/cloud-email/helpers/elevation.css";
-@import "@khulnasoft/design-system-tokens/dist/cloud-email/helpers/typography.css";
-@import "@khulnasoft/design-system-tokens/dist/cloud-email/helpers/focus-ring.css";
+@use "@khulnasoft/design-system-tokens/dist/cloud-email/helpers/colors.css";
+@use "@khulnasoft/design-system-tokens/dist/cloud-email/helpers/elevation.css";
+@use "@khulnasoft/design-system-tokens/dist/cloud-email/helpers/typography.css";
+@use "@khulnasoft/design-system-tokens/dist/cloud-email/helpers/focus-ring.css";
 
 // for KhulnaSoft developer platform
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/colors.css";
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/elevation.css";
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/typography.css";
-@import "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/focus-ring.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/colors.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/elevation.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/typography.css";
+@use "~@khulnasoft/design-system-tokens/dist/devdot/css/helpers/focus-ring.css";
 
 // for KhulnaSoft web/marketing websites
-@import "@khulnasoft/design-system-tokens/dist/marketing/css/helpers/color.css";
-@import "@khulnasoft/design-system-tokens/dist/marketing/css/helpers/elevation.css";
-@import "@khulnasoft/design-system-tokens/dist/marketing/css/helpers/focus-ring.css";
-@import "@khulnasoft/design-system-tokens/dist/marketing/css/helpers/typography.css";
+@use "@khulnasoft/design-system-tokens/dist/marketing/css/helpers/color.css";
+@use "@khulnasoft/design-system-tokens/dist/marketing/css/helpers/elevation.css";
+@use "@khulnasoft/design-system-tokens/dist/marketing/css/helpers/focus-ring.css";
+@use "@khulnasoft/design-system-tokens/dist/marketing/css/helpers/typography.css";
 ```
 
 For more examples and guidelines read [the tokens documentation](/foundations/tokens).
