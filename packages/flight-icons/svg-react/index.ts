@@ -1,7 +1,9 @@
-export { IconLoading24 } from './loading-24';
-export { IconLoading16 } from './loading-16';
-export { IconLoadingStatic24 } from './loading-static-24';
-export { IconLoadingStatic16 } from './loading-static-16';
+export * from './icons';
+// In 'icons.ts':
+// export { IconLoading24 } from './loading-24';
+// export { IconLoading16 } from './loading-16';
+// export { IconLoadingStatic24 } from './loading-static-24';
+// export { IconLoadingStatic16 } from './loading-static-16';
 export { IconRunning24 } from './running-24';
 export { IconRunning16 } from './running-16';
 export { IconRunningStatic24 } from './running-static-24';
