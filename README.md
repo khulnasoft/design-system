@@ -1,1 +1,1 @@
-# design-system
+# KhulnaSoft Design System
